@@ -13,3 +13,7 @@ bp-icon svg {display:block;height:100%;width:100%;fill:currentColor}
   .home-hub-give > .stack {min-width:0;max-width:100%}
   .home-hub-give .home-hub-heading {overflow-wrap:anywhere}
 }
+@media (max-width:640px) {
+  .home-hub-give {padding-inline:24px}
+  .home-hub-give .home-hub-heading {font-size:clamp(1.25rem,6.8vw,2.5rem);overflow-wrap:normal}
+}

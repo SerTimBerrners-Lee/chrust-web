@@ -1,0 +1,1 @@
+.stack{flex-direction:var(--stack-direction);gap:var(--stack-gap);align-items:var(--stack-align);justify-content:var(--stack-justify);flex-wrap:var(--stack-wrap);display:flex}

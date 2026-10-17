@@ -1,0 +1,1 @@
+.truncate{-webkit-line-clamp:var(--truncate-line-limit,1);line-clamp:var(--truncate-line-limit,1);-webkit-box-orient:vertical;display:-webkit-box;overflow:hidden}.truncate *{display:inline}

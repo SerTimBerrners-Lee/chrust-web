@@ -1,0 +1,15 @@
+/* Local interaction layer. The visual design is preserved in assets/. */
+bp-icon {display:inline-flex;align-items:center;justify-content:center;width:var(--icon-size,20px);height:var(--icon-size,20px);flex-shrink:0;color:var(--icon-color,currentColor)}
+bp-icon[size="lg"] {width:24px;height:24px}
+bp-icon svg {display:block;height:100%;width:100%;fill:currentColor}
+.home-carousel svg > g {animation:carousel-orbit 4000s linear infinite;will-change:transform}
+.home-carousel svg > g:nth-child(2) {animation-direction:reverse}
+@keyframes carousel-orbit {from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.home-carousel svg > g{animation:none}html{scroll-behavior:auto}}
+.video-modal video {display:block;width:100%;max-height:84dvh;aspect-ratio:16/9;background:#000;border-radius:8px}
+.video-modal .video-title {color:#fff;font-size:16px;line-height:1.5;margin:14px 16px 0}
+.video-modal .video-fallback {color:#fff;font-size:14px;display:inline-block;margin:8px 16px}
+@media (max-width:640px) {
+  .home-hub-give > .stack {min-width:0;max-width:100%}
+  .home-hub-give .home-hub-heading {overflow-wrap:anywhere}
+}

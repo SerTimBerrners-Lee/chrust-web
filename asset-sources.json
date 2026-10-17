@@ -1,0 +1,432 @@
+[
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/favicon.ico",
+    "file": "/assets/41f42959-favicon.ico",
+    "bytes": 15086
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/favicon.svg",
+    "file": "/assets/63086ff2-favicon.svg",
+    "bytes": 214
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/apple-touch-icon.png",
+    "file": "/assets/c54fb8ba-apple-touch-icon.png",
+    "bytes": 533
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/page-DKP1Jw6S.css",
+    "file": "/assets/4dc35087-page-DKP1Jw6S.css",
+    "bytes": 3535
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/text-C4gA1OwQ.css",
+    "file": "/assets/5d51328d-text-C4gA1OwQ.css",
+    "bytes": 393
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/heading-DmpNP5iV.css",
+    "file": "/assets/f69ec7dd-heading-DmpNP5iV.css",
+    "bytes": 526
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/button-D8QqDKPm.css",
+    "file": "/assets/ab7d641d-button-D8QqDKPm.css",
+    "bytes": 6818
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/stack-B8N0WQsC.css",
+    "file": "/assets/30602f50-stack-B8N0WQsC.css",
+    "bytes": 176
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/image-B781CyZk.css",
+    "file": "/assets/97b74d66-image-B781CyZk.css",
+    "bytes": 665
+  },
+  {
+    "source": "https://static.bibleproject.com/bp-web-components/v0.29.2/fonts/Graphik-Italic-VF-Web.woff2",
+    "file": "/assets/8a8399ac-Graphik-Italic-VF-Web.woff2",
+    "bytes": 77200
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/route-AvQzByOM.css",
+    "file": "/assets/7a9dca5f-route-AvQzByOM.css",
+    "bytes": 40333
+  },
+  {
+    "source": "https://static.bibleproject.com/bp-web-components/v0.29.2/fonts/Graphik-Upright-VF-Web.woff2",
+    "file": "/assets/7a1ff8d0-Graphik-Upright-VF-Web.woff2",
+    "bytes": 68300
+  },
+  {
+    "source": "https://static.bibleproject.com/bp-web-components/v0.29.2/bp-compat.css",
+    "file": "/assets/a44d755a-bp-compat.css",
+    "bytes": 931
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/global-D38g-Y4N.css",
+    "file": "/assets/e22dadcd-global-D38g-Y4N.css",
+    "bytes": 10307
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/image-card-stack-BwSALrga.css",
+    "file": "/assets/af6e54be-image-card-stack-BwSALrga.css",
+    "bytes": 992
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/link-p7dcpIf7.css",
+    "file": "/assets/fd7c6fce-link-p7dcpIf7.css",
+    "bytes": 135
+  },
+  {
+    "source": "https://static.bibleproject.com/bp-web-components/v0.29.2/bp.css",
+    "file": "/assets/3a1e1e33-bp.css",
+    "bytes": 8591
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/accordion-BzLsEu8b.css",
+    "file": "/assets/04c9433c-accordion-BzLsEu8b.css",
+    "bytes": 2727
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/reading-plan-block-CHy4-KGF.css",
+    "file": "/assets/7b634abb-reading-plan-block-CHy4-KGF.css",
+    "bytes": 1164
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/truncate-BRhWlXoB.css",
+    "file": "/assets/3a720d0b-truncate-BRhWlXoB.css",
+    "bytes": 190
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/video-modal-Ctl9C878.css",
+    "file": "/assets/1f85831b-video-modal-Ctl9C878.css",
+    "bytes": 1855
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/video-collection-images/old-testament-overviews/tr:q-65,w-300/ot-overviews_1.1.jpg",
+    "file": "/assets/82bb5f8f-ot-overviews_1.1.jpg",
+    "bytes": 22969
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/images/bible-project-logo.svg",
+    "file": "/assets/4bec4ec2-bible-project-logo.svg",
+    "bytes": 5012
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/video-collection-images/new-testament-overviews/tr:q-65,w-300/nt-overviews_1.1.jpg",
+    "file": "/assets/33d5c9eb-nt-overviews_1.1.jpg",
+    "bytes": 20906
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/video-collection-images/themes/tr:q-65,w-300/themes_1.1.jpg",
+    "file": "/assets/35161d25-themes_1.1.jpg",
+    "bytes": 7470
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/video-player-B93qyOVy.css",
+    "file": "/assets/43bba2c5-video-player-B93qyOVy.css",
+    "bytes": 3280
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/video-collection-images/how-to-read-the-bible/tr:q-65,w-300/how-to-read_1.1.jpg",
+    "file": "/assets/10b0bb23-how-to-read_1.1.jpg",
+    "bytes": 13425
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/video-collection-images/spiritual-beings/tr:q-65,w-300/spiritual-beings_1.1.jpg",
+    "file": "/assets/7038a803-spiritual-beings_1.1.jpg",
+    "bytes": 9324
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/video-collection-images/royal-priesthood/tr:q-65,w-300/royal-priesthood_1.1.jpg",
+    "file": "/assets/2d3dbd02-royal-priesthood_1.1.jpg",
+    "bytes": 11863
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/badge-Bbm3VVNq.css",
+    "file": "/assets/87d9b6f2-badge-Bbm3VVNq.css",
+    "bytes": 2537
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/video-collection-images/creation/tr:q-65,w-300/creation_1.1.jpg",
+    "file": "/assets/3e16a7a0-creation_1.1.jpg",
+    "bytes": 13593
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/video-collection-images/character-of-god/tr:q-65,w-300/character-of-god_1.1.jpg",
+    "file": "/assets/ef814cbd-character-of-god_1.1.jpg",
+    "bytes": 7368
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/video-collection-images/advent/tr:q-65,w-300/advent_1.1.jpg",
+    "file": "/assets/517030a6-advent_1.1.jpg",
+    "bytes": 6701
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/video-collection-images/luke-acts/tr:q-65,w-300/luke-acts_1.1.jpg",
+    "file": "/assets/30b40027-luke-acts_1.1.jpg",
+    "bytes": 11734
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/Languages/reading-plan-thumbnails/tr:q-65,w-72/Russian_Advent%20Reflections_320.jpg",
+    "file": "/assets/26522c19-Russian_Advent_20Reflections_320.jpg",
+    "bytes": 1367
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/video-collection-images/wisdom/tr:q-65,w-300/wisdom_1.1.jpg",
+    "file": "/assets/5c2d146a-wisdom_1.1.jpg",
+    "bytes": 11758
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/russianupsidedownkingdomluke320-2.jpg",
+    "file": "/assets/fa68cc7a-russianupsidedownkingdomluke320-2.jpg",
+    "bytes": 1123
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/bibleproject-logo-CON6-00S.css",
+    "file": "/assets/fb5b7090-bibleproject-logo-CON6-00S.css",
+    "bytes": 628
+  },
+  {
+    "source": "https://static.bibleproject.com/web/0cd9e43/assets/unstyled-button-D1AaJn8d.css",
+    "file": "/assets/badcfbda-unstyled-button-D1AaJn8d.css",
+    "bytes": 152
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/russiantrusting-god-through-suffering2320-2.jpg",
+    "file": "/assets/6a0a29d9-russiantrusting-god-through-suffering2320-2.jpg",
+    "bytes": 1615
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/Russian_Luke%20and%20Acts_320.jpg",
+    "file": "/assets/617361af-Russian_Luke_20and_20Acts_320.jpg",
+    "bytes": 1240
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/russian-yvgods-heart-for-justice320-2.jpg",
+    "file": "/assets/f76441a8-russian-yvgods-heart-for-justice320-2.jpg",
+    "bytes": 1308
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/russianwhat-gives-you-hope320-2.jpg",
+    "file": "/assets/6bae257d-russianwhat-gives-you-hope320-2.jpg",
+    "bytes": 1764
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/russianupsidedownkingdomacts320-2.jpg",
+    "file": "/assets/192a8654-russianupsidedownkingdomacts320-2.jpg",
+    "bytes": 1069
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/russianthe-crucified-king320-2.jpg",
+    "file": "/assets/06f853dd-russianthe-crucified-king320-2.jpg",
+    "bytes": 1404
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/russianjesus-new-humanity320-2.jpg",
+    "file": "/assets/d25b910d-russianjesus-new-humanity320-2.jpg",
+    "bytes": 1626
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/Languages/reading-plan-thumbnails/tr:q-65,w-72/russiangods-eternal-love320.jpg",
+    "file": "/assets/6a5a7574-russiangods-eternal-love320.jpg",
+    "bytes": 1290
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/russiannew-covenant-new-wisdom320-2.jpg",
+    "file": "/assets/b9177308-russiannew-covenant-new-wisdom320-2.jpg",
+    "bytes": 1492
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/russianapostle-paul320-3.jpg",
+    "file": "/assets/a0280cc1-russianapostle-paul320-3.jpg",
+    "bytes": 1803
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/russianwis320-2.jpg",
+    "file": "/assets/eb4b06a8-russianwis320-2.jpg",
+    "bytes": 1528
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/russianotyear320-2.jpg",
+    "file": "/assets/d0d0a6e6-russianotyear320-2.jpg",
+    "bytes": 1432
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/russianntyear320-2.jpg",
+    "file": "/assets/01c9a1e1-russianntyear320-2.jpg",
+    "bytes": 1477
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/russiangos320-2.jpg",
+    "file": "/assets/fefa1684-russiangos320-2.jpg",
+    "bytes": 1357
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/Languages/reading-plan-thumbnails/tr:q-65,w-72/Russian_maj_proph_320.jpg",
+    "file": "/assets/58490979-Russian_maj_proph_320.jpg",
+    "bytes": 1401
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/Languages/reading-plan-thumbnails/tr:q-65,w-72/Russian_Paul_320.jpg",
+    "file": "/assets/288414cc-Russian_Paul_320.jpg",
+    "bytes": 1319
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/Languages/reading-plan-thumbnails/tr:q-65,w-72/Russian_john_320.jpg",
+    "file": "/assets/696eb506-Russian_john_320.jpg",
+    "bytes": 1331
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/tr:q-65,w-72/russianminorproph320-2.jpg",
+    "file": "/assets/44640e65-russianminorproph320-2.jpg",
+    "bytes": 1552
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/web/media/Languages/reading-plan-thumbnails/tr:q-65,w-72/Russian_torah_320.jpg",
+    "file": "/assets/7d4eeb83-Russian_torah_320.jpg",
+    "bytes": 1334
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-09.jpg",
+    "file": "/assets/834239e7-home-hub-carousel-09.jpg",
+    "bytes": 14697
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-remix/home-hub/tr:q-70,w-800/home-hub-about-image.png",
+    "file": "/assets/78327f16-home-hub-about-image.png",
+    "bytes": 86542
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-10.jpg",
+    "file": "/assets/37d2a424-home-hub-carousel-10.jpg",
+    "bytes": 6880
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-11.jpg",
+    "file": "/assets/fc524210-home-hub-carousel-11.jpg",
+    "bytes": 13228
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-12.jpg",
+    "file": "/assets/ba59897b-home-hub-carousel-12.jpg",
+    "bytes": 11928
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-13.jpg",
+    "file": "/assets/8ed8e35b-home-hub-carousel-13.jpg",
+    "bytes": 6734
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-01.jpg",
+    "file": "/assets/47830d4b-home-hub-carousel-01.jpg",
+    "bytes": 14838
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-02.jpg",
+    "file": "/assets/47df2ca8-home-hub-carousel-02.jpg",
+    "bytes": 15095
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-03.jpg",
+    "file": "/assets/e65aa6c4-home-hub-carousel-03.jpg",
+    "bytes": 15047
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-04.jpg",
+    "file": "/assets/6378624e-home-hub-carousel-04.jpg",
+    "bytes": 9163
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-05.jpg",
+    "file": "/assets/c66aeb90-home-hub-carousel-05.jpg",
+    "bytes": 11423
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-06.jpg",
+    "file": "/assets/4344f8e4-home-hub-carousel-06.jpg",
+    "bytes": 7473
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-07.jpg",
+    "file": "/assets/ee536d98-home-hub-carousel-07.jpg",
+    "bytes": 6822
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-08.jpg",
+    "file": "/assets/b37290bc-home-hub-carousel-08.jpg",
+    "bytes": 13092
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-22.jpg",
+    "file": "/assets/7750aade-home-hub-carousel-22.jpg",
+    "bytes": 13993
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-23.jpg",
+    "file": "/assets/fed5ed0e-home-hub-carousel-23.jpg",
+    "bytes": 14331
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-24.jpg",
+    "file": "/assets/a727850a-home-hub-carousel-24.jpg",
+    "bytes": 13051
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-25.jpg",
+    "file": "/assets/5eea3f00-home-hub-carousel-25.jpg",
+    "bytes": 19183
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-26.jpg",
+    "file": "/assets/788a515a-home-hub-carousel-26.jpg",
+    "bytes": 10430
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-14.jpg",
+    "file": "/assets/6652321e-home-hub-carousel-14.jpg",
+    "bytes": 16917
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-15.jpg",
+    "file": "/assets/69936f23-home-hub-carousel-15.jpg",
+    "bytes": 9650
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-16.jpg",
+    "file": "/assets/97e0fb63-home-hub-carousel-16.jpg",
+    "bytes": 19965
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-17.jpg",
+    "file": "/assets/ccec5546-home-hub-carousel-17.jpg",
+    "bytes": 9761
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-18.jpg",
+    "file": "/assets/f8353a36-home-hub-carousel-18.jpg",
+    "bytes": 15446
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-20.jpg",
+    "file": "/assets/7b568b71-home-hub-carousel-20.jpg",
+    "bytes": 13988
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-19.jpg",
+    "file": "/assets/b9e1d136-home-hub-carousel-19.jpg",
+    "bytes": 9364
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-hub/tr:q-50,w-300/home-hub-carousel-21.jpg",
+    "file": "/assets/c126a947-home-hub-carousel-21.jpg",
+    "bytes": 5901
+  },
+  {
+    "source": "https://ik.imagekit.io/bpweb1/media/home-remix/home-hub/tr:q-65,w-1200/home-hub-meta-ru.jpg",
+    "file": "/assets/60f4374e-home-hub-meta-ru.jpg",
+    "bytes": 89823
+  }
+]

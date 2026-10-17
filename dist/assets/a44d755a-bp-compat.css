@@ -1,0 +1,50 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  text-rendering: optimizeSpeed;
+  font-family: var(--font-sans);
+}
+
+:is(a, button, input, textarea, select):focus-visible {
+  outline: var(--a11y-outline);
+}
+
+:is(a, button, input, textarea, select):focus:not(:focus-visible) {
+  outline: none;
+}
+
+:is(bp-global-header, bp-global-footer):not(:defined) {
+  display: block;
+  visibility: hidden;
+}
+
+bp-global-header:not(:defined) {
+  height: var(--size-6);
+}
+
+bp-global-footer:not(:defined) {
+  height: var(--size-60);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

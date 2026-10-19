@@ -444,5 +444,12 @@
     "bytes": 422146,
     "style_reference": "dist/assets/screens/growth-tree.webp",
     "prompt": "site/hero-oak-prompt.txt"
+  },
+  {
+    "source": "Built-in OpenAI ImageGen background extraction, 2026-10-19",
+    "file": "/assets/chrust-rays-transparent.webp",
+    "bytes": 19128,
+    "reference": "SerTimBerrners-Lee/chrust, design/brand/rays-dark.png",
+    "prompt": "site/rays-transparent-prompt.txt"
   }
 ]

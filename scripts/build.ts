@@ -1,5 +1,5 @@
 import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
-import { content, screens, screensWithNav, type Locale } from '../site/content';
+import { content, screens, screensWithNav, capturedScreenSizes, type Locale } from '../site/content';
 
 const links: Record<string, string | null> = JSON.parse(await readFile('site/links.json', 'utf8'));
 for (const [key, value] of Object.entries(links)) {
@@ -23,8 +23,8 @@ function brand(lang: Locale, isDownload: boolean) {
 
 function externalControl(url: string | null | undefined, body: string, cls: string, label: string) {
   return url
-    ? `<a class="${cls}" href="${escape(url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(label)}">${body}</a>`
-    : `<button class="${cls} is-coming-soon" type="button" disabled aria-label="${escape(label)}">${body}</button>`;
+    ? `<a class="${cls}" href="${escape(url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(label)}" title="${escape(label)}">${body}</a>`
+    : `<button class="${cls} is-coming-soon" type="button" disabled aria-label="${escape(label)}" title="${escape(label)}">${body}</button>`;
 }
 
 function storeButtons(lang: Locale) {
@@ -32,8 +32,8 @@ function storeButtons(lang: Locale) {
   return `<div class="store-buttons">${(['appStore', 'googlePlay', 'ruStore', 'webApp'] as const).map((key) => {
     const icon = { appStore: 'apple', googlePlay: 'googleplay', ruStore: 'rustore', webApp: 'web' }[key];
     const label = t.platforms[key];
-    const body = `<span class="store-icon">${icons[icon]}</span><span class="store-label"><small>${key === 'webApp' ? t.webAction : t.storeAction}</small><strong>${label}</strong></span>${links[key] ? '' : `<span class="availability">${t.soon}</span>`}`;
-    return externalControl(links[key], body, `store-button store-${key}`, `${label}${links[key] ? '' : `, ${t.soon}`}`);
+    const body = `<span class="store-icon">${icons[icon]}</span>`;
+    return externalControl(links[key], body, `compact-button icon-button store-button store-${key}`, label);
   }).join('')}</div>`;
 }
 
@@ -55,7 +55,7 @@ function header(lang: Locale, isDownload: boolean) {
       <nav class="language-switch" aria-label="${t.language}">
         ${(['ru', 'en'] as const).map(code => `<a data-language="${code}" lang="${code}" hreflang="${code}" aria-label="${code === 'ru' ? 'Русский' : 'English'}" title="${code === 'ru' ? 'Русский' : 'English'}" href="${isDownload ? download(code) : home(code)}"${lang === code ? ' aria-current="page"' : ''}>${code === 'ru' ? 'RU' : 'EN'}</a>`).join('')}
       </nav>
-      <a class="header-download" href="${download(lang)}" aria-label="${t.download}">${icons.download}<span>${t.download}</span></a>
+      <a class="compact-button header-download" href="${download(lang)}" aria-label="${t.download}">${icons.download}<span>${t.download}</span></a>
     </div>
   </header>`;
 }
@@ -64,8 +64,9 @@ function collage(lang: Locale, files: string[]) {
   const t = content[lang];
   return `<div class="collage collage-${files.length}">${files.map((file, i) => {
     const label = t.screenLabels[file as keyof typeof t.screenLabels];
-    return `<a class="screen-tile tile-${i + 1}${screensWithNav.has(file) ? ' screen-without-nav' : ''}" href="${download(lang)}" aria-label="${escape(`${label}. ${t.downloadAction}`)}">
-      <img src="/assets/screens/${file}.webp" alt="${escape(label)}" width="780" height="1688" loading="lazy" decoding="async">
+    const size = capturedScreenSizes[file] ?? { width: 780, height: 1688 };
+    return `<a class="screen-tile tile-${i + 1}${screensWithNav.has(file) ? ' screen-without-nav' : ''}" style="--screen-aspect:${size.width} / ${size.height}" href="${download(lang)}" aria-label="${escape(`${label}. ${t.downloadAction}`)}">
+      <img src="/assets/screens/${file}.webp" alt="${escape(label)}" width="${size.width}" height="${size.height}" loading="lazy" decoding="async">
     </a>`;
   }).join('')}</div>`;
 }
@@ -86,7 +87,7 @@ function about(lang: Locale) {
   return `<section id="about" class="about wrap" aria-labelledby="about-title"><h2 id="about-title">${t.aboutTitle}</h2>
     <div class="about-image"><img src="/assets/78327f16-home-hub-about-image.png" alt="${t.aboutImageAlt}" loading="lazy" decoding="async"></div>
     <div class="about-text">${t.about.map(p => `<p>${p}</p>`).join('')}</div>
-    <div class="community"><h3>${t.communityTitle}</h3><p>${t.communityDescription}</p><div class="social-buttons">${(['telegram', 'instagram', 'youtube'] as const).map(key => externalControl(links[key], `<span class="social-icon">${icons[key]}</span><span>${t.socialLabels[key]}</span>${links[key] ? '' : `<small>${t.soon}</small>`}`, `social-button social-${key}`, `${t.socialLabels[key]}${links[key] ? '' : `, ${t.soon}`}`)).join('')}</div></div>
+    <div class="community"><h3>${t.communityDescription}</h3><div class="social-buttons">${(['telegram', 'instagram', 'youtube'] as const).map(key => externalControl(links[key], `<span class="social-icon">${icons[key]}</span>`, `compact-button icon-button social-button social-${key}`, t.socialLabels[key])).join('')}</div></div>
   </section>`;
 }
 

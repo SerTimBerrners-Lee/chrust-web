@@ -1,11 +1,16 @@
 export type Locale = 'ru' | 'en';
 export const screens = [
   { id: 'growth', files: ['growth-tree', 'growth-calendar', 'growth-activity'] },
-  { id: 'courses', files: ['course-map', 'course-lesson', 'course-question'] },
+  { id: 'courses', files: ['course-map-live', 'course-intro-live', 'course-learn-live'] },
   { id: 'games', files: ['games-levels', 'games-wordsearch', 'games-verse', 'games-catalog'] },
   { id: 'bible', files: ['bible-reader', 'bible-highlight', 'bible-note'] },
 ];
 export const screensWithNav = new Set(['growth-tree', 'growth-calendar', 'growth-activity', 'games-catalog', 'bible-reader', 'bible-highlight', 'bible-note']);
+export const capturedScreenSizes: Record<string, { width: number; height: number }> = {
+  'course-map-live': { width: 390, height: 780 },
+  'course-intro-live': { width: 390, height: 844 },
+  'course-learn-live': { width: 390, height: 780 },
+};
 export const content = {
   ru: {
     skip: 'К содержимому', home: 'Chrust, в начало', nav: 'Возможности приложения', language: 'Язык сайта',
@@ -21,6 +26,7 @@ export const content = {
     screenLabels: {
       'growth-tree': 'Ваше дерево', 'growth-calendar': 'Календарь практик', 'growth-activity': 'Отметка действия',
       'course-map': 'Карта Ветхого Завета', 'course-lesson': 'Короткий урок', 'course-question': 'Проверка понимания',
+      'course-map-live': 'Карта Ветхого Завета', 'course-intro-live': 'Начало урока «Сотворение мира»', 'course-learn-live': 'Выбор Ветхого и Нового Завета',
       'games-levels': 'Уровни игры', 'games-wordsearch': 'Филворд', 'games-verse': 'Собери стих', 'games-catalog': 'Каталог игр',
       'bible-reader': 'Чтение Библии', 'bible-highlight': 'Выделение стихов', 'bible-note': 'Личная заметка',
     },
@@ -30,7 +36,7 @@ export const content = {
       'Чтение, изучение библейских историй, игры и молитва становятся небольшими шагами на этом пути. Нам важно, чтобы каждый мог двигаться в своём темпе, возвращаться к прочитанному и постепенно превращать добрые намерения в ежедневную привычку.',
       'Духовный рост похож на маленький росток. Ему нужны свет, вода и постоянная забота: без внимания он слабеет и увядает. Так и внутренняя жизнь крепнет благодаря тому, что мы делаем день за днём. Chrust помогает замечать эти шаги и бережно растить своё дерево.',
     ],
-    communityTitle: 'Растём вместе', communityDescription: 'Подписывайтесь, следите за новостями и общайтесь с сообществом Chrust.',
+    communityDescription: 'Подписывайтесь, следите за новостями и общайтесь с сообществом Chrust.',
     socialLabels: { telegram: 'Общаться в Telegram', instagram: 'Следить в Instagram', youtube: 'Смотреть на YouTube' },
     downloadTitle: 'Chrust всегда рядом', downloadDescription: 'Выберите удобный способ начать: на телефоне или прямо в браузере.',
     platforms: { appStore: 'App Store', googlePlay: 'Google Play', ruStore: 'RuStore', webApp: 'В приложение' },
@@ -52,6 +58,7 @@ export const content = {
     screenLabels: {
       'growth-tree': 'Your tree', 'growth-calendar': 'Practice calendar', 'growth-activity': 'Record a practice',
       'course-map': 'Old Testament map', 'course-lesson': 'A short lesson', 'course-question': 'Check your understanding',
+      'course-map-live': 'Old Testament map', 'course-intro-live': 'The Creation lesson introduction', 'course-learn-live': 'Old and New Testament selection',
       'games-levels': 'Game levels', 'games-wordsearch': 'Word search', 'games-verse': 'Build a verse', 'games-catalog': 'Game library',
       'bible-reader': 'Reading the Bible', 'bible-highlight': 'Highlighted verses', 'bible-note': 'A personal note',
     },
@@ -61,7 +68,7 @@ export const content = {
       'Reading, exploring biblical stories, playing games, and praying can become small steps along that path. We want everyone to move at their own pace, return to what they have read, and gradually turn good intentions into a daily habit.',
       'Spiritual growth is like a young sapling. It needs light, water, and ongoing care; without attention it weakens and withers. Our inner life grows stronger through what we do day after day. Chrust helps you notice those small steps and nurture your own tree.',
     ],
-    communityTitle: 'Growing together', communityDescription: 'Follow our updates and connect with the Chrust community.',
+    communityDescription: 'Follow our updates and connect with the Chrust community.',
     socialLabels: { telegram: 'Join us on Telegram', instagram: 'Follow on Instagram', youtube: 'Watch on YouTube' },
     downloadTitle: 'Keep Chrust close', downloadDescription: 'Choose how you would like to begin: on your phone or in your browser.',
     platforms: { appStore: 'App Store', googlePlay: 'Google Play', ruStore: 'RuStore', webApp: 'Open the app' },

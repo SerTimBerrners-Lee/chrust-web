@@ -19,5 +19,35 @@
     "bible-reader": "Original BiblePage with bundled Synodal translation and disposable in-memory database",
     "bible-highlight": "Original BiblePage, Genesis 1:3 highlighted",
     "bible-note": "Original BiblePage, note editor with demonstration text"
+  },
+  "liveCapture": {
+    "capturedAt": "2026-10-19",
+    "source": "Already-running Chrust at http://127.0.0.1:8080/",
+    "mode": "Guest session without personal account data",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "method": "Native browser screenshots through Codex computer use. Navigation was excluded at capture time. No image generation.",
+    "screens": {
+      "course-map-live": {
+        "view": "Old Testament map, first two lessons",
+        "width": 390,
+        "height": 780,
+        "bottomNavigation": "excluded by screenshot clip"
+      },
+      "course-intro-live": {
+        "view": "Creation lesson introduction with artwork",
+        "width": 390,
+        "height": 844,
+        "bottomNavigation": "not present on this full-screen view"
+      },
+      "course-learn-live": {
+        "view": "Learn section, Old and New Testament",
+        "width": 390,
+        "height": 780,
+        "bottomNavigation": "excluded by screenshot clip"
+      }
+    }
   }
 }

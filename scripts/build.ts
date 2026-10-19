@@ -3,7 +3,6 @@ import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
 type Screen = {
   file: string;
   label: string;
-  position?: string;
 };
 
 type Feature = {
@@ -23,7 +22,7 @@ const features: Feature[] = [
     screens: [
       { file: 'growth-tree', label: 'Ваше дерево' },
       { file: 'growth-calendar', label: 'Календарь практик' },
-      { file: 'growth-activity', label: 'Отметка действия', position: 'bottom' },
+      { file: 'growth-activity', label: 'Отметка действия' },
     ],
   },
   {
@@ -34,7 +33,7 @@ const features: Feature[] = [
     screens: [
       { file: 'course-map', label: 'Карта Ветхого Завета' },
       { file: 'course-lesson', label: 'Короткий урок' },
-      { file: 'course-question', label: 'Проверка понимания', position: 'center' },
+      { file: 'course-question', label: 'Проверка понимания' },
     ],
   },
   {
@@ -43,9 +42,9 @@ const features: Feature[] = [
     title: 'Игры',
     description: 'Закрепляйте изученное в библейских играх с уровнями и разными заданиями.',
     screens: [
-      { file: 'games-levels', label: 'Уровни игры', position: '62%' },
-      { file: 'games-wordsearch', label: 'Филворд', position: '62%' },
-      { file: 'games-verse', label: 'Собери стих', position: 'bottom' },
+      { file: 'games-levels', label: 'Уровни игры' },
+      { file: 'games-wordsearch', label: 'Филворд' },
+      { file: 'games-verse', label: 'Собери стих' },
       { file: 'games-catalog', label: 'Каталог игр' },
     ],
   },
@@ -56,14 +55,14 @@ const features: Feature[] = [
     description: 'Читайте Библию, выделяйте стихи и сохраняйте свои заметки.',
     screens: [
       { file: 'bible-reader', label: 'Чтение Библии' },
-      { file: 'bible-highlight', label: 'Выделение стихов', position: 'bottom' },
-      { file: 'bible-note', label: 'Личная заметка', position: 'bottom' },
+      { file: 'bible-highlight', label: 'Выделение стихов' },
+      { file: 'bible-note', label: 'Личная заметка' },
     ],
   },
 ];
 
 function screenTile(screen: Screen, index: number, eager = false): string {
-  return `<div class="screen-tile tile-${index + 1}" style="--focus:${screen.position ?? 'top'}">
+  return `<div class="screen-tile tile-${index + 1}">
     <img src="/assets/screens/${screen.file}.webp" alt="${screen.label} в приложении Chrust" width="780" height="1688" loading="${eager ? 'eager' : 'lazy'}" ${eager && index === 0 ? 'fetchpriority="high"' : ''}>
   </div>`;
 }
@@ -118,7 +117,7 @@ const html = `<!doctype html>
       ${features.map((feature, index) => `<section id="${feature.id}" class="feature ${index % 2 === 0 ? 'image-first' : ''}" aria-labelledby="${feature.id}-title">
         <div class="feature-copy">
           <h2 id="${feature.id}-title">${feature.title}</h2>
-          <p>${feature.description}</p>
+          <p class="text home-hub-section-description">${feature.description}</p>
         </div>
         ${collage(feature.screens)}
       </section>`).join('\n')}

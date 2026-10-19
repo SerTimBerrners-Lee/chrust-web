@@ -26,17 +26,27 @@ h2 { font-size: 36px; }
 @keyframes carousel-orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .home-carousel svg > g { animation: none; } }
 
-.collage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 8px; aspect-ratio: 1.05; border-radius: 24px; overflow: hidden; }
-.screen-tile { min-width: 0; min-height: 0; overflow: hidden; }
-.screen-tile img { width: 100%; height: 100%; object-fit: cover; object-position: center var(--focus, top); }
-.collage-3 .tile-1 { grid-row: span 2; }
+.collage { position: relative; aspect-ratio: 1 / 1.1; isolation: isolate; }
+/* A 26.5% step with 40% cards leaves approximately 34% overlap. */
+.screen-tile { position: absolute; width: 40%; aspect-ratio: 780 / 1688; overflow: hidden; border-radius: clamp(12px, 2vw, 24px); background: #fff; box-shadow: 0 16px 40px -20px rgb(0 0 0 / 28%), 0 0 0 1px rgb(0 0 0 / 5%); }
+.screen-tile img { width: 100%; height: 100%; object-fit: contain; }
+.collage-3 .tile-1 { left: 3%; top: 8%; transform: rotate(-7deg); z-index: 1; }
+.collage-3 .tile-2 { left: 29.5%; top: 16%; transform: rotate(-1deg); z-index: 3; }
+.collage-3 .tile-3 { left: 56%; top: 5%; transform: rotate(7deg); z-index: 2; }
+/* Four cards use the same one-third overlap, with a staggered top edge. */
+.collage-4 { aspect-ratio: 1 / 1.05; }
+.collage-4 .screen-tile { width: 33%; }
+.collage-4 .tile-1 { left: 0%; top: 12%; transform: rotate(-7deg); z-index: 1; }
+.collage-4 .tile-2 { left: 22%; top: 3%; transform: rotate(-3deg); z-index: 2; }
+.collage-4 .tile-3 { left: 44%; top: 20%; transform: rotate(2deg); z-index: 4; }
+.collage-4 .tile-4 { left: 66%; top: 9%; transform: rotate(7deg); z-index: 3; }
 
 .features { display: grid; gap: 112px; padding-bottom: 112px; }
 .feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; }
 .feature.image-first .collage { grid-row: 1; grid-column: 1; }
 .feature.image-first .feature-copy { grid-row: 1; grid-column: 2; }
 .feature-copy { max-width: 520px; }
-.feature-copy p { font-size: 18px; line-height: 1.5; margin-top: 20px; }
+.feature-copy .home-hub-section-description { font-size: clamp(1.25rem, calc(1.25rem + .75 * ((100vw - 40rem) / 31.5)), 2rem); line-height: 1.375; margin-top: 20px; }
 
 .about { display: flex; flex-direction: column; align-items: center; gap: 16px; padding-block: 48px; margin-bottom: 64px; }
 .about h2 { margin-inline: 40px; max-inline-size: 20ch; font-size: clamp(40px, calc(40px + 32 * ((100vw - 640px) / 504)), 72px); line-height: 1.0625; text-align: center; }
@@ -69,10 +79,9 @@ h2 { font-size: 36px; }
   .desktop-nav a { padding: 4px; }
   h2 { font-size: 30px; }
   .hero-actions { margin-top: 24px; }
-  .collage { gap: 6px; border-radius: 20px; }
   .feature { display: flex; flex-direction: column; align-items: stretch; gap: 28px; }
   .feature-copy { max-width: none; }
-  .feature-copy p { font-size: 16px; margin-top: 16px; }
+  .feature-copy .home-hub-section-description { margin-top: 16px; }
   .features { gap: 64px; padding-bottom: 64px; }
   .support { padding: 48px 24px 32px; }
   .footer-top { padding-block: 40px 32px; }

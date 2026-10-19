@@ -1,0 +1,23 @@
+{
+  "applicationRepository": "git@github.com:SerTimBerrners-Lee/chrust.git",
+  "applicationCommit": "17a43d7",
+  "capturedAt": "2026-10-19",
+  "format": "WebP, 780 by 1688 pixels",
+  "method": "Rendered original Flutter components with Inter, Literata and Phosphor fonts. Light theme, Russian locale, 390 by 844 logical pixels at 2x. No image generation or personal account data.",
+  "screens": {
+    "growth-tree": "widgetbook/stories/growth.dart: GrowthTreeView, stage 5",
+    "growth-calendar": "widgetbook/stories/growth.dart: GrowthMonthCalendar, demo calendar and records",
+    "growth-activity": "widgetbook/stories/growth.dart: GrowthTreeView with its activity sheet opened",
+    "course-map": "widgetbook/stories/map_explore.dart: TestamentLessonMap, Old Testament, scrolled to lessons",
+    "course-new": "widgetbook/stories/map_explore.dart: TestamentLessonMap, New Testament cover",
+    "course-lesson": "Original LessonContent with the creation narrative fixture, timeline disabled",
+    "course-question": "widgetbook/stories/lesson.dart: LessonChoiceQuestion, correct answer",
+    "games-catalog": "widgetbook/stories/puzzles.dart: PuzzleCatalog",
+    "games-levels": "widgetbook/stories/puzzles.dart: PuzzleLevelCarousel, in progress",
+    "games-wordsearch": "widgetbook/stories/puzzles.dart: WordSearchBoard, in progress",
+    "games-verse": "widgetbook/stories/puzzles.dart: VerseBoard, in progress",
+    "bible-reader": "Original BiblePage with bundled Synodal translation and disposable in-memory database",
+    "bible-highlight": "Original BiblePage, Genesis 1:3 highlighted",
+    "bible-note": "Original BiblePage, note editor with demonstration text"
+  }
+}

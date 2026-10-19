@@ -1,21 +1,44 @@
-# BibleProject RU design project
+# Chrust
 
-Private Sites project reproducing the presentation of https://bibleproject.com/ru/ as inspected on 2026-10-17. This design is scoped to this project.
+Лендинг приложения: «Рост», курсы Ветхого и Нового Завета, игры и Библия.
+Первый экран содержит одно предложение и две кнопки по центру, под ними
+оригинальная дугообразная карусель изображений из референса. Следующие
+разделы чередуют расположение текста и изображений: название, одно предложение
+описания и статичный коллаж. Шрифт и цвета сохранены из исходного оформления.
 
-## Files
+## Разработка
 
-- `dist/index.html`: complete Russian page, including 11 video categories, 157 video entries and 22 reading plans.
-- `dist/ru/index.html`: matching entry point at `/ru/`.
-- `dist/assets/`: local reference styles, fonts and image assets.
-- `dist/project.css`: local presentation adjustments and carousel movement.
-- `dist/project.js`: local icon rendering, accessible accordion behavior and a video dialog.
-- `asset-sources.json`: provenance for bundled reference assets.
-- `.openai/hosting.json`: persistent Sites identity and static deployment settings.
+```sh
+bun run build
+bun run dev
+```
 
-## Current scope
+Локальный адрес: `http://127.0.0.1:4173/`. Зависимости устанавливать не нужно.
+Статическая папка `dist` сохраняется в Git и подходит для обычного HTTP-сервера.
+После изменения исходников выполните сборку и обновите страницу.
 
-Presentation and local interactions only. No custom backend, CMS, accounts or donation collection. Video playback, reading plans, posters and other outbound links retain the original external destinations. Original analytics scripts, consent integrations and application runtime are excluded. The page is marked noindex.
+## Файлы
 
-## Preview
+- `scripts/build.ts`: тексты, структура и подборка экранов. Генерирует одинаковые `/` и `/ru/`.
+- `site/styles.css`: адаптивная сетка и расположение элементов.
+- `site/hero-carousel.html`: исходная карусель референса без изменения геометрии и изображений.
+- `dist/assets/screens`: реальные снимки компонентов Chrust на демонстрационных данных.
+- `screenshot-sources.json`: происхождение снимков приложения.
+- `asset-sources.json`: происхождение ресурсов, включая сохранённые материалы прежнего макета.
+- `.openai/hosting.json`: ранее сохранённая конфигурация размещения.
 
-Serve `dist` with any static HTTP server. No build step or package installation is required.
+## Ссылки и готовность функций
+
+По текущему решению «Скачать» и «Открыть приложение» являются заглушками
+без переходов и всплывающих окон. Публичные адреса будут добавлены позже.
+Перед подвалом сохранён блок поддержки с исходной иллюстрацией;
+кнопка «Поддержать проект» также пока является заглушкой.
+Перед ним расположен блок «О Chrust» с компоновкой исходного референса.
+Его коллаж пока взят из референса BibleProject, это не фотография команды Chrust.
+
+Описание курсов указывает, что они готовятся к запуску. Коллаж показывает
+демонстрационные состояния, а не обещает доступность уроков сейчас.
+Гостевые данные и тексты заметок на снимках демонстрационные, личных данных нет.
+Аналитика и внешние скрипты отсутствуют. Страница пока имеет `noindex`.
+Юридические документы другой организации удалены из навигации. Перед публичным
+запуском следует добавить утверждённые документы Chrust и адреса приложения.

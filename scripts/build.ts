@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
+import { mkdir, writeFile, copyFile } from 'node:fs/promises';
 
 type Screen = {
   file: string;
@@ -75,8 +75,6 @@ function brand(): string {
   return '<a class="brand" href="#top" aria-label="Chrust, в начало"><img src="/assets/chrust-logo.png" alt="" width="40" height="40"><span>Chrust</span></a>';
 }
 
-const heroCarousel = await readFile('site/hero-carousel.html', 'utf8');
-
 const html = `<!doctype html>
 <html lang="ru">
 <head>
@@ -96,7 +94,7 @@ const html = `<!doctype html>
 </head>
 <body id="top">
   <a class="skip-link" href="#content">К содержимому</a>
-  <header class="site-header wrap">
+  <header class="site-header site-header--hero wrap">
     ${brand()}
     <nav class="desktop-nav" aria-label="Возможности приложения">
       ${features.map((f) => `<a href="#${f.id}">${f.name}</a>`).join('')}
@@ -104,14 +102,17 @@ const html = `<!doctype html>
   </header>
   <main id="content">
     <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-art" aria-hidden="true">
+        <img src="/assets/chrust-hero-oak.jpg" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
+      </div>
       <div class="hero-copy wrap">
         <h1 id="hero-title">Библия и духовная практика в одном приложении.</h1>
+        <p class="hero-description">Читайте Писание, открывайте библейские истории и укрепляйте духовную практику каждый день.</p>
         <div class="hero-actions">
-          <button class="button app-placeholder" type="button" data-appearance="secondary" aria-disabled="true" title="Скоро">Скачать</button>
-          <button class="button app-placeholder" type="button" data-appearance="secondary" aria-disabled="true" title="Скоро">Открыть приложение</button>
+          <button class="button app-placeholder hero-download" type="button" data-appearance="secondary" aria-disabled="true" title="Скоро">Скачать</button>
+          <button class="button app-placeholder hero-open" type="button" data-appearance="secondary" aria-disabled="true" title="Скоро">Открыть приложение <span aria-hidden="true">↗</span></button>
         </div>
       </div>
-      ${heroCarousel}
     </section>
     <div class="features wrap">
       ${features.map((feature, index) => `<section id="${feature.id}" class="feature ${index % 2 === 0 ? 'image-first' : ''}" aria-labelledby="${feature.id}-title">

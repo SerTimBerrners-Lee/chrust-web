@@ -437,5 +437,12 @@
     "source": "https://ik.imagekit.io/bpweb1/media/home-remix/home-hub/tr:q-65,w-1200/home-hub-meta-ru.jpg",
     "file": "/assets/60f4374e-home-hub-meta-ru.jpg",
     "bytes": 89823
+  },
+  {
+    "source": "Generated with built-in OpenAI ImageGen on 2026-10-19",
+    "file": "/assets/chrust-hero-oak.jpg",
+    "bytes": 422146,
+    "style_reference": "dist/assets/screens/growth-tree.webp",
+    "prompt": "site/hero-oak-prompt.txt"
   }
 ]

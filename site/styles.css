@@ -14,17 +14,26 @@ h1, h2, p { margin: 0; }
 .desktop-nav { display: flex; flex-wrap: wrap; gap: 16px; font-size: 16px; font-weight: 500; }
 .desktop-nav a { padding: 8px; }
 
-.hero { display: flex; flex-direction: column; align-items: center; gap: clamp(64px, calc(64px + 32 * ((100vw - 640px) / 504)), 96px); margin-top: clamp(64px, calc(64px + 56 * ((100vw - 640px) / 504)), 120px); margin-bottom: clamp(120px, calc(120px + 80 * ((100vw - 640px) / 504)), 200px); isolation: isolate; }
-.hero-copy { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.site-header--hero { position: absolute; inset: 0 0 auto; z-index: 3; color: #fff; }
+.site-header--hero .brand { text-shadow: 0 1px 12px rgb(10 34 20 / 20%); }
+.site-header--hero .desktop-nav a { border-radius: 8px; transition: background .2s; }
+.site-header--hero .desktop-nav a:hover { background: rgb(255 255 255 / 12%); }
+.hero { position: relative; display: grid; align-items: end; min-height: clamp(720px, 100svh, 960px); margin-bottom: 112px; color: #fff; background: #2e4a34; overflow: clip; isolation: isolate; }
+.hero-art { position: absolute; inset: 0; z-index: -2; }
+.hero-art img { width: 100%; height: 100%; object-fit: cover; object-position: 65% center; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgb(12 31 21 / 72%) 0%, rgb(12 31 21 / 38%) 34%, rgb(12 31 21 / 5%) 68%), linear-gradient(180deg, rgb(10 28 25 / 36%) 0%, transparent 26%, transparent 62%, rgb(10 28 16 / 32%) 100%); pointer-events: none; }
+.hero-copy { display: flex; flex-direction: column; align-items: flex-start; text-align: left; padding-block: 220px 96px; }
 h1, h2 { font-family: var(--font-sans); font-weight: 600; line-height: 1.125; letter-spacing: -.025em; text-wrap: balance; }
 h1 { max-inline-size: 20ch; font-size: clamp(40px, calc(40px + 32 * ((100vw - 640px) / 504)), 72px); line-height: 1.0625; }
+.hero h1 { max-width: 640px; font-size: clamp(42px, 4.4vw, 68px); line-height: 1.08; text-wrap: pretty; }
+.hero-description { max-width: 490px; margin-top: 24px; font-size: 20px; line-height: 1.5; color: rgb(255 255 255 / 88%); text-wrap: pretty; }
 h2 { font-size: 36px; }
-.hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px; }
+.hero-actions { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 12px; margin-top: 32px; }
+.hero-actions .button { min-height: 52px; padding-inline: 24px; border-radius: 12px; font-size: 16px; font-weight: 500; }
+.hero-actions .hero-download { color: #203b24; background: #f5f7ec; border: 1px solid #f5f7ec; }
+.hero-actions .hero-open { display: inline-flex; gap: 12px; color: #fff; background: rgb(255 255 255 / 9%); border: 1px solid rgb(255 255 255 / 45%); backdrop-filter: blur(6px); }
+.hero-actions .hero-open span { font-size: 20px; }
 .app-placeholder { cursor: default; }
-.home-carousel svg > g { animation: carousel-orbit 4000s linear infinite; will-change: transform; }
-.home-carousel svg > g:nth-child(2) { animation-direction: reverse; }
-@keyframes carousel-orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { .home-carousel svg > g { animation: none; } }
 
 .collage { position: relative; aspect-ratio: 1 / 1.1; isolation: isolate; }
 /* A 26.5% step with 40% cards leaves approximately 34% overlap. */
@@ -67,6 +76,10 @@ h2 { font-size: 36px; }
 
 @media (max-width: 1050px) {
   .wrap { width: calc(100% - 56px); }
+  .hero h1 { max-width: 510px; }
+  .hero-description { max-width: 420px; }
+  .hero-copy { padding-bottom: 72px; }
+  .hero { margin-bottom: 80px; }
   .feature { gap: 32px; }
   .features { gap: 80px; padding-bottom: 80px; }
   h2 { font-size: 32px; }
@@ -79,6 +92,14 @@ h2 { font-size: 36px; }
   .desktop-nav a { padding: 4px; }
   h2 { font-size: 30px; }
   .hero-actions { margin-top: 24px; }
+  .hero { min-height: 820px; min-height: max(820px, 100svh); margin-bottom: 64px; }
+  .hero-art img { object-position: 74% top; }
+  .hero::before { background: linear-gradient(180deg, rgb(10 28 25 / 38%) 0%, transparent 22%, rgb(12 31 21 / 5%) 38%, rgb(12 31 21 / 78%) 68%, rgb(12 31 21 / 94%) 100%); }
+  .hero-copy { padding-block: 450px 48px; }
+  .hero h1 { max-width: 520px; font-size: clamp(38px, 7vw, 50px); line-height: 1.08; }
+  .hero-description { max-width: 450px; margin-top: 20px; font-size: 18px; line-height: 1.45; }
+  .hero-actions { gap: 10px; width: 100%; }
+  .hero-actions .button { padding-inline: 18px; font-size: 14px; min-height: 48px; }
   .feature { display: flex; flex-direction: column; align-items: stretch; gap: 28px; }
   .feature-copy { max-width: none; }
   .feature-copy .home-hub-section-description { margin-top: 16px; }

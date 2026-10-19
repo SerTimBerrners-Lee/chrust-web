@@ -1,5 +1,10 @@
 [
   {
+    "source": "git@github.com:SerTimBerrners-Lee/chrust.git#apps/chrust_app/web/icons/Icon-192.png",
+    "file": "/assets/chrust-logo.png",
+    "bytes": 34310
+  },
+  {
     "source": "https://static.bibleproject.com/web/0cd9e43/favicon.ico",
     "file": "/assets/41f42959-favicon.ico",
     "bytes": 15086

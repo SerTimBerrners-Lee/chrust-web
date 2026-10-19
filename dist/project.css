@@ -2,6 +2,28 @@
 bp-icon {display:inline-flex;align-items:center;justify-content:center;width:var(--icon-size,20px);height:var(--icon-size,20px);flex-shrink:0;color:var(--icon-color,currentColor)}
 bp-icon[size="lg"] {width:24px;height:24px}
 bp-icon svg {display:block;height:100%;width:100%;fill:currentColor}
+.home-hub .home-hub-header-wrapper .home-hub-header .home-hub-header-brand .home-hub-header-logo {
+  block-size:40px;
+  inline-size:40px;
+  margin-inline-start:0;
+  overflow:hidden;
+  border-radius:12px;
+  background:#111113;
+}
+.home-hub .home-hub-header-wrapper .home-hub-header .home-hub-header-brand .home-hub-header-logo img {
+  block-size:100%;
+  inline-size:100%;
+  object-fit:cover;
+  transform:none;
+}
+.home-hub-header-brand .chrust-wordmark {
+  margin-inline-start:10px;
+  color:var(--color-text-primary);
+  font-size:1.125rem;
+  font-weight:650;
+  letter-spacing:-.025em;
+  line-height:1;
+}
 .home-carousel svg > g {animation:carousel-orbit 4000s linear infinite;will-change:transform}
 .home-carousel svg > g:nth-child(2) {animation-direction:reverse}
 @keyframes carousel-orbit {from{transform:rotate(0deg)}to{transform:rotate(360deg)}}

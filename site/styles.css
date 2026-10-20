@@ -78,6 +78,15 @@ a:focus-visible, button:focus-visible { outline: 3px solid #dcaf64; outline-offs
 .about h2 { margin-inline: 40px; max-inline-size: 20ch; font-size: clamp(40px, calc(40px + 32 * ((100vw - 640px) / 504)), 72px); line-height: 1.0625; text-align: center; }
 .about-image { aspect-ratio: 16 / 9; width: 100%; margin-top: 16px; border-radius: var(--radius-xl); overflow: hidden; }
 .about-image img { width: 100%; height: 100%; object-fit: cover; }
+.about-mosaic { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: repeat(6, minmax(0, 1fr)); gap: clamp(6px, 1.2vw, 16px); border-radius: 0; overflow: visible; }
+.about-mosaic-tile { min-width: 0; min-height: 0; overflow: hidden; border-radius: clamp(12px, 2.2vw, 28px); background: #dedede; }
+.about-mosaic-tile-1 { grid-area: 1 / 1 / 5 / 6; background: #d4d4d4; }
+.about-mosaic-tile-2 { grid-area: 1 / 6 / 3 / 9; background: #ebebeb; }
+.about-mosaic-tile-3 { grid-area: 1 / 9 / 4 / 13; background: #dedede; }
+.about-mosaic-tile-4 { grid-area: 5 / 1 / 7 / 3; background: #e5e5e5; }
+.about-mosaic-tile-5 { grid-area: 5 / 3 / 7 / 6; background: #dedede; }
+.about-mosaic-tile-6 { grid-area: 3 / 6 / 7 / 9; background: #d8d8d8; }
+.about-mosaic-tile-7 { grid-area: 4 / 9 / 7 / 13; background: #e8e8e8; }
 .about-text { margin: 24px clamp(16px, calc(16px + 16 * ((100vw - 640px) / 504)), 32px) 0; font-size: clamp(16px, calc(16px + 2 * ((100vw - 640px) / 504)), 18px); columns: calc(40ch - 32px); column-gap: 32px; line-height: 1.75; }
 .about-text p { margin-bottom: 1em; }
 .community { width: 100%; text-align: center; margin-top: 32px; }
@@ -91,12 +100,14 @@ a:focus-visible, button:focus-visible { outline: 3px solid #dcaf64; outline-offs
 .is-coming-soon { cursor: default; opacity: 1; }
 
 .support { display: flex; flex-direction: column; align-items: center; gap: clamp(120px, 12vw, 160px); padding: 80px 32px 48px; margin-bottom: 64px; border-radius: var(--radius-xl); color: var(--color-neutral-00); text-align: center; background-image: linear-gradient(to bottom, rgb(15 16 11 / 65%) 0%, rgb(15 16 11 / 42%) 35%, rgb(15 16 11 / 16%) 60%, rgb(16 13 9 / 65%) 100%), url('/assets/chrust-hero-oak.jpg'); background-position: center; background-size: cover; }
-.support-copy { max-width: 720px; }
+.support-copy { position: relative; isolation: isolate; max-width: 720px; }
+.support-copy::before { content: ""; position: absolute; inset: -28px -40px -36px; z-index: -1; border-radius: 50%; background: radial-gradient(ellipse, rgb(12 24 17 / 48%) 0%, rgb(12 24 17 / 30%) 50%, transparent 75%); filter: blur(12px); pointer-events: none; }
 .support h2 { font-size: clamp(36px, 5vw, 72px); }
 .support p { margin-top: 16px; font-size: clamp(18px, 2.2vw, 32px); line-height: 1.35; }
 .support-copy { text-shadow: var(--illustrated-shadow); }
-.store-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-.store-icon { width: 24px; height: 24px; flex-shrink: 0; display: grid; align-items: center; }
+.store-buttons { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; align-self: center; width: 100%; margin-inline: auto; gap: 12px; }
+.store-button { display: grid; place-items: center; line-height: 1; }
+.store-icon { width: 24px; height: 24px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 .store-icon svg { width: 100%; height: 100%; fill: currentColor; }
 .store-webApp .store-icon svg { fill: none; }
 .download-standalone { min-height: max(760px, 100svh); margin: 0; border-radius: 0; justify-content: center; padding: 180px 48px 80px; gap: 64px; }

@@ -1,9 +1,10 @@
 {
+  "siteUrl": "https://chrust.org",
   "appStore": null,
   "googlePlay": null,
   "ruStore": null,
-  "webApp": null,
-  "telegram": null,
+  "webApp": "https://app.chrust.org",
+  "telegram": "https://t.me/chrustapp",
   "instagram": null,
   "youtube": null
 }

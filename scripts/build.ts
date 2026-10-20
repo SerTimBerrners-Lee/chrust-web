@@ -13,9 +13,18 @@ icons.web = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-w
 icons.download = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></svg>';
 icons.pause = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3" height="14" rx="1"/><rect x="14" y="5" width="3" height="14" rx="1"/></svg>';
 
-const escape = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const escape = (s: string): string => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
 const home = (lang: Locale) => lang === 'ru' ? '/' : '/en/';
 const download = (lang: Locale) => `${home(lang)}download/`;
+
+function publicUrl(path: string): string {
+  if (!links.siteUrl) {
+    throw new Error('Expected a public site URL in site/links.json');
+  }
+
+  return new URL(path, links.siteUrl).href;
+}
 
 function brand(lang: Locale, isDownload: boolean) {
   return `<a class="brand" href="${isDownload ? home(lang) : '#top'}" aria-label="${content[lang].home}"><img src="/assets/chrust-rays-transparent.webp" alt="" width="56" height="56"><span>Chrust</span></a>`;
@@ -82,21 +91,23 @@ function hero(lang: Locale) {
   </section>`;
 }
 
-function about(lang: Locale) {
+function about(lang: Locale): string {
   const t = content[lang];
+
   return `<section id="about" class="about wrap" aria-labelledby="about-title"><h2 id="about-title">${t.aboutTitle}</h2>
-    <div class="about-image"><img src="/assets/78327f16-home-hub-about-image.png" alt="${t.aboutImageAlt}" loading="lazy" decoding="async"></div>
+    <div class="about-image about-mosaic" role="img" aria-label="${escape(t.aboutImageAlt)}">${[1, 2, 3, 4, 5, 6, 7].map(tile => `<span class="about-mosaic-tile about-mosaic-tile-${tile}" aria-hidden="true"></span>`).join('')}</div>
     <div class="about-text">${t.about.map(p => `<p>${p}</p>`).join('')}</div>
     <div class="community"><h3>${t.communityDescription}</h3><div class="social-buttons">${(['telegram', 'instagram', 'youtube'] as const).map(key => externalControl(links[key], `<span class="social-icon">${icons[key]}</span>`, `compact-button icon-button social-button social-${key}`, t.socialLabels[key])).join('')}</div></div>
   </section>`;
 }
 
-function page(lang: Locale, isDownload: boolean) {
+function page(lang: Locale, isDownload: boolean): string {
   const t = content[lang];
+
   return `<!doctype html><html lang="${lang}"><head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${t.heroTitle}"><meta name="theme-color" content="#263632"><meta name="color-scheme" content="only light"><meta name="robots" content="noindex, nofollow">
   <title>${isDownload ? `${t.downloadPageTitle} | Chrust` : 'Chrust'}</title>
-  <link rel="icon" type="image/png" href="/assets/chrust-logo.png"><link rel="alternate" hreflang="ru" href="${isDownload ? download('ru') : home('ru')}"><link rel="alternate" hreflang="en" href="${isDownload ? download('en') : home('en')}">
+  <link rel="icon" type="image/png" href="/assets/chrust-logo.png"><link rel="canonical" href="${escape(publicUrl(isDownload ? download(lang) : home(lang)))}"><link rel="alternate" hreflang="ru" href="${escape(publicUrl(isDownload ? download('ru') : home('ru')))}"><link rel="alternate" hreflang="en" href="${escape(publicUrl(isDownload ? download('en') : home('en')))}">
   <link rel="stylesheet" href="/assets/3a1e1e33-bp.css"><link rel="stylesheet" href="/assets/a44d755a-bp-compat.css"><link rel="stylesheet" href="/assets/e22dadcd-global-D38g-Y4N.css"><link rel="stylesheet" href="/assets/ab7d641d-button-D8QqDKPm.css"><link rel="stylesheet" href="/project.css">
   <script src="/interactions.js" defer></script></head><body id="top"${isDownload ? ' class="download-page"' : ''}>
   <a class="skip-link" href="#content">${t.skip}</a>${header(lang, isDownload)}<main id="content">

@@ -1,0 +1,34 @@
+{
+  "created": "2026-10-20",
+  "requirements": "https://support.google.com/youtube/answer/10456525?hl=en",
+  "assets": [
+    {
+      "file": "brand/chrust-avatar.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1092911,
+      "sha256": "b5d9b24a95a4d1b50ba17de6be824950ea98036ed35ccb560c8c9aa05c2d86ea",
+      "reference": "https://github.com/SerTimBerrners-Lee/chrust/blob/main/design/brand/rays-dark.png",
+      "method": "Unmodified original application logo, copied for channel avatars."
+    },
+    {
+      "file": "brand/youtube/chrust-youtube-watermark-150.png",
+      "width": 150,
+      "height": 150,
+      "bytes": 18608,
+      "sha256": "2bd86005e36cd0d11f1c2c11acbe0d81ff7baedaa802ff1d497c096d802e5ad2",
+      "reference": "brand/chrust-avatar.png",
+      "method": "Sharp resize to 150 x 150 PNG. Original composition, background and colors retained. No AI redraw, cropping or added padding."
+    },
+    {
+      "file": "brand/youtube/chrust-youtube-banner-2560x1440.jpg",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 1652853,
+      "sha256": "c66520878a397e97b9dd5958a6b3b44296a958fae38f474f85adb74a43508879",
+      "reference": "dist/assets/chrust-hero-oak.jpg",
+      "method": "Built-in image_gen, exported with Sharp to 2560 x 1440 JPEG, quality 95, mozjpeg, chromaSubsampling 4:4:4.",
+      "prompt": "Use case: ads-marketing. Asset type: YouTube channel background banner for Chrust. Input image 1 is the style and subject reference from the actual Chrust website. Create a polished landscape illustration closely matching this exact sunny oak, hand-painted storybook style, softly sculpted golden bark, rich yellow-green leaves, blue sky, distant rolling hills and luminous meadow. Recompose for a 16:9 YouTube channel banner, target 2560 by 1440 pixels. A single magnificent mature oak, its full crown and roots visible in the complete frame, positioned near the horizontal center, slightly to the right around 58% of the width. Important branching structure and recognizable tree silhouette must remain meaningful inside YouTube's central horizontal safe strip (middle 60% of the width and middle 29% of the height). Keep the central band visually rich with oak branches, trunk and some distant hills, so mobile cropping does not show empty sky or only a cropped trunk. Calm sunny inviting mood, faithfully retain the reference's warm golden-green and sky-blue palette and illustration quality. Natural full bleed scene. No text, no channel name, no logo, no UI, no border, no frame, no watermark, no people, no buildings, no added symbolic objects. Output only the finished full-bleed banner artwork."
+    }
+  ]
+}

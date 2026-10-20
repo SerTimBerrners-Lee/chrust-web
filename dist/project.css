@@ -96,6 +96,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #dcaf64; outline-offs
 .social-icon svg { width: 100%; height: 100%; fill: currentColor; }
 .social-telegram .social-icon { color: #2089bf; }
 .social-instagram .social-icon { color: #b73974; }
+.social-threads .social-icon { color: #101010; }
 .social-youtube .social-icon { color: #c62828; }
 .is-coming-soon { cursor: default; opacity: 1; }
 

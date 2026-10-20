@@ -6,7 +6,7 @@ for (const [key, value] of Object.entries(links)) {
   if (value && !/^https:\/\//.test(value)) throw new Error(`Expected an HTTPS URL for ${key}`);
 }
 const icons: Record<string, string> = {};
-for (const name of ['apple', 'googleplay', 'rustore', 'telegram', 'instagram', 'youtube']) {
+for (const name of ['apple', 'googleplay', 'rustore', 'telegram', 'instagram', 'threads', 'youtube']) {
   icons[name] = (await readFile(`dist/assets/icons/${name}.svg`, 'utf8')).replace(/<\?xml[^>]*>/g, '').replace('<svg ', '<svg aria-hidden="true" focusable="false" ');
 }
 icons.web = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6.5h14M5 17.5h14"/></svg>';
@@ -97,7 +97,7 @@ function about(lang: Locale): string {
   return `<section id="about" class="about wrap" aria-labelledby="about-title"><h2 id="about-title">${t.aboutTitle}</h2>
     <div class="about-image about-mosaic" role="img" aria-label="${escape(t.aboutImageAlt)}">${[1, 2, 3, 4, 5, 6, 7].map(tile => `<span class="about-mosaic-tile about-mosaic-tile-${tile}" aria-hidden="true"></span>`).join('')}</div>
     <div class="about-text">${t.about.map(p => `<p>${p}</p>`).join('')}</div>
-    <div class="community"><h3>${t.communityDescription}</h3><div class="social-buttons">${(['telegram', 'instagram', 'youtube'] as const).map(key => externalControl(links[key], `<span class="social-icon">${icons[key]}</span>`, `compact-button icon-button social-button social-${key}`, t.socialLabels[key])).join('')}</div></div>
+    <div class="community"><h3>${t.communityDescription}</h3><div class="social-buttons">${(['telegram', 'instagram', 'threads', 'youtube'] as const).map(key => externalControl(links[key], `<span class="social-icon">${icons[key]}</span>`, `compact-button icon-button social-button social-${key}`, t.socialLabels[key])).join('')}</div></div>
   </section>`;
 }
 

@@ -36,7 +36,8 @@ for (const route of ['/', '/ru/', '/en/']) {
     expect(html.match(/class="about-mosaic-tile about-mosaic-tile-\d"/g)).toHaveLength(7);
     expect(html).not.toContain('/assets/78327f16-home-hub-about-image.png');
     expect(html).toMatch(/<a class="[^"]*social-telegram" href="https:\/\/t.me\/chrustapp" target="_blank" rel="noopener noreferrer"/);
-    expect(html).toMatch(/<button class="[^"]*social-instagram is-coming-soon"[^>]*disabled/);
+    expect(html).toMatch(/<a class="[^"]*social-instagram" href="https:\/\/www\.instagram\.com\/chrust\.app\/" target="_blank" rel="noopener noreferrer"/);
+    expect(html).toMatch(/<a class="[^"]*social-threads" href="https:\/\/www\.threads\.com\/@chrust\.app" target="_blank" rel="noopener noreferrer"/);
     expect(html).toMatch(/<button class="[^"]*social-youtube is-coming-soon"[^>]*disabled/);
   });
 }

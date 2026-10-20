@@ -9,7 +9,6 @@ const icons: Record<string, string> = {};
 for (const name of ['apple', 'googleplay', 'rustore', 'telegram', 'instagram', 'threads', 'youtube']) {
   icons[name] = (await readFile(`dist/assets/icons/${name}.svg`, 'utf8')).replace(/<\?xml[^>]*>/g, '').replace('<svg ', '<svg aria-hidden="true" focusable="false" ');
 }
-icons.web = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6.5h14M5 17.5h14"/></svg>';
 icons.download = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></svg>';
 icons.pause = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3" height="14" rx="1"/><rect x="14" y="5" width="3" height="14" rx="1"/></svg>';
 
@@ -36,14 +35,18 @@ function externalControl(url: string | null | undefined, body: string, cls: stri
     : `<button class="${cls} is-coming-soon" type="button" disabled aria-label="${escape(label)}" title="${escape(label)}">${body}</button>`;
 }
 
-function storeButtons(lang: Locale) {
+function storeButtons(lang: Locale): string {
   const t = content[lang];
-  return `<div class="store-buttons">${(['appStore', 'googlePlay', 'ruStore', 'webApp'] as const).map((key) => {
-    const icon = { appStore: 'apple', googlePlay: 'googleplay', ruStore: 'rustore', webApp: 'web' }[key];
+  const stores = (['appStore', 'googlePlay', 'ruStore'] as const).map((key) => {
+    const icon = { appStore: 'apple', googlePlay: 'googleplay', ruStore: 'rustore' }[key];
     const label = t.platforms[key];
     const body = `<span class="store-icon">${icons[icon]}</span>`;
+
     return externalControl(links[key], body, `compact-button icon-button store-button store-${key}`, label);
-  }).join('')}</div>`;
+  }).join('');
+  const webApp = externalControl(links.webApp, `<span>${escape(t.platforms.webApp)}</span>`, 'compact-button store-webApp', t.platforms.webApp);
+
+  return `<div class="store-buttons">${stores}${webApp}</div>`;
 }
 
 function downloadSection(lang: Locale, standalone: boolean) {

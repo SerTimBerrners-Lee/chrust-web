@@ -12,6 +12,15 @@ for (const route of routes) {
     expect(html).toContain('https://app.chrust.org');
     expect(html).toContain('rel="canonical" href="https://chrust.org');
 
+    const appLabel = route.startsWith('/en/') ? 'Open the app' : 'В приложение';
+    const webControl = html.match(/<a class="compact-button store-webApp"[^>]*>[\s\S]*?<\/a>/)?.[0];
+
+    expect(webControl).toContain('href="https://app.chrust.org"');
+    expect(webControl).toContain(`<span>${appLabel}</span>`);
+    expect(webControl).not.toContain('<svg');
+    expect(webControl).not.toContain('icon-button');
+    expect(html.match(/class="compact-button icon-button store-button store-/g)).toHaveLength(3);
+
     for (const match of html.matchAll(/(?:src|href)="(\/[^"]*)"/g)) {
       const url = new URL(match[1], 'https://chrust.org');
       const path = resolve(dist, `.${decodeURIComponent(url.pathname)}`);
@@ -50,4 +59,18 @@ test('download controls and text contrast use the shared styles', async (): Prom
   expect(css).toMatch(/\.store-buttons\s*\{[^}]*align-items: center;[^}]*justify-content: center;/);
   expect(css).toMatch(/\.store-button\s*\{[^}]*place-items: center;/);
   expect(css).toMatch(/\.support-copy::before\s*\{[^}]*radial-gradient/);
+  expect(css).toMatch(/\.icon-button\s*\{[^}]*place-items: center;[^}]*padding: 0;[^}]*line-height: 0;/);
+  expect(css).toMatch(/\.compact-button\s*\{[^}]*line-height: 1;[^}]*text-align: center;/);
+  expect(css).toMatch(/\.wind-toggle\s*\{[^}]*place-items: center;[^}]*padding: 0;[^}]*line-height: 0;/);
+  expect(css).toMatch(/\.wind-toggle svg\s*\{ width: 18px; height: 18px; \}/);
+  expect(css).toMatch(/\.wind-toggle svg\s*\{ width: 14px; height: 14px; \}/);
+  expect(css).toContain('.download-standalone .support-copy::before { inset-inline: -20px; }');
+});
+
+test('wind play and pause glyphs share the same horizontal center', async (): Promise<void> => {
+  const html = await Bun.file(`${dist}/index.html`).text();
+  const js = await Bun.file(`${dist}/interactions.js`).text();
+
+  expect(html).toContain('<rect x="7" y="5" width="3" height="14" rx="1"/><rect x="14" y="5" width="3" height="14" rx="1"/>');
+  expect(js).toContain('<path d="M7 5v14l10-7z"/>');
 });

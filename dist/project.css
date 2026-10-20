@@ -15,12 +15,13 @@ h1, h2, p { margin: 0; }
 .header-controls { display: flex; align-items: center; gap: 12px; }
 .desktop-nav { display: flex; align-items: stretch; height: var(--header-control-height); gap: 2px; padding: 5px; font-size: 16px; font-weight: 500; }
 .desktop-nav, .language-switch { background: var(--illustrated-surface); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgb(255 255 255 / 18%); border-radius: 999px; text-shadow: var(--illustrated-shadow); }
-.desktop-nav a { display: flex; align-items: center; padding: 0 14px; }
+.desktop-nav a { display: flex; align-items: center; justify-content: center; line-height: 1; padding: 0 14px; }
 .language-switch { display: flex; align-items: stretch; height: var(--header-control-height); padding: 5px; gap: 2px; font-size: 13px; font-weight: 600; }
-.language-switch a { display: flex; align-items: center; padding: 0 11px; border-radius: 999px; }
+.language-switch a { display: flex; align-items: center; justify-content: center; line-height: 1; padding: 0 11px; border-radius: 999px; }
 .language-switch a[aria-current] { background: var(--illustrated-button); color: var(--illustrated-ink); text-shadow: none; }
-.compact-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: var(--header-control-height); border: 1px solid transparent; border-radius: 999px; padding: 0 20px; background: var(--illustrated-button); color: var(--illustrated-ink); font: inherit; font-size: 15px; font-weight: 600; flex-shrink: 0; }
-.icon-button { width: var(--header-control-height); padding: 11px; }
+.compact-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: var(--header-control-height); border: 1px solid transparent; border-radius: 999px; padding: 0 20px; background: var(--illustrated-button); color: var(--illustrated-ink); font: inherit; font-size: 15px; font-weight: 600; line-height: 1; text-align: center; flex-shrink: 0; }
+.icon-button { display: inline-grid; place-items: center; width: var(--header-control-height); padding: 0; line-height: 0; }
+.compact-button svg, .wind-toggle svg { display: block; flex-shrink: 0; }
 .compact-button:not(:disabled):hover { background: #fff3e4; }
 .header-download svg { width: 18px; height: 18px; }
 
@@ -33,9 +34,9 @@ h1, h2, p { margin: 0; }
 .hero-art img { width: 100%; height: 100%; object-fit: cover; object-position: 65% center; }
 .wind-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero-art.wind-ready > img { opacity: 0; }
-.wind-toggle { position: absolute; right: 28px; bottom: 28px; display: grid; place-items: center; width: 36px; height: 36px; padding: 8px; border: 1px solid rgb(255 255 255 / 25%); border-radius: 50%; background: var(--illustrated-surface); color: #fff; backdrop-filter: blur(12px); cursor: pointer; }
+.wind-toggle { position: absolute; right: 28px; bottom: 28px; display: grid; place-items: center; width: 36px; height: 36px; padding: 0; line-height: 0; border: 1px solid rgb(255 255 255 / 25%); border-radius: 50%; background: var(--illustrated-surface); color: #fff; backdrop-filter: blur(12px); cursor: pointer; }
 .wind-toggle[hidden] { display: none; }
-.wind-toggle svg { width: 100%; height: 100%; }
+.wind-toggle svg { width: 18px; height: 18px; }
 .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgb(12 31 21 / 72%) 0%, rgb(12 31 21 / 38%) 34%, rgb(12 31 21 / 5%) 68%), linear-gradient(180deg, rgb(10 28 25 / 36%) 0%, transparent 26%, transparent 62%, rgb(10 28 16 / 32%) 100%); pointer-events: none; }
 .hero-copy { display: flex; flex-direction: column; align-items: flex-start; text-align: left; padding-block: 220px 96px; }
 h1, h2 { font-family: var(--font-sans); font-weight: 600; line-height: 1.125; letter-spacing: -.025em; text-wrap: balance; }
@@ -44,7 +45,7 @@ h1 { max-inline-size: 20ch; font-size: clamp(40px, calc(40px + 32 * ((100vw - 64
 .hero-description { max-width: 490px; margin-top: 24px; font-size: 20px; line-height: 1.5; color: rgb(255 255 255 / 88%); text-wrap: pretty; }
 h2 { font-size: 36px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; width: auto; }
-.hero-actions .button { min-height: 60px; min-width: 156px; padding: 12px 32px; border-radius: 999px; font-size: 20px; font-weight: 500; display: flex; justify-content: center; align-items: center; transition: background .2s; }
+.hero-actions .button { min-height: 60px; min-width: 156px; padding: 12px 32px; border-radius: 999px; font-size: 20px; font-weight: 500; line-height: 1; text-align: center; display: flex; justify-content: center; align-items: center; transition: background .2s; }
 .hero-actions .hero-download { color: var(--illustrated-ink); background: var(--illustrated-button); border: 1px solid var(--illustrated-button); }
 .hero-actions .hero-open { color: #fff; background: var(--illustrated-surface); border: 1px solid rgb(255 255 255 / 45%); backdrop-filter: blur(16px); text-shadow: var(--illustrated-shadow); }
 .hero-actions .hero-download:hover, .header-download:hover { background: #fff3e4; }
@@ -92,7 +93,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #dcaf64; outline-offs
 .community { width: 100%; text-align: center; margin-top: 32px; }
 .community h3 { max-width: 760px; font-size: 28px; line-height: 1.35; font-weight: 600; margin: 0 auto 28px; letter-spacing: -.025em; text-wrap: balance; }
 .social-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-.social-icon { width: 24px; height: 24px; flex-shrink: 0; }
+.social-icon { width: 24px; height: 24px; flex-shrink: 0; display: grid; place-items: center; }
 .social-icon svg { width: 100%; height: 100%; fill: currentColor; }
 .social-telegram .social-icon { color: #2089bf; }
 .social-instagram .social-icon { color: #b73974; }
@@ -107,10 +108,10 @@ a:focus-visible, button:focus-visible { outline: 3px solid #dcaf64; outline-offs
 .support p { margin-top: 16px; font-size: clamp(18px, 2.2vw, 32px); line-height: 1.35; }
 .support-copy { text-shadow: var(--illustrated-shadow); }
 .store-buttons { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; align-self: center; width: 100%; margin-inline: auto; gap: 12px; }
-.store-button { display: grid; place-items: center; line-height: 1; }
+.store-button { display: grid; place-items: center; }
 .store-icon { width: 24px; height: 24px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 .store-icon svg { width: 100%; height: 100%; fill: currentColor; }
-.store-webApp .store-icon svg { fill: none; }
+.store-webApp { white-space: nowrap; }
 .download-standalone { min-height: max(760px, 100svh); margin: 0; border-radius: 0; justify-content: center; padding: 180px 48px 80px; gap: 64px; }
 .download-standalone h1 { font-size: clamp(42px, 5vw, 72px); line-height: 1.0625; max-width: 880px; }
 .download-standalone .support-copy { max-width: 880px; }
@@ -131,7 +132,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #dcaf64; outline-offs
   .header-controls { gap: 8px; }
   .desktop-nav { font-size: 14px; }
   .desktop-nav a { padding: 0 10px; }
-  .header-download { padding: 0 14px; }
+  .header-download { width: var(--header-control-height); padding: 0; }
   .header-download span { display: none; }
   .feature { gap: 32px; }
   .features { gap: 80px; padding-bottom: 80px; }
@@ -147,7 +148,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #dcaf64; outline-offs
   .desktop-nav { position: absolute; top: 78px; left: 0; right: 0; justify-content: center; gap: 4px; font-size: 14px; }
   .desktop-nav a { padding: 0 12px; }
   .language-switch a { padding: 0 8px; }
-  .header-download { padding: 0 14px; }
+  .header-download { width: var(--header-control-height); padding: 0; }
   h2 { font-size: 30px; }
   .hero-actions { margin-top: 24px; }
   .hero { min-height: 820px; min-height: max(820px, 100svh); margin-bottom: 64px; }
@@ -159,6 +160,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #dcaf64; outline-offs
   .hero-actions { gap: 12px; width: 100%; }
   .hero-actions .button { padding: 12px 24px; font-size: 18px; min-height: 56px; min-width: 132px; }
   .wind-toggle { right: 16px; bottom: 12px; width: 30px; height: 30px; }
+  .wind-toggle svg { width: 14px; height: 14px; }
   .feature { display: flex; flex-direction: column; align-items: stretch; gap: 28px; }
   .feature-copy { max-width: none; }
   .feature-copy .home-hub-section-description { margin-top: 16px; }
@@ -166,6 +168,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #dcaf64; outline-offs
   .support { padding: 48px 24px 32px; }
   .community h3 { font-size: 24px; }
   .download-standalone { padding: 190px 20px 56px; gap: 44px; min-height: max(820px, 100svh); }
+  .download-standalone .support-copy::before { inset-inline: -20px; }
   .footer-top { padding-block: 40px 32px; }
   .footer-mission { font-size: 16px; }
   .footer-bottom { padding-block: 24px; }

@@ -33,7 +33,7 @@ async function initializeWind() {
   const canvas = art.querySelector('canvas');
   const toggle = document.querySelector('.wind-toggle');
   const pauseIcon = toggle.innerHTML;
-  const playIcon = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  const playIcon = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l10-7z"/></svg>';
   try { await image.decode(); } catch { return; }
   const gl = canvas.getContext('webgl', { alpha: false, antialias: false, depth: false, powerPreference: 'low-power' });
   if (!gl) return;

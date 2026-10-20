@@ -1,3 +1,4 @@
 *.sh text eol=lf
 *.py text eol=lf
 *.yml text eol=lf
+dist/assets/lesson-mosaic/*.webp filter=lfs diff=lfs merge=lfs -text

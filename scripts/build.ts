@@ -1,5 +1,22 @@
 import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { resolve } from 'node:path';
 import { content, screens, screensWithNav, capturedScreenSizes, type Locale } from '../site/content';
+
+const aboutArtwork: Array<{ file: string; width: number; height: number; position: string; source: string; sha256: string }> =
+  JSON.parse(await readFile('site/about-artwork.json', 'utf8'));
+await mkdir('dist/assets/lesson-mosaic', { recursive: true });
+for (const image of aboutArtwork) {
+  const target = `dist/assets/lesson-mosaic/${image.file}`;
+  if (!await Bun.file(target).exists()) {
+    if (!process.env.CHRUST_SOURCE_ROOT) throw new Error(`Restore ${image.file} from the Chrust app repository using CHRUST_SOURCE_ROOT.`);
+    await copyFile(resolve(process.env.CHRUST_SOURCE_ROOT, image.source), target);
+  }
+  const bytes = await readFile(target);
+  if (createHash('sha256').update(bytes).digest('hex') !== image.sha256) {
+    throw new Error(`Lesson illustration checksum mismatch: ${image.file}`);
+  }
+}
 
 const links: Record<string, string | null> = JSON.parse(await readFile('site/links.json', 'utf8'));
 for (const [key, value] of Object.entries(links)) {
@@ -98,7 +115,7 @@ function about(lang: Locale): string {
   const t = content[lang];
 
   return `<section id="about" class="about wrap" aria-labelledby="about-title"><h2 id="about-title">${t.aboutTitle}</h2>
-    <div class="about-image about-mosaic" role="img" aria-label="${escape(t.aboutImageAlt)}">${[1, 2, 3, 4, 5, 6, 7].map(tile => `<span class="about-mosaic-tile about-mosaic-tile-${tile}" aria-hidden="true"></span>`).join('')}</div>
+    <div class="about-image about-mosaic" role="img" aria-label="${escape(t.aboutImageAlt)}">${aboutArtwork.map((image, index) => `<span class="about-mosaic-tile about-mosaic-tile-${index + 1}" aria-hidden="true"><img src="/assets/lesson-mosaic/${image.file}" alt="" width="${image.width}" height="${image.height}" style="object-position:${image.position}" loading="lazy" decoding="async"></span>`).join('')}</div>
     <div class="about-text">${t.about.map(p => `<p>${p}</p>`).join('')}</div>
     <div class="community"><h3>${t.communityDescription}</h3><div class="social-buttons">${(['telegram', 'instagram', 'threads', 'youtube'] as const).map(key => externalControl(links[key], `<span class="social-icon">${icons[key]}</span>`, `compact-button icon-button social-button social-${key}`, t.socialLabels[key])).join('')}</div></div>
   </section>`;

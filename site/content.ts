@@ -30,7 +30,7 @@ export const content = {
       'games-levels': 'Уровни игры', 'games-wordsearch': 'Филворд', 'games-verse': 'Собери стих', 'games-catalog': 'Каталог игр',
       'bible-reader': 'Чтение Библии', 'bible-highlight': 'Выделение стихов', 'bible-note': 'Личная заметка',
     },
-    aboutTitle: 'О Chrust', aboutImageAlt: 'Макет мозаики из семи серых блоков для иллюстраций уроков',
+    aboutTitle: 'О Chrust', aboutImageAlt: 'Иллюстрации уроков Chrust по Ветхому и Новому Завету',
     about: [
       'Наша цель - объединять людей по всему миру и помогать делать чтение Библии естественной частью каждого дня. Chrust создаётся для тех, кто хочет лучше понимать Писание, находить в нём опору и расти духовно вместе с другими.',
       'Чтение, изучение библейских историй, игры и молитва становятся небольшими шагами на этом пути. Нам важно, чтобы каждый мог двигаться в своём темпе, возвращаться к прочитанному и постепенно превращать добрые намерения в ежедневную привычку.',
@@ -62,7 +62,7 @@ export const content = {
       'games-levels': 'Game levels', 'games-wordsearch': 'Word search', 'games-verse': 'Build a verse', 'games-catalog': 'Game library',
       'bible-reader': 'Reading the Bible', 'bible-highlight': 'Highlighted verses', 'bible-note': 'A personal note',
     },
-    aboutTitle: 'About Chrust', aboutImageAlt: 'Seven grey placeholder tiles for a mosaic of lesson illustrations',
+    aboutTitle: 'About Chrust', aboutImageAlt: 'Chrust lesson illustrations from the Old and New Testaments',
     about: [
       'Our goal is to bring people together around the world and make reading the Bible a natural part of everyday life. Chrust is being created for those who want to understand Scripture more deeply, find strength in it, and grow spiritually alongside others.',
       'Reading, exploring biblical stories, playing games, and praying can become small steps along that path. We want everyone to move at their own pace, return to what they have read, and gradually turn good intentions into a daily habit.',

@@ -1,0 +1,86 @@
+[
+  {
+    "file": "event-ot-01-01-scene-7.webp",
+    "alt": {
+      "ru": "Сотворение мира",
+      "en": "Creation: land animals"
+    },
+    "position": "35% center",
+    "width": 1280,
+    "height": 853,
+    "source": "apps/chrust_app/assets/images/lesson/events/production/event-ot-01-01-scene-7.webp",
+    "sha256": "9b875c219fa2760538ec58237e80c48b8ba5f249eae8cc2bf9727e0c6b304187"
+  },
+  {
+    "file": "event-ot-02-01-scene-7.webp",
+    "alt": {
+      "ru": "Ной строит ковчег",
+      "en": "Noah builds the ark"
+    },
+    "position": "center",
+    "width": 1280,
+    "height": 853,
+    "source": "apps/chrust_app/assets/images/lesson/events/production/event-ot-02-01-scene-7.webp",
+    "sha256": "7d318204c5798a64815870119a8984b639e8a1d19765f1a11ea07f783098a1f5"
+  },
+  {
+    "file": "event-nt-01-06-scene-3.webp",
+    "alt": {
+      "ru": "Рождение Иисуса и пастухи",
+      "en": "The birth of Jesus"
+    },
+    "position": "right center",
+    "width": 1280,
+    "height": 853,
+    "source": "apps/chrust_app/assets/images/lesson/events/production/event-nt-01-06-scene-3.webp",
+    "sha256": "becc5d06c0c6d52fd666752aef156269bb11cac028712aa03a8c7e795ddc8a7d"
+  },
+  {
+    "file": "event-ot-08-04-scene-4.webp",
+    "alt": {
+      "ru": "Давид и Голиаф",
+      "en": "David and Goliath"
+    },
+    "position": "25% center",
+    "width": 1280,
+    "height": 853,
+    "source": "apps/chrust_app/assets/images/lesson/events/production/event-ot-08-04-scene-4.webp",
+    "sha256": "a0d5e7fec90c5a60ce679fd5e46c57aa6dd49245c94261a925369f4d00e1996e"
+  },
+  {
+    "file": "event-ot-05-07-scene-5.webp",
+    "alt": {
+      "ru": "Переход через море",
+      "en": "Crossing the sea"
+    },
+    "position": "center",
+    "width": 1280,
+    "height": 853,
+    "source": "apps/chrust_app/assets/images/lesson/events/production/event-ot-05-07-scene-5.webp",
+    "sha256": "de56803f96d410edd2095ef7b843385167ef448ef4d81689ddd8ab6d6d881cbb"
+  },
+  {
+    "file": "event-ot-03-05-scene-2.webp",
+    "alt": {
+      "ru": "Завет с Аврамом",
+      "en": "Abram looks at the stars"
+    },
+    "position": "20% center",
+    "width": 1280,
+    "height": 853,
+    "source": "apps/chrust_app/assets/images/lesson/events/production/event-ot-03-05-scene-2.webp",
+    "sha256": "dcd97b66bbfca6a7a68d5a25b191f2f8509078eaecebb5a801c1a99f45bfe7bb"
+  },
+  {
+    "file": "event-nt-04-09-scene-2.webp",
+    "alt": {
+      "ru": "Блудный сын и старший брат",
+      "en": "The prodigal son returns home"
+    },
+    "position": "center",
+    "width": 1280,
+    "height": 853,
+    "source": "apps/chrust_app/assets/images/lesson/events/production/event-nt-04-09-scene-2.webp",
+    "sha256": "8472982b13eacfc8e7528f123ac6438ec5bafabe0c97570a24ad72bcd78b50b9"
+  }
+]

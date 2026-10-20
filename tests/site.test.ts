@@ -47,7 +47,7 @@ for (const route of ['/', '/ru/', '/en/']) {
     expect(html).toMatch(/<a class="[^"]*social-telegram" href="https:\/\/t.me\/chrustapp" target="_blank" rel="noopener noreferrer"/);
     expect(html).toMatch(/<a class="[^"]*social-instagram" href="https:\/\/www\.instagram\.com\/chrust\.app\/" target="_blank" rel="noopener noreferrer"/);
     expect(html).toMatch(/<a class="[^"]*social-threads" href="https:\/\/www\.threads\.com\/@chrust\.app" target="_blank" rel="noopener noreferrer"/);
-    expect(html).toMatch(/<button class="[^"]*social-youtube is-coming-soon"[^>]*disabled/);
+    expect(html).toMatch(/<a class="[^"]*social-youtube" href="https:\/\/www\.youtube\.com\/@ChrustApp" target="_blank" rel="noopener noreferrer"/);
   });
 }
 

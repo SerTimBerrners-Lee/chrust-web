@@ -19,12 +19,6 @@ for (const card of document.querySelectorAll('.screen-tile')) {
   reducedMotion.addEventListener('change', reset);
 }
 
-function syncLanguageLinks() {
-  for (const link of document.querySelectorAll('[data-language]')) link.hash = location.hash;
-}
-syncLanguageLinks();
-addEventListener('hashchange', syncLanguageLinks);
-
 // The original image remains the fallback. Only green foliage and grass move.
 async function initializeWind() {
   const art = document.querySelector('.hero-art');

@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { content, screens, screensWithNav, capturedScreenSizes, type Locale } from '../site/content';
-import { guideSlugs, guidePath, guides, guidePreviewScreens, guideArtwork, isPublishedGuide, type GuideSlug } from '../site/guides';
+import { guideSlugs, guidePath, guides, guidePreviewScreens, guideArtwork, type GuideSlug } from '../site/guides';
 import { guideView, footerGuideLinks } from '../site/guide-view';
 import { metadata, sitemap } from '../site/seo';
 
@@ -171,7 +171,7 @@ function page(lang: Locale, isDownload: boolean, guide?: GuideSlug): string {
 
   return `<!doctype html><html lang="${lang}"><head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#263632"><meta name="color-scheme" content="only light">
-  ${metadata({ locale: lang, title, description, path, counterpart, fallback: guide ? guidePath('en', guide) : isDownload ? '/download/' : '/', siteUrl: publicUrl('/'), indexable: seo.indexingEnabled && !isDownload && (!guide || isPublishedGuide(guide)) })}
+  ${metadata({ locale: lang, title, description, path, counterpart, fallback: guide ? guidePath('en', guide) : isDownload ? '/download/' : '/', siteUrl: publicUrl('/'), indexable: seo.indexingEnabled && !isDownload })}
   <link rel="icon" type="image/png" href="/assets/chrust-logo.png">
   <script src="/language.js"></script>
   <link rel="stylesheet" href="/assets/3a1e1e33-bp.css"><link rel="stylesheet" href="/assets/a44d755a-bp-compat.css"><link rel="stylesheet" href="/assets/e22dadcd-global-D38g-Y4N.css"><link rel="stylesheet" href="/assets/ab7d641d-button-D8QqDKPm.css"><link rel="stylesheet" href="/project.css">

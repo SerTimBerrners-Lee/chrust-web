@@ -1,9 +1,7 @@
 import { coursePreviewScreens, gamePreviewScreens, type Locale } from './content';
-import { draftGuideSlugs, draftGuides } from './guide-expansion';
+import { additionalGuideSlugs, additionalGuides } from './guide-expansion';
 
-export const publishedGuideSlugs = ['bible-games', 'bible-word-search', 'bible-reading-plan', 'bible-study-for-beginners'] as const;
-
-export const guideSlugs = [...publishedGuideSlugs, ...draftGuideSlugs] as const;
+export const guideSlugs = ['bible-games', 'bible-word-search', 'bible-reading-plan', 'bible-study-for-beginners', ...additionalGuideSlugs] as const;
 
 export type GuideSlug = typeof guideSlugs[number];
 
@@ -41,7 +39,7 @@ export type GuideCopy = {
 };
 
 export const guides: Record<GuideSlug, Record<Locale, GuideCopy>> = {
-  ...draftGuides,
+  ...additionalGuides,
   'bible-games': {
     ru: {
       title: 'Библейские игры',
@@ -134,8 +132,4 @@ export const guides: Record<GuideSlug, Record<Locale, GuideCopy>> = {
 
 export function guidePath(locale: Locale, slug: GuideSlug): string {
   return `/${locale}/${slug}/`;
-}
-
-export function isPublishedGuide(slug: GuideSlug): boolean {
-  return publishedGuideSlugs.some(published => published === slug);
 }

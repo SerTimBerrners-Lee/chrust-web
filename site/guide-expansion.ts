@@ -1,14 +1,14 @@
 import type { Locale } from './content';
 import type { GuideCopy } from './guides';
 
-export const draftGuideSlugs = [
+export const additionalGuideSlugs = [
   'spiritual-growth', 'old-testament-study', 'new-testament-study', 'bible-lessons',
   'bible-crossword', 'bible-quiz', 'bible-matching-pairs', 'build-a-bible-verse', 'guess-bible-verse',
 ] as const;
 
-export type DraftGuideSlug = typeof draftGuideSlugs[number];
+export type AdditionalGuideSlug = typeof additionalGuideSlugs[number];
 
-export const draftGuides: Record<DraftGuideSlug, Record<Locale, GuideCopy>> = {
+export const additionalGuides: Record<AdditionalGuideSlug, Record<Locale, GuideCopy>> = {
   'spiritual-growth': {
     ru: {
       title: 'Рост: календарь духовной практики',

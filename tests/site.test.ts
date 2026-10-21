@@ -12,7 +12,7 @@ for (const route of routes) {
     expect(html).toContain('https://app.chrust.org');
     expect(html).toContain('rel="canonical" href="https://chrust.org');
 
-    const appLabel = route.startsWith('/en/') ? 'Open the app' : 'В приложение';
+    const appLabel = route.startsWith('/ru/') ? 'В приложение' : 'Open the app';
     const webControl = html.match(/<a class="compact-button store-webApp"[^>]*>[\s\S]*?<\/a>/)?.[0];
 
     expect(webControl).toContain('href="https://app.chrust.org"');

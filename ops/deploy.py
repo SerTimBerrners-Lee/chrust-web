@@ -16,7 +16,7 @@ MAX_BYTES = 300 * 1024 * 1024
 REQUIRED_FILES = (
     "index.html", "ru/index.html", "en/index.html",
     "download/index.html", "ru/download/index.html", "en/download/index.html",
-    "project.css", "interactions.js", "assets/chrust-logo.png",
+    "project.css", "interactions.js", "language.js", "assets/chrust-logo.png",
     "assets/chrust-hero-oak.jpg",
 )
 

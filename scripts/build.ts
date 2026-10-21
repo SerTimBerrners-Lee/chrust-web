@@ -31,8 +31,8 @@ icons.pause = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><
 
 const escape = (s: string): string => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-const home = (lang: Locale) => lang === 'ru' ? '/' : '/en/';
-const download = (lang: Locale) => `${home(lang)}download/`;
+const home = (lang: Locale): string => `/${lang}/`;
+const download = (lang: Locale): string => `${home(lang)}download/`;
 
 function publicUrl(path: string): string {
   if (!links.siteUrl) {
@@ -127,13 +127,25 @@ function page(lang: Locale, isDownload: boolean): string {
   return `<!doctype html><html lang="${lang}"><head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${t.heroTitle}"><meta name="theme-color" content="#263632"><meta name="color-scheme" content="only light"><meta name="robots" content="noindex, nofollow">
   <title>${isDownload ? `${t.downloadPageTitle} | Chrust` : 'Chrust'}</title>
-  <link rel="icon" type="image/png" href="/assets/chrust-logo.png"><link rel="canonical" href="${escape(publicUrl(isDownload ? download(lang) : home(lang)))}"><link rel="alternate" hreflang="ru" href="${escape(publicUrl(isDownload ? download('ru') : home('ru')))}"><link rel="alternate" hreflang="en" href="${escape(publicUrl(isDownload ? download('en') : home('en')))}">
+  <link rel="icon" type="image/png" href="/assets/chrust-logo.png"><link rel="canonical" href="${escape(publicUrl(isDownload ? download(lang) : home(lang)))}"><link rel="alternate" hreflang="ru" href="${escape(publicUrl(isDownload ? download('ru') : home('ru')))}"><link rel="alternate" hreflang="en" href="${escape(publicUrl(isDownload ? download('en') : home('en')))}"><link rel="alternate" hreflang="x-default" href="${escape(publicUrl(isDownload ? '/download/' : '/'))}">
+  <script src="/language.js"></script>
   <link rel="stylesheet" href="/assets/3a1e1e33-bp.css"><link rel="stylesheet" href="/assets/a44d755a-bp-compat.css"><link rel="stylesheet" href="/assets/e22dadcd-global-D38g-Y4N.css"><link rel="stylesheet" href="/assets/ab7d641d-button-D8QqDKPm.css"><link rel="stylesheet" href="/project.css">
   <script src="/interactions.js" defer></script></head><body id="top"${isDownload ? ' class="download-page"' : ''}>
   <a class="skip-link" href="#content">${t.skip}</a>${header(lang, isDownload)}<main id="content">
   ${isDownload ? downloadSection(lang, true) : `${hero(lang)}<div class="features wrap">${screens.map((f, i) => `<section id="${f.id}" class="feature ${i % 2 === 0 ? 'image-first' : ''}" aria-labelledby="${f.id}-title"><div class="feature-copy"><h2 id="${f.id}-title">${t.features[i].title}</h2><p class="text home-hub-section-description">${t.features[i].description}</p></div>${collage(lang, f.files)}</section>`).join('')}</div>${about(lang)}${downloadSection(lang, false)}`}
   </main><footer class="site-footer"><div class="wrap footer-top"><div>${brand(lang, true)}<p class="footer-mission">${t.footer}</p></div></div><div class="wrap footer-bottom">© ${new Date().getFullYear()} Chrust</div></footer>
   </body></html>`;
+}
+
+const languageBuild = await Bun.build({
+  entrypoints: ['site/language.ts'],
+  outdir: 'dist',
+  target: 'browser',
+  format: 'iife',
+});
+
+if (!languageBuild.success) {
+  throw new AggregateError(languageBuild.logs, 'Language selection build failed.');
 }
 
 for (const lang of ['ru', 'en'] as const) {
@@ -143,6 +155,6 @@ for (const lang of ['ru', 'en'] as const) {
     await writeFile(`${dir}index.html`, page(lang, isDownload).replace(/[ \t]+$/gm, ''));
   }
 }
-await mkdir('dist/ru/download', { recursive: true });
-await Promise.all([copyFile('dist/index.html', 'dist/ru/index.html'), copyFile('dist/download/index.html', 'dist/ru/download/index.html'), copyFile('site/styles.css', 'dist/project.css'), copyFile('site/interactions.js', 'dist/interactions.js')]);
+await mkdir('dist/download', { recursive: true });
+await Promise.all([copyFile('dist/en/index.html', 'dist/index.html'), copyFile('dist/en/download/index.html', 'dist/download/index.html'), copyFile('site/styles.css', 'dist/project.css'), copyFile('site/interactions.js', 'dist/interactions.js')]);
 console.log('Built Russian and English home and download pages.');

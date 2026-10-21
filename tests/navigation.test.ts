@@ -12,8 +12,8 @@ for (const route of routes) {
       match => new URL(match[1], 'https://chrust.org'),
     );
     const expectedPaths = route.includes('/download/')
-      ? ['/download/', '/en/download/']
-      : ['/', '/en/'];
+      ? ['/ru/download/', '/en/download/']
+      : ['/ru/', '/en/'];
 
     expect(languageLinks.map(link => link.pathname)).toEqual(expectedPaths);
     expect(languageLinks.map(link => link.hash)).toEqual(['', '']);

@@ -1,0 +1,45 @@
+{
+  "observedOn": "2026-10-21",
+  "status": "partial_research_not_keyword_priorities",
+  "scope": {
+    "targetMarkets": "All reachable countries, with country and query-language breakdowns before prioritization",
+    "russianAudience": "Testing, not the primary acquisition market",
+    "measuredQueryLanguage": "en",
+    "allLanguagesMeasured": false
+  },
+  "googleTrends": {
+    "source": "https://trends.google.com/trends/explore?date=today%2012-m&q=bible%20study,bible%20games,bible%20app,prayer%20journal,bible%20reading%20plan",
+    "geography": "Worldwide",
+    "period": "Past 12 months as displayed on the observation date",
+    "searchType": "Web search",
+    "category": "All categories",
+    "selectionType": "Search terms, not multilingual topics",
+    "metric": "Displayed average relative search interest within one comparison, normalized 0-100",
+    "monthlySearchCountsAvailable": false,
+    "queries": [
+      { "query": "bible study", "averageRelativeInterest": 73 },
+      { "query": "bible games", "averageRelativeInterest": 9 },
+      { "query": "bible app", "averageRelativeInterest": 31 },
+      { "query": "prayer journal", "averageRelativeInterest": 5 },
+      { "query": "bible reading plan", "averageRelativeInterest": 4 }
+    ],
+    "limitations": [
+      "These numbers are not monthly search counts and do not measure organic ranking difficulty.",
+      "English search terms do not represent all query languages or all Bible-related demand.",
+      "This comparison does not establish the best countries or landing pages to target.",
+      "Related rising queries included irrelevant results and were not accepted as keyword recommendations.",
+      "The latest weekly point may be incomplete; the rolling period and sampled values can change."
+    ],
+    "methodology": "https://support.google.com/trends/answer/4365533"
+  },
+  "volumeSources": [
+    { "source": "Google Ads Keyword Planner", "status": "User sign-in required in available browser; no volume data retrieved" },
+    { "source": "Yandex Wordstat", "status": "User sign-in required in available browser; no volume data retrieved" }
+  ],
+  "nextRequiredMeasurements": [
+    "Discover related queries in target languages using the source tools, not translation alone.",
+    "Record location, query language, date range, network, monthly estimates and seasonality; keep Google and Yandex metrics separate.",
+    "Inspect organic search intent and competing pages; advertising competition is not SEO difficulty.",
+    "Prioritize useful supported product pages and localization only after demand and product readiness are verified."
+  ]
+}

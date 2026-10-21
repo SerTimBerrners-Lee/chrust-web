@@ -1,5 +1,6 @@
 import { expect, test } from 'bun:test';
 import { runInNewContext } from 'node:vm';
+import seo from '../site/seo.json';
 
 type LanguageOptions = {
   path?: string;
@@ -126,7 +127,7 @@ test('invalid stored language is ignored', async (): Promise<void> => {
   expect(session.redirects).toEqual(['/ru/']);
 });
 
-for (const path of ['/ru/', '/en/', '/ru/download/', '/en/download/', '/ru/index.html', '/en/index.html', '/unknown/']) {
+for (const path of ['/ru/', '/en/', '/ru/download/', '/en/download/', '/ru/bible-games/', '/en/bible-reading-plan/', '/ru/index.html', '/en/index.html', '/unknown/']) {
   test(`explicit or unknown URL is never automatically redirected: ${path}`, async (): Promise<void> => {
     const session = await runLanguage({ path, languages: ['en', 'ru'], saved: 'ru' });
 
@@ -199,6 +200,6 @@ for (const route of ['/', '/en/', '/ru/', '/download/', '/en/download/', '/ru/do
     expect(html).toContain(`hreflang="x-default" href="https://chrust.org/${suffix}"`);
     expect(html).toContain('<script src="/language.js"></script>');
     expect(html.indexOf('/language.js')).toBeLessThan(html.indexOf('<body'));
-    expect(html).toContain('content="noindex, nofollow"');
+    expect(html).toContain(`content="${suffix || !seo.indexingEnabled ? 'noindex, follow' : 'index, follow'}"`);
   });
 }

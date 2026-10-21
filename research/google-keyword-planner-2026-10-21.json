@@ -1,0 +1,184 @@
+{
+  "observedOn": "2026-10-21",
+  "status": "initial_multilingual_demand_sample_not_complete_market_ranking",
+  "source": "https://ads.google.com/aw/keywordplanner/home",
+  "collectionMethod": "Authenticated Keyword Planner UI. Visible seed rows and selected visible suggestions, not a complete export of generated ideas.",
+  "accountSafetyObservation": {
+    "activeCampaigns": 0,
+    "displayedTotalDailyBudget": "0.00 $",
+    "scope": "Campaigns screen at the time of inspection, not an audit of billing history",
+    "campaignsOrPaymentsCreatedByThisResearch": false
+  },
+  "filters": {
+    "locations": "All locations supported by the tool",
+    "network": "Google",
+    "periodStart": "2025-10-01",
+    "periodEnd": "2026-09-30",
+    "displayedPeriod": "October 2025 to September 2026",
+    "activeFilter": "Exclude adult-only ideas",
+    "websiteFilter": null,
+    "languageSetting": "English, Spanish, Portuguese, French or Indonesian, matching each batch"
+  },
+  "metric": "Displayed range of average monthly searches for the keyword and close variants. Bounds below reproduce the displayed buckets, not precise counts or confidence intervals.",
+  "seedQueriesSubmitted": 44,
+  "seedQueriesWithDisplayedRanges": 43,
+  "countryBreakdownMeasured": false,
+  "allLanguagesMeasured": false,
+  "columnDefinitions": {
+    "monthlyRange": "Inclusive-looking UI bucket bounds; do not infer more precision than the original displayed range",
+    "advertisingCompetition": "Competition among advertisers, not organic SEO difficulty",
+    "quarterChange": "Percentage text displayed by Google, retained as an observation, not a forecast",
+    "yearChange": "Percentage text displayed by Google, retained as an observation, not a forecast"
+  },
+  "batches": [
+    {
+      "queryLanguage": "en",
+      "languageSetting": "English",
+      "queries": [
+        { "query": "bible study", "monthlyRange": [10000, 100000], "advertisingCompetition": "medium", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "bible app", "monthlyRange": [100000, 1000000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "bible reading plan", "monthlyRange": [10000, 100000], "advertisingCompetition": "medium", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "bible games", "monthlyRange": [10000, 100000], "advertisingCompetition": "medium", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "bible quiz", "monthlyRange": [10000, 100000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "bible trivia", "monthlyRange": [10000, 100000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "bible study for beginners", "monthlyRange": [1000, 10000], "advertisingCompetition": "high", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "daily bible reading", "monthlyRange": [10000, 100000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "prayer journal", "monthlyRange": [10000, 100000], "advertisingCompetition": "high", "quarterChange": "-90%", "yearChange": "-90%" },
+        { "query": "prayer tracker", "monthlyRange": [100, 1000], "advertisingCompetition": "medium", "quarterChange": "0%", "yearChange": "0%" }
+      ]
+    },
+    {
+      "queryLanguage": "en",
+      "languageSetting": "English",
+      "queries": [
+        { "query": "bible word search", "monthlyRange": [1000, 10000], "advertisingCompetition": "high", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "bible crossword", "monthlyRange": [1000, 10000], "advertisingCompetition": "medium", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "bible trivia online", "monthlyRange": [100, 1000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "bible games for adults", "monthlyRange": [1000, 10000], "advertisingCompetition": "high", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "bible quiz questions", "monthlyRange": [1000, 10000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "bible study app", "monthlyRange": [10000, 100000], "advertisingCompetition": "low", "quarterChange": "-90%", "yearChange": "-90%" },
+        { "query": "bible in a year", "monthlyRange": [10000, 100000], "advertisingCompetition": "high", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "chronological bible reading plan", "monthlyRange": [1000, 10000], "advertisingCompetition": "medium", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "bible study lessons", "monthlyRange": [1000, 10000], "advertisingCompetition": "high", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "offline bible app", "monthlyRange": [1000, 10000], "advertisingCompetition": "medium", "quarterChange": "0%", "yearChange": "0%" }
+      ],
+      "selectedSuggestedQueries": [
+        { "query": "bible in a year reading plan", "monthlyRange": [10000, 100000] },
+        { "query": "bible trivia questions", "monthlyRange": [10000, 100000] },
+        { "query": "bible courses online", "monthlyRange": [1000, 10000] },
+        { "query": "free online bible study courses", "monthlyRange": [100, 1000] },
+        { "query": "bible study lessons for adults", "monthlyRange": [1000, 10000] }
+      ]
+    },
+    {
+      "queryLanguage": "es",
+      "languageSetting": "Spanish",
+      "queries": [
+        { "query": "estudio bíblico", "monthlyRange": [10000, 100000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "aplicación de la biblia", "monthlyRange": [1000, 10000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "plan de lectura bíblica", "monthlyRange": [100, 1000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "-90%" },
+        { "query": "juegos bíblicos", "monthlyRange": [1000, 10000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "preguntas bíblicas", "monthlyRange": [1000, 10000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "biblia en un año", "monthlyRange": [100, 1000], "advertisingCompetition": "high", "quarterChange": "0%", "yearChange": "0%" }
+      ],
+      "selectedSuggestedQueries": [
+        { "query": "estudios biblicos cristianos", "monthlyRange": [1000, 10000] }
+      ]
+    },
+    {
+      "queryLanguage": "pt",
+      "languageSetting": "Portuguese",
+      "queries": [
+        { "query": "estudo bíblico", "monthlyRange": [10000, 100000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "aplicativo da bíblia", "monthlyRange": [1000, 10000], "advertisingCompetition": "medium", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "plano de leitura bíblica", "monthlyRange": [100, 1000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "jogos bíblicos", "monthlyRange": [1000, 10000], "advertisingCompetition": "high", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "quiz bíblico", "monthlyRange": [10000, 100000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "bíblia em um ano", "monthlyRange": [100, 1000], "advertisingCompetition": "high", "quarterChange": "0%", "yearChange": "0%" }
+      ],
+      "selectedSuggestedQueries": [
+        { "query": "plano de leitura da bíblia", "monthlyRange": [1000, 10000] },
+        { "query": "estudo bíblico online", "monthlyRange": [100, 1000] },
+        { "query": "estudo da bíblia", "monthlyRange": [1000, 10000] }
+      ]
+    },
+    {
+      "queryLanguage": "fr",
+      "languageSetting": "French",
+      "queries": [
+        { "query": "étude biblique", "monthlyRange": [1000, 10000], "advertisingCompetition": "medium", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "application bible", "monthlyRange": [10000, 100000], "advertisingCompetition": "high", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "plan de lecture biblique", "monthlyRange": [100, 1000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "jeux bibliques", "monthlyRange": [100, 1000], "advertisingCompetition": "medium", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "quiz biblique", "monthlyRange": [1000, 10000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "lire la bible en un an", "monthlyRange": [100, 1000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" }
+      ],
+      "selectedSuggestedQueries": [
+        { "query": "etude biblique en ligne", "monthlyRange": [100, 1000] },
+        { "query": "bible en ligne gratuite", "monthlyRange": [100, 1000] }
+      ]
+    },
+    {
+      "queryLanguage": "id",
+      "languageSetting": "Indonesian",
+      "queries": [
+        { "query": "belajar alkitab", "monthlyRange": [100, 1000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "aplikasi alkitab", "monthlyRange": [1000, 10000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "rencana baca alkitab", "monthlyRange": [10, 100], "advertisingCompetition": "low", "quarterChange": "+infinity", "yearChange": "0%" },
+        { "query": "permainan alkitab", "monthlyRange": [100, 1000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "-90%" },
+        { "query": "kuis alkitab", "monthlyRange": [1000, 10000], "advertisingCompetition": "low", "quarterChange": "0%", "yearChange": "0%" },
+        { "query": "alkitab satu tahun", "monthlyRange": null, "status": "Not displayed among the supplied keyword rows; missing data, not zero demand" }
+      ],
+      "selectedSuggestedQueries": [
+        { "query": "download aplikasi alkitab lengkap", "monthlyRange": [100, 1000] },
+        { "query": "alkitab app", "monthlyRange": [100, 1000] }
+      ]
+    }
+  ],
+  "limitations": [
+    "No precise monthly counts were available in the displayed results. Do not use bucket midpoints as measurements.",
+    "Close variants and related intents may overlap. Do not sum these ranges into total audience size or visits.",
+    "All locations means the scope supported by Google Keyword Planner, not complete coverage of every country or search engine.",
+    "The five query languages are exploratory samples, not an exhaustive language ranking. Batch size and wording differ.",
+    "Location-level volumes, device splits and monthly seasonality have not been measured in this collection.",
+    "The selected language setting is recorded for reproducibility. It is not evidence of a separate, exclusive audience population.",
+    "Change percentages from coarse source data are not reliable traffic forecasts. No organic traffic or ranking promise is inferred.",
+    "Suggested queries were sampled from visible rows. The thousands of generated ideas were not all read or validated.",
+    "Brand names, unsupported Bible translations, audio-only demand and unrelated games must be excluded or reviewed before targeting.",
+    "Advertising competition is not organic SEO difficulty. Country-specific search results and product-language readiness still require review."
+  ],
+  "initialRecommendation": {
+    "status": "Historical proposal before user approval. Superseded by docs/seo-plan.md: launch RU and EN resources on chrust.org independently of the optional app subdomain. No advertising changes made.",
+    "firstReleaseLanguage": "English, conditional on working English app flows. Selected for current website readiness and measured relevant demand, not as a proven highest-value country ranking.",
+    "candidatePagesInOrder": [
+      { "path": "/en/bible-games/", "intent": "Explain and offer working Bible games", "keywords": ["bible games", "bible quiz", "bible trivia"], "gate": "Usable English games in the browser or a verified direct application entry" },
+      { "path": "/en/bible-word-search/", "intent": "Play a Bible word puzzle", "keywords": ["bible word search"], "gate": "Clearly explain Chrust's adjacent-cell word-path mechanic rather than implying an unsupported conventional straight-line puzzle" },
+      { "path": "/en/bible-reading-plan/", "intent": "Read the Bible on a daily annual plan", "keywords": ["bible reading plan", "bible in a year", "bible in a year reading plan"], "gate": "A real accessible plan and reading flow, no chronological claim unless its sequence is verified" },
+      { "path": "/en/bible-study-for-beginners/", "intent": "Complete an introductory Bible study", "keywords": ["bible study for beginners", "bible study lessons"], "gate": "Reviewed English lessons, useful sample lesson and exercises, not only promotional copy" }
+    ],
+    "localizationResearchCandidates": ["Portuguese quiz and study", "Spanish study and games", "French application and quiz", "Indonesian application and quiz"],
+    "deferredTopics": ["Prayer journal until the actual feature and search intent fit are verified", "Chronological reading until the product supports it", "Separate country pages without distinct useful content"],
+    "launchGates": [
+      "Confirm the public application entry works and target-language features are ready.",
+      "Remove noindex only from approved public pages; retain protection on test and private surfaces.",
+      "Publish sitemap and review robots policy, self-canonical URLs, reciprocal hreflang and crawlable links.",
+      "Verify Search Console and Yandex Webmaster access with the owner before adding ownership permissions or tags.",
+      "Measure search impressions, clicks and completed first meaningful app actions without collecting Bible notes or prayer text."
+    ],
+    "nextResearch": [
+      "For each leading intent, measure country splits using the same period and network; do not assume billing country Hong Kong is the audience.",
+      "Expand native-language suggestions and inspect actual country-specific search results before approving more locales.",
+      "Group synonyms by intent into one useful page rather than publishing a page for every phrase.",
+      "Review initial indexed performance after four weeks and prioritize by relevant visits and first meaningful actions, not raw search volume alone."
+    ]
+  },
+  "organicIntentSpotChecks": [
+    { "query": "bible word search online", "source": "https://www.biblegames.fun/", "observation": "Inspected live page offers browser-playable quiz, word search and crossword with Scripture references. Inference: a working activity is a stronger intent match than a generic app landing page.", "scope": "Illustrative page inspection via web search, not a country-controlled top-ten ranking audit" },
+    { "query": "bible study for beginners", "source": "https://www.scripturedeck.com/learn/bible-study-for-beginners", "observation": "Search result describes a worked first-session guide and worksheet. Direct page retrieval was unavailable, so this is snippet evidence only.", "scope": "Preliminary intent signal, not verified full-page or ranking analysis" }
+  ],
+  "methodologySources": [
+    "https://support.google.com/google-ads/answer/3022575",
+    "https://developers.google.com/search/docs/fundamentals/get-started-developers",
+    "https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites"
+  ]
+}

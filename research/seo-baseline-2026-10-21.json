@@ -1,10 +1,10 @@
 {
   "observedOn": "2026-10-21",
-  "status": "partial_research_not_keyword_priorities",
+  "status": "RU_EN_website_resources_approved_country_and_other_locale_research_deferred_see_docs_seo_plan",
   "scope": {
     "targetMarkets": "All reachable countries, with country and query-language breakdowns before prioritization",
     "russianAudience": "Testing, not the primary acquisition market",
-    "measuredQueryLanguage": "en",
+    "measuredQueryLanguages": ["en", "ru", "es", "pt", "fr", "id"],
     "allLanguagesMeasured": false
   },
   "googleTrends": {
@@ -33,9 +33,72 @@
     "methodology": "https://support.google.com/trends/answer/4365533"
   },
   "volumeSources": [
-    { "source": "Google Ads Keyword Planner", "status": "User sign-in required in available browser; no volume data retrieved" },
-    { "source": "Yandex Wordstat", "status": "User sign-in required in available browser; no volume data retrieved" }
+    { "source": "Google Ads Keyword Planner", "status": "Account setup completed by the user. Planner accessible. 44 seed queries across five languages checked with all locations and Google network for October 2025 to September 2026; 43 displayed ranges and one missing row, not zero. No active campaigns observed. See the separate measurement file.", "measurementFile": "google-keyword-planner-2026-10-21.json" },
+    { "source": "Yandex Wordstat", "status": "Signed in. Eleven initial query/operator combinations and one regional breakdown inspected. Six Russian queries checked in a follow-up, including reading-plan and quiz suggestions. Provisional observations remain subject to the service outage notice.", "followupMeasurementFile": "yandex-wordstat-2026-10-21.json" }
   ],
+  "yandexWordstat": {
+    "observedOn": "2026-10-21",
+    "geography": "All regions",
+    "devices": ["Desktop", "Smartphone", "Tablet"],
+    "metric": "Displayed overall query count for the individual reporting window. Unquoted searches include related phrases and word forms, not just an exact phrase or unique people.",
+    "qualityStatus": "provisional_not_for_market_prioritization",
+    "serviceNotice": "Some data may be temporarily unavailable; service recovery is in progress.",
+    "operatorDocumentation": "https://yandex.ru/support2/wordstat/ru/content/operators",
+    "queries": [
+      { "query": "bible study", "language": "en", "operator": "none", "periodStart": "2026-09-08", "periodEnd": "2026-10-07", "displayedOverallCount": 253, "source": "https://wordstat.yandex.ru/?region=all&view=table&words=bible%20study" },
+      { "query": "bible app", "language": "en", "operator": "none", "periodStart": "2026-09-08", "periodEnd": "2026-10-07", "displayedOverallCount": 100, "source": "https://wordstat.yandex.ru/?region=all&view=table&words=bible%20app" },
+      { "query": "bible games", "language": "en", "operator": "none", "periodStart": "2026-09-08", "periodEnd": "2026-10-07", "displayedOverallCount": 179, "relevance": "Contains unrelated game searches; not a target-audience demand estimate", "source": "https://wordstat.yandex.ru/?region=all&view=table&words=bible%20games" },
+      { "query": "prayer journal", "language": "en", "operator": "none", "periodStart": "2026-09-20", "periodEnd": "2026-10-20", "displayedOverallCount": 4, "detailTable": "No matching queries displayed", "source": "https://wordstat.yandex.ru/?region=all&view=table&words=prayer%20journal" },
+      { "query": "bible reading plan", "language": "en", "operator": "none", "periodStart": "2026-09-20", "periodEnd": "2026-10-20", "displayedOverallCount": 9, "detailTable": "No matching queries displayed", "source": "https://wordstat.yandex.ru/?region=all&view=table&words=bible%20reading%20plan" },
+      { "query": "\"bible study\"", "language": "en", "operator": "quotes_fix_word_count_not_word_order", "periodStart": "2026-09-08", "periodEnd": "2026-10-07", "displayedOverallCount": 19, "qualityIssue": "Detail row bible study displayed 249, higher than the overall total of 19; inconsistent result excluded from conclusions" },
+      { "query": "\"bible games\"", "language": "en", "operator": "quotes_fix_word_count_not_word_order", "periodStart": "2026-09-20", "periodEnd": "2026-10-20", "displayedOverallCount": 0, "detailTable": "No matching queries displayed" },
+      { "query": "\"bible app\"", "language": "en", "operator": "quotes_fix_word_count_not_word_order", "periodStart": "2026-09-20", "periodEnd": "2026-10-20", "displayedOverallCount": 3, "detailTable": "No matching queries displayed" },
+      { "query": "изучение библии", "language": "ru", "role": "Test-audience benchmark only", "operator": "none", "periodStart": "2026-09-08", "periodEnd": "2026-10-07", "displayedOverallCount": 4190, "source": "https://wordstat.yandex.ru/?region=all&view=table&words=изучение%20библии", "selectedRelatedRows": [
+        { "query": "библия для самостоятельного изучения", "displayedCount": 199 },
+        { "query": "курсы по изучению библии", "displayedCount": 162 },
+        { "query": "с чего начать изучение библии", "displayedCount": 161 },
+        { "query": "изучение библии онлайн", "displayedCount": 105 },
+        { "query": "приложение для изучения библии", "displayedCount": 46 },
+        { "query": "план изучения библии", "displayedCount": 45 }
+      ] },
+      { "query": "библейские игры", "language": "ru", "role": "Test-audience benchmark only", "operator": "none", "periodStart": "2026-09-08", "periodEnd": "2026-10-07", "displayedOverallCount": 412, "source": "https://wordstat.yandex.ru/?region=all&view=table&words=библейские%20игры" },
+      { "query": "библия приложение", "language": "ru", "role": "Test-audience benchmark only", "operator": "none", "periodStart": "2026-09-08", "periodEnd": "2026-10-07", "displayedOverallCount": 1305, "source": "https://wordstat.yandex.ru/?region=all&view=table&words=библия%20приложение", "selectedRelatedRows": [
+        { "query": "библия скачать приложение", "displayedCount": 334 },
+        { "query": "библия с толкованием приложение", "displayedCount": 30 },
+        { "query": "приложение библия офлайн", "displayedCount": 22 },
+        { "query": "библия за год приложение", "displayedCount": 20 }
+      ] }
+    ],
+    "regionalObservation": {
+      "query": "bible study",
+      "source": "https://wordstat.yandex.ru/?region=all&view=map&words=bible%20study",
+      "periodStart": "2026-09-08",
+      "periodEnd": "2026-10-07",
+      "displayedOverallCount": 253,
+      "selectedCountryRows": [
+        { "country": "Russia", "displayedCount": 194 },
+        { "country": "United States", "displayedCount": 11 },
+        { "country": "Malaysia", "displayedCount": 4 },
+        { "country": "Brazil", "displayedCount": 3 },
+        { "country": "Australia", "displayedCount": 2 },
+        { "country": "Pakistan", "displayedCount": 2 },
+        { "country": "Singapore", "displayedCount": 1 },
+        { "country": "Turkey", "displayedCount": 1 },
+        { "country": "Poland", "displayedCount": 1 },
+        { "country": "Germany", "displayedCount": 1 },
+        { "country": "Canada", "displayedCount": 1 }
+      ],
+      "qualityIssue": "The same table displayed Belarus 0 and Vitebsk region 3. Regional rows are retained only as provisional source observations, not a validated market ranking."
+    },
+    "limitations": [
+      "Yandex usage in each country is not total search demand across Google and other engines.",
+      "Do not sum overlapping broad phrases, related rows or nested country/region/city rows.",
+      "Reporting windows differ between queries, so totals are not a like-for-like ranking.",
+      "Service warnings and observed inconsistencies require a repeat measurement before using these values for decisions.",
+      "Zero or sparse Yandex results do not establish absence of worldwide demand.",
+      "Russian measurements are a test-audience benchmark, not an international rollout priority."
+    ]
+  },
   "nextRequiredMeasurements": [
     "Discover related queries in target languages using the source tools, not translation alone.",
     "Record location, query language, date range, network, monthly estimates and seasonality; keep Google and Yandex metrics separate.",

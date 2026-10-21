@@ -46,7 +46,7 @@ h2 { font-size: 36px; }
 .hero-actions .button { min-height: 60px; min-width: 156px; padding: 12px 32px; border-radius: 999px; font-size: 20px; font-weight: 500; line-height: 1; text-align: center; display: flex; justify-content: center; align-items: center; transition: background .2s; }
 .hero-actions .hero-download { color: var(--illustrated-ink); background: var(--illustrated-button); border: 1px solid var(--illustrated-button); }
 .hero-actions .hero-open { color: #fff; background: var(--illustrated-surface); border: 1px solid rgb(255 255 255 / 45%); backdrop-filter: blur(16px); text-shadow: var(--illustrated-shadow); }
-a:focus-visible, button:focus-visible { outline: 3px solid #dcaf64; outline-offset: 5px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid #dcaf64; outline-offset: 5px; }
 
 .collage { position: relative; aspect-ratio: 1 / 1.1; isolation: isolate; }
 /* A 26.5% step with 40% cards leaves approximately 34% overlap. */
@@ -115,15 +115,48 @@ a:focus-visible, button:focus-visible { outline: 3px solid #dcaf64; outline-offs
 
 .site-footer { background: var(--color-neutral-80); color: var(--color-neutral-40); }
 .site-footer .brand { color: var(--color-neutral-00); }
-.footer-top { padding-block: 64px 40px; }
+.footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px 64px; padding-block: 64px 40px; }
 .footer-mission { max-width: 450px; font-size: 18px; line-height: 1.5; margin-top: 24px; }
 .footer-bottom { border-top: 1px solid var(--color-neutral-60); padding-block: 32px; font-size: 12px; }
+
+/* Reading pages reuse the site's typography and warm controls. */
+.guide-page .site-header { position: relative; color: var(--illustrated-ink); }
+.guide-page .site-header .brand { text-shadow: none; }
+.guide-page .desktop-nav, .guide-page .language-switch { background: #f7f3ee; border-color: #e4d8ca; text-shadow: none; }
+.guide-article { max-width: 860px; padding-block: 40px 96px; font-size: 18px; line-height: 1.7; overflow-wrap: break-word; }
+.guide-breadcrumb { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 14px; line-height: 1.5; margin-bottom: 32px; }
+.guide-breadcrumb a, .guide-section a, .guide-source a { text-decoration: underline; text-underline-offset: 4px; }
+.guide-intro h1 { max-inline-size: none; font-size: clamp(36px, 4.5vw, 58px); line-height: 1.12; text-wrap: pretty; }
+.guide-intro > p { margin-top: 24px; font-size: 21px; line-height: 1.55; }
+.guide-intro .guide-source { font-size: 16px; }
+.guide-intro .compact-button { margin-top: 24px; }
+.guide-section { margin-top: 48px; }
+.guide-section h2 { font-size: 30px; line-height: 1.2; text-wrap: pretty; }
+.guide-section p, .guide-section ul { margin-block: 16px 0; }
+.guide-section ul { padding-inline-start: 24px; }
+.guide-section li + li { margin-top: 10px; }
+.guide-answer { margin-top: 16px; padding: 0 0 16px; border-bottom: 1px solid #ddd; }
+.guide-answer summary { min-height: 48px; padding-block: 12px; cursor: pointer; font-weight: 600; line-height: 1.45; }
+.guide-answer p, .guide-answer ul { margin-top: 8px; }
+.guide-links { display: grid; align-content: start; gap: 16px; max-width: 420px; font-size: 16px; line-height: 1.5; }
+.guide-section .guide-links { margin-top: 24px; }
+.site-footer .guide-links { padding-top: 12px; }
+.word-example { margin-block: 24px; border-collapse: collapse; table-layout: fixed; }
+.word-example caption { font-size: 14px; padding-bottom: 12px; text-align: left; }
+.word-example td { width: 64px; height: 64px; padding: 0; border: 1px solid #b7b0a9; text-align: center; vertical-align: middle; font-size: 28px; font-weight: 600; line-height: 1; }
+.reading-calendar summary { text-transform: capitalize; }
+.reading-days { margin: 0; font-size: 16px; line-height: 1.5; }
+.reading-days > div { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 12px; padding-block: 12px; }
+.reading-days > div + div { border-top: 1px solid #eee; }
+.reading-days dt { font-weight: 600; }
+.reading-days dd { margin: 0; }
 
 @media (hover: hover) and (pointer: fine) {
   .site-header--hero .desktop-nav a:hover { background: rgb(255 255 255 / 12%); }
   .compact-button:not(:disabled):hover { background: #fff3e4; }
   .hero-actions .hero-download:hover, .header-download:hover { background: #fff3e4; }
   .hero-actions .hero-open:hover { background: rgb(58 51 44 / 60%); }
+  .guide-page .desktop-nav a:hover { background: var(--illustrated-button); }
 }
 
 @media (max-width: 1050px) {
@@ -175,6 +208,11 @@ a:focus-visible, button:focus-visible { outline: 3px solid #dcaf64; outline-offs
   .footer-top { padding-block: 40px 32px; }
   .footer-mission { font-size: 16px; }
   .footer-bottom { padding-block: 24px; }
+  .guide-article { padding-block: 24px 64px; font-size: 17px; }
+  .guide-intro > p { font-size: 19px; }
+  .guide-section { margin-top: 36px; }
+  .guide-section h2 { font-size: 27px; }
+  .reading-days > div { grid-template-columns: 100px minmax(0, 1fr); }
 }
 
 @media (max-width: 360px) {

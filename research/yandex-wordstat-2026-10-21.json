@@ -1,0 +1,47 @@
+{
+  "observedOn": "2026-10-21",
+  "source": "https://wordstat.yandex.ru/",
+  "scope": "All regions, desktop, smartphone and tablet. Signed-in UI, Top queries, Popular.",
+  "status": "provisional_service_warning",
+  "serviceNotice": "Some data may be temporarily unavailable; recovery is in progress.",
+  "defaultPeriod": { "start": "2026-09-08", "end": "2026-10-07" },
+  "metric": "Displayed overall count for a broad phrase and selected detail rows. Not exact phrase counts or unique people.",
+  "queries": [
+    { "query": "библейские игры", "overall": 412, "source": "https://wordstat.yandex.ru/?region=all&view=table&words=библейские%20игры", "relevance": "Mixed intent; includes unrelated games and brand-specific searches. Do not use the total as Chrust-addressable demand." },
+    { "query": "библейская викторина", "overall": 462, "source": "https://wordstat.yandex.ru/?region=all&view=table&words=библейская%20викторина", "selectedRelatedRows": [
+      { "query": "библейская викторина с ответами", "count": 71 },
+      { "query": "библейская викторина вопросы и ответы", "count": 66 },
+      { "query": "викторина на библейскую тему", "count": 44 },
+      { "query": "библейская викторина с ответами из библии", "count": 17 }
+    ] },
+    { "query": "библейский филворд", "overall": 0, "period": { "start": "2026-09-20", "end": "2026-10-20" }, "source": "https://wordstat.yandex.ru/?region=all&view=table&words=библейский%20филворд", "qualityNote": "No matching rows; service warning present. Not evidence of no worldwide interest. Russian page proposed for product explanation and EN parity, not proven Yandex acquisition." },
+    { "query": "план чтения библии", "overall": 3445, "source": "https://wordstat.yandex.ru/?region=all&view=table&words=план%20чтения%20библии", "selectedRelatedRows": [
+      { "query": "план чтения библии на каждый день", "count": 1032 },
+      { "query": "план чтения библии на год", "count": 388 },
+      { "query": "план чтения библии на сегодня", "count": 115 },
+      { "query": "скачать план чтения библии", "count": 46 },
+      { "query": "хронологический план чтения библии", "count": 31, "target": false, "reason": "The app uses canonical order, not chronology" },
+      { "query": "канонический план чтения библии", "count": 22 }
+    ] },
+    { "query": "изучение библии", "overall": 4190, "source": "https://wordstat.yandex.ru/?region=all&view=table&words=изучение%20библии", "selectedRelatedRows": [
+      { "query": "библия для самостоятельного изучения", "count": 199 },
+      { "query": "курсы по изучению библии", "count": 162 },
+      { "query": "с чего начать изучение библии", "count": 161 },
+      { "query": "изучение библии онлайн", "count": 105 },
+      { "query": "приложение для изучения библии", "count": 46 }
+    ] },
+    { "query": "библия приложение", "overall": 1305, "source": "https://wordstat.yandex.ru/?region=all&view=table&words=библия%20приложение", "selectedRelatedRows": [
+      { "query": "библия скачать приложение", "count": 334 },
+      { "query": "приложение библия офлайн", "count": 22 },
+      { "query": "библия за год приложение", "count": 20 }
+    ] }
+  ],
+  "limitations": [
+    "Do not sum overlapping phrases, close variants or overall counts with detail rows.",
+    "Different reporting periods and a service warning prevent precise market ranking.",
+    "Earlier quoted-query and regional observations contained inconsistent totals; see seo-baseline-2026-10-21.json. Those results are not used for priorities.",
+    "No independent organic ranking difficulty score or international country ranking is inferred.",
+    "Brand, church-program and unsupported-feature queries are excluded from proposed page targets."
+  ],
+  "methodology": "https://yandex.ru/support2/wordstat/ru/content/operators"
+}

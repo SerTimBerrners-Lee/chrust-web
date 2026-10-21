@@ -20,6 +20,20 @@
     "bible-highlight": "Original BiblePage, Genesis 1:3 highlighted",
     "bible-note": "Original BiblePage, note editor with demonstration text"
   },
+  "gameArtwork": {
+    "copiedAt": "2026-10-21",
+    "applicationCommit": "12d5070e1984ae3517d9c6dc16f4adcc297549d9",
+    "sourceDirectory": "apps/chrust_app/assets/images/games/production",
+    "method": "Unmodified original game illustrations copied from the application repository. These are not gameplay screenshots.",
+    "width": 1280,
+    "height": 853,
+    "files": {
+      "blitz-v1.webp": "a05fe7ec2ad964c8756733788bfab47a49f2dea805751664b8389b47a0ce8a76",
+      "crossword-v1.webp": "bd51a0ace1fb1a880727df91febbf42a17a0e07ad7b7f301ea70b1eaf6211b79",
+      "pairs-v1.webp": "e2e579bcb95f34f3d7721240930a298514381ad5c5932ca84182b274e06ac209",
+      "scripture-v1.webp": "0b081e5ac42c9bcbfe142e20281e2430b9fd6114da70274ca117489dcd79f13c"
+    }
+  },
   "liveCapture": {
     "capturedAt": "2026-10-19",
     "source": "Already-running Chrust at http://127.0.0.1:8080/",

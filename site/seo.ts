@@ -1,12 +1,12 @@
 import type { Locale } from './content';
-import { guideSlugs, guidePath } from './guides';
+import { publishedGuideSlugs, guidePath } from './guides';
 
 export function escapeHtml(value: string): string {
   return value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 export function indexablePaths(): string[] {
-  return (['ru', 'en'] as const).flatMap(locale => [`/${locale}/`, ...guideSlugs.map(slug => guidePath(locale, slug))]);
+  return (['ru', 'en'] as const).flatMap(locale => [`/${locale}/`, ...publishedGuideSlugs.map(slug => guidePath(locale, slug))]);
 }
 
 export function metadata(options: {

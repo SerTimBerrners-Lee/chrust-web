@@ -30,7 +30,7 @@ export const content = {
     ],
     screenLabels: {
       'growth-tree': 'Ваше дерево', 'growth-calendar': 'Календарь практик', 'growth-activity': 'Отметка действия',
-      'course-map': 'Карта Ветхого Завета', 'course-lesson': 'Короткий урок', 'course-question': 'Проверка понимания',
+      'course-map': 'Карта Ветхого Завета', 'course-new': 'Демонстрационный экран Нового Завета', 'course-lesson': 'Короткий урок', 'course-question': 'Проверка понимания',
       'course-map-live': 'Карта Ветхого Завета', 'course-intro-live': 'Начало урока «Сотворение мира»', 'course-learn-live': 'Выбор Ветхого и Нового Завета',
       'games-levels': 'Уровни игры', 'games-wordsearch': 'Филворд', 'games-verse': 'Собери стих', 'games-catalog': 'Каталог игр',
       'bible-reader': 'Чтение Библии', 'bible-highlight': 'Выделение стихов', 'bible-note': 'Личная заметка',
@@ -62,7 +62,7 @@ export const content = {
     ],
     screenLabels: {
       'growth-tree': 'Your tree', 'growth-calendar': 'Practice calendar', 'growth-activity': 'Record a practice',
-      'course-map': 'Old Testament map', 'course-lesson': 'A short lesson', 'course-question': 'Check your understanding',
+      'course-map': 'Old Testament map', 'course-new': 'New Testament demo screen', 'course-lesson': 'A short lesson', 'course-question': 'Check your understanding',
       'course-map-live': 'Old Testament map', 'course-intro-live': 'The Creation lesson introduction', 'course-learn-live': 'Old and New Testament selection',
       'games-levels': 'Game levels', 'games-wordsearch': 'Word search', 'games-verse': 'Build a verse', 'games-catalog': 'Game library',
       'bible-reader': 'Reading the Bible', 'bible-highlight': 'Highlighted verses', 'bible-note': 'A personal note',

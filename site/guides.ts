@@ -1,6 +1,9 @@
 import { coursePreviewScreens, gamePreviewScreens, type Locale } from './content';
+import { draftGuideSlugs, draftGuides } from './guide-expansion';
 
-export const guideSlugs = ['bible-games', 'bible-word-search', 'bible-reading-plan', 'bible-study-for-beginners'] as const;
+export const publishedGuideSlugs = ['bible-games', 'bible-word-search', 'bible-reading-plan', 'bible-study-for-beginners'] as const;
+
+export const guideSlugs = [...publishedGuideSlugs, ...draftGuideSlugs] as const;
 
 export type GuideSlug = typeof guideSlugs[number];
 
@@ -9,6 +12,22 @@ export const guidePreviewScreens: Record<GuideSlug, string[]> = {
   'bible-word-search': ['games-levels', 'games-wordsearch', 'games-catalog'],
   'bible-reading-plan': ['growth-tree', 'growth-calendar', 'bible-reader', 'bible-note'],
   'bible-study-for-beginners': coursePreviewScreens,
+  'spiritual-growth': ['growth-tree', 'growth-calendar', 'growth-activity'],
+  'old-testament-study': coursePreviewScreens,
+  'new-testament-study': ['course-learn-live', 'course-new'],
+  'bible-lessons': ['course-intro-live', 'course-question', 'course-learn-live'],
+  'bible-crossword': [],
+  'bible-quiz': [],
+  'bible-matching-pairs': [],
+  'build-a-bible-verse': ['games-verse'],
+  'guess-bible-verse': [],
+};
+
+export const guideArtwork: Partial<Record<GuideSlug, string>> = {
+  'bible-crossword': 'crossword-v1',
+  'bible-quiz': 'blitz-v1',
+  'bible-matching-pairs': 'pairs-v1',
+  'guess-bible-verse': 'scripture-v1',
 };
 
 export type GuideSection = { title: string; paragraphs?: string[]; items?: string[] };
@@ -18,9 +37,11 @@ export type GuideCopy = {
   description: string;
   intro: string;
   sections: GuideSection[];
+  example?: { title: string; prompt: string; answer: string };
 };
 
 export const guides: Record<GuideSlug, Record<Locale, GuideCopy>> = {
+  ...draftGuides,
   'bible-games': {
     ru: {
       title: 'Библейские игры',
@@ -113,4 +134,8 @@ export const guides: Record<GuideSlug, Record<Locale, GuideCopy>> = {
 
 export function guidePath(locale: Locale, slug: GuideSlug): string {
   return `/${locale}/${slug}/`;
+}
+
+export function isPublishedGuide(slug: GuideSlug): boolean {
+  return publishedGuideSlugs.some(published => published === slug);
 }

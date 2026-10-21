@@ -2,8 +2,8 @@ import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { content, screens, screensWithNav, capturedScreenSizes, type Locale } from '../site/content';
-import { guideSlugs, guidePath, guides, guidePreviewScreens, type GuideSlug } from '../site/guides';
-import { guideView, guideLinks } from '../site/guide-view';
+import { guideSlugs, guidePath, guides, guidePreviewScreens, guideArtwork, isPublishedGuide, type GuideSlug } from '../site/guides';
+import { guideView, footerGuideLinks } from '../site/guide-view';
 import { metadata, sitemap } from '../site/seo';
 
 const seo: { indexingEnabled: boolean; readingPlanYear: number } = JSON.parse(await readFile('site/seo.json', 'utf8'));
@@ -116,6 +116,18 @@ function collage(lang: Locale, files: string[]): string {
   }).join('')}</div>`;
 }
 
+function guidePreview(lang: Locale, slug: GuideSlug): string {
+  const artwork = guideArtwork[slug];
+
+  if (artwork) {
+    const label = lang === 'ru' ? `Иллюстрация игры из Chrust: ${guides[slug][lang].title}` : `Chrust game illustration: ${guides[slug][lang].title}`;
+
+    return `<a class="guide-game-art" href="${download(lang)}" aria-label="${escape(`${label}. ${content[lang].downloadAction}`)}"><img src="/assets/games/${artwork}.webp" alt="${escape(label)}" width="1280" height="853" loading="lazy" decoding="async"></a>`;
+  }
+
+  return collage(lang, guidePreviewScreens[slug]);
+}
+
 function hero(lang: Locale): string {
   const t = content[lang];
   return `<section class="hero" aria-labelledby="hero-title">
@@ -144,7 +156,7 @@ function footer(lang: Locale, guide?: GuideSlug): string {
   return `<footer class="site-footer"><div class="wrap footer-top"><div class="footer-info">${brand(lang, true)}<p class="footer-mission">${t.footer}</p>
     <div class="footer-actions"><a class="compact-button footer-download" href="${download(lang)}">${t.download}</a>${appLink}</div>
     <div class="social-buttons footer-socials">${socialLinks(lang)}</div>
-    </div>${guideLinks(lang, guide)}</div><div class="wrap footer-bottom">© ${new Date().getFullYear()} Chrust</div></footer>`;
+    </div>${footerGuideLinks(lang, guide)}</div><div class="wrap footer-bottom">© ${new Date().getFullYear()} Chrust</div></footer>`;
 }
 
 function page(lang: Locale, isDownload: boolean, guide?: GuideSlug): string {
@@ -155,17 +167,17 @@ function page(lang: Locale, isDownload: boolean, guide?: GuideSlug): string {
   const title = guide ? `${guides[guide][lang].title} | Chrust` : isDownload ? `${t.downloadPageTitle} | Chrust`
     : lang === 'ru' ? 'Chrust: Библия, библейские игры и план чтения' : 'Chrust: Bible study, games and a daily reading plan';
   const description = guide ? guides[guide][lang].description : isDownload ? t.downloadDescription : t.heroDescription;
-  const guidePreview = guide ? collage(lang, guidePreviewScreens[guide]) : '';
+  const previewHtml = guide ? guidePreview(lang, guide) : '';
 
   return `<!doctype html><html lang="${lang}"><head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#263632"><meta name="color-scheme" content="only light">
-  ${metadata({ locale: lang, title, description, path, counterpart, fallback: guide ? guidePath('en', guide) : isDownload ? '/download/' : '/', siteUrl: publicUrl('/'), indexable: seo.indexingEnabled && !isDownload })}
+  ${metadata({ locale: lang, title, description, path, counterpart, fallback: guide ? guidePath('en', guide) : isDownload ? '/download/' : '/', siteUrl: publicUrl('/'), indexable: seo.indexingEnabled && !isDownload && (!guide || isPublishedGuide(guide)) })}
   <link rel="icon" type="image/png" href="/assets/chrust-logo.png">
   <script src="/language.js"></script>
   <link rel="stylesheet" href="/assets/3a1e1e33-bp.css"><link rel="stylesheet" href="/assets/a44d755a-bp-compat.css"><link rel="stylesheet" href="/assets/e22dadcd-global-D38g-Y4N.css"><link rel="stylesheet" href="/assets/ab7d641d-button-D8QqDKPm.css"><link rel="stylesheet" href="/project.css">
   <script src="/interactions.js" defer></script></head><body id="top"${guide ? ' class="guide-page"' : isDownload ? ' class="download-page"' : ''}>
   <a class="skip-link" href="#content">${t.skip}</a>${header(lang, isDownload, guide)}<main id="content">
-  ${guide ? `${guideView(lang, guide, seo.readingPlanYear, guidePreview)}${downloadSection(lang, false)}` : isDownload ? downloadSection(lang, true) : `${hero(lang)}<div class="features wrap">${screens.map((f, i) => `<section id="${f.id}" class="feature ${i % 2 === 0 ? 'image-first' : ''}" aria-labelledby="${f.id}-title"><div class="feature-copy"><h2 id="${f.id}-title">${t.features[i].title}</h2><p class="text home-hub-section-description">${t.features[i].description}</p></div>${collage(lang, f.files)}</section>`).join('')}</div>${about(lang)}${downloadSection(lang, false)}`}
+  ${guide ? `${guideView(lang, guide, seo.readingPlanYear, previewHtml)}${downloadSection(lang, false)}` : isDownload ? downloadSection(lang, true) : `${hero(lang)}<div class="features wrap">${screens.map((f, i) => `<section id="${f.id}" class="feature ${i % 2 === 0 ? 'image-first' : ''}" aria-labelledby="${f.id}-title"><div class="feature-copy"><h2 id="${f.id}-title">${t.features[i].title}</h2><p class="text home-hub-section-description">${t.features[i].description}</p></div>${collage(lang, f.files)}</section>`).join('')}</div>${about(lang)}${downloadSection(lang, false)}`}
   </main>${footer(lang, guide)}
   </body></html>`;
 }
@@ -199,4 +211,4 @@ await mkdir('dist/download', { recursive: true });
 await Promise.all([copyFile('dist/en/index.html', 'dist/index.html'), copyFile('dist/en/download/index.html', 'dist/download/index.html'), copyFile('site/styles.css', 'dist/project.css'), copyFile('site/interactions.js', 'dist/interactions.js')]);
 await writeFile('dist/sitemap.xml', sitemap(publicUrl('/')));
 await writeFile('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${publicUrl('/sitemap.xml')}\n`);
-console.log('Built 14 pages, sitemap and robots for Russian and English.');
+console.log(`Built ${6 + guideSlugs.length * 2} pages, sitemap and robots for Russian and English.`);

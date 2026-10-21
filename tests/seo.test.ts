@@ -1,12 +1,16 @@
 import { expect, test } from 'bun:test';
 import { stat } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { guidePath, guideSlugs, guides, guidePreviewScreens } from '../site/guides';
+import { createHash } from 'node:crypto';
+import { guidePath, guideSlugs, guides, guidePreviewScreens, guideArtwork, isPublishedGuide } from '../site/guides';
+import { draftGuideSlugs } from '../site/guide-expansion';
+import { guideGroups, relatedGuideSlugs } from '../site/guide-navigation';
 import { wordExamples } from '../site/guide-view';
 import { annualPlan, books } from '../site/reading-plan';
 import { escapeHtml, indexablePaths, metadata } from '../site/seo';
 import seo from '../site/seo.json';
-import { gamePreviewScreens } from '../site/content';
+import { content, gamePreviewScreens } from '../site/content';
+import screenshotSources from '../screenshot-sources.json';
 
 const origin = 'https://chrust.org';
 const dist = resolve('dist');
@@ -27,7 +31,7 @@ for (const locale of locales) {
       expect(head.match(/<meta name="description"/g)).toHaveLength(1);
       expect(html).toContain(`<h1>${escapeHtml(guides[slug][locale].title)}</h1>`);
       expect(html).toContain(`rel="canonical" href="${origin}${path}"`);
-      expect(html).toContain(`content="${publicRobots}"`);
+      expect(html).toContain(`content="${seo.indexingEnabled && isPublishedGuide(slug) ? 'index, follow' : 'noindex, follow'}"`);
       expect(html).toContain(`property="og:url" content="${origin}${path}"`);
       expect(html).toContain(`hreflang="x-default" href="${origin}${guidePath('en', slug)}"`);
       expect(links).toEqual(locales.map(code => guidePath(code, slug)));
@@ -69,22 +73,53 @@ for (const locale of locales) {
       expect(banner(html)?.match(/class="compact-button icon-button store-button store-/g)).toHaveLength(3);
     });
 
-    test(`guide shows relevant existing app screenshots: ${locale}/${slug}`, async (): Promise<void> => {
+    test(`guide shows relevant original app media: ${locale}/${slug}`, async (): Promise<void> => {
       const html = await Bun.file(`dist${guidePath(locale, slug)}index.html`).text();
-      const homepage = await Bun.file(`dist/${locale}/index.html`).text();
       const files = guidePreviewScreens[slug];
       const actual = Array.from(html.matchAll(/src="\/assets\/screens\/([^"]+)\.webp"/g), match => match[1]);
+      const artwork = guideArtwork[slug];
 
       expect(actual).toEqual(files);
       expect(new Set(files).size).toBe(files.length);
-      expect([3, 4]).toContain(files.length);
-      expect(html).toContain(`class="guide-screens"><div class="collage collage-${files.length}"`);
+      expect(html).not.toContain('undefined');
+
+      if (artwork) {
+        expect(files).toHaveLength(0);
+        expect(html).toContain(`src="/assets/games/${artwork}.webp"`);
+        expect(await Bun.file(`dist/assets/games/${artwork}.webp`).exists()).toBe(true);
+      } else {
+        expect([1, 2, 3, 4]).toContain(files.length);
+        expect(html).toContain(`class="guide-screens"><div class="collage collage-${files.length}"`);
+      }
 
       for (const file of files) {
-        expect(homepage).toContain(`src="/assets/screens/${file}.webp"`);
+        expect(file in screenshotSources.screens || file in screenshotSources.liveCapture.screens).toBe(true);
+        expect(file in content[locale].screenLabels).toBe(true);
         expect(await Bun.file(`dist/assets/screens/${file}.webp`).exists()).toBe(true);
       }
     });
+
+    test(`footer exposes all four groups and keeps the current guide visible: ${locale}/${slug}`, async (): Promise<void> => {
+      const html = await Bun.file(`dist${guidePath(locale, slug)}index.html`).text();
+      const footer = html.split('<footer class="site-footer">')[1];
+
+      expect(footer.match(/class="footer-link-group"/g)).toHaveLength(4);
+      expect(footer).toContain(`href="${guidePath(locale, slug)}" aria-current="page"`);
+
+      for (const target of guideSlugs) expect(footer).toContain(`href="${guidePath(locale, target)}"`);
+    });
+
+    if (guides[slug][locale].example) {
+      test(`draft game has its own accessible example: ${locale}/${slug}`, async (): Promise<void> => {
+        const html = await Bun.file(`dist${guidePath(locale, slug)}index.html`).text();
+        const example = guides[slug][locale].example!;
+
+        expect(html.match(/id="example"/g)).toHaveLength(1);
+        expect(html).toContain(escapeHtml(example.prompt));
+        expect(html).toContain(`<p>${escapeHtml(example.answer)}</p>`);
+        expect(html).toContain('<details class="guide-answer"><summary>');
+      });
+    }
   }
 
   test(`games page has the short title and three original homepage screenshots: ${locale}`, async (): Promise<void> => {
@@ -119,7 +154,7 @@ for (const locale of locales) {
     }
   });
 
-  test(`homepage retains the original hero and exposes all four guides: ${locale}`, async (): Promise<void> => {
+  test(`homepage retains the original hero and exposes every guide: ${locale}`, async (): Promise<void> => {
     const html = await Bun.file(`dist/${locale}/index.html`).text();
     const main = html.split('<main id="content">')[1].split('</main>')[0];
     const footer = html.split('<footer')[1];
@@ -240,7 +275,51 @@ test('each canonical page has a distinct title and description', async (): Promi
 });
 
 test('new authored materials follow the project punctuation rule', async (): Promise<void> => {
-  const files = ['site/guides.ts', 'site/guide-view.ts', 'docs/seo-plan.md'];
+  const files = ['site/guides.ts', 'site/guide-view.ts', 'site/guide-expansion.ts', 'site/guide-navigation.ts', 'docs/seo-plan.md'];
 
   for (const path of files) expect(await Bun.file(path).text()).not.toContain('\u2014');
+});
+
+test('navigation contains thirteen distinct resources and all six games', (): void => {
+  const links = guideGroups.flatMap(group => group.links.map(link => link.slug));
+
+  expect(new Set(links).size).toBe(13);
+  expect([...links].sort()).toEqual([...guideSlugs].sort());
+  expect(guideGroups.find(group => group.id === 'games')?.links).toHaveLength(7);
+
+  for (const slug of guideSlugs) {
+    expect(relatedGuideSlugs(slug)).not.toContain(slug);
+    expect(relatedGuideSlugs(slug).length).toBeLessThanOrEqual(4);
+  }
+});
+
+for (const [file, checksum] of Object.entries(screenshotSources.gameArtwork.files)) {
+  test(`game illustration is the original app asset: ${file}`, async (): Promise<void> => {
+    const bytes = await Bun.file(`dist/assets/games/${file}`).arrayBuffer();
+
+    expect(createHash('sha256').update(new Uint8Array(bytes)).digest('hex')).toBe(checksum);
+  });
+}
+
+test('unapproved pages are excluded from the sitemap and have unique metadata', async (): Promise<void> => {
+  const xml = await Bun.file('dist/sitemap.xml').text();
+  const titles = new Set<string>();
+  const descriptions = new Set<string>();
+
+  for (const locale of locales) {
+    for (const slug of guideSlugs) {
+      const html = await Bun.file(`dist${guidePath(locale, slug)}index.html`).text();
+
+      titles.add(guides[slug][locale].title);
+      descriptions.add(guides[slug][locale].description);
+
+      if (draftGuideSlugs.some(draft => draft === slug)) {
+        expect(xml).not.toContain(guidePath(locale, slug));
+        expect(html).toContain('content="noindex, follow"');
+      }
+    }
+  }
+
+  expect(titles.size).toBe(guideSlugs.length * locales.length);
+  expect(descriptions.size).toBe(guideSlugs.length * locales.length);
 });

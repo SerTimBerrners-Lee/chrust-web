@@ -56,6 +56,11 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .collage-3 .tile-1 { left: 3%; top: 8%; transform: rotate(-7deg); z-index: 1; }
 .collage-3 .tile-2 { left: 29.5%; top: 16%; transform: rotate(-1deg); z-index: 3; }
 .collage-3 .tile-3 { left: 56%; top: 5%; transform: rotate(7deg); z-index: 2; }
+.collage-1 { aspect-ratio: auto; display: flex; justify-content: center; }
+.collage-1 .screen-tile { position: relative; width: min(280px, 80%); }
+.collage-2 .screen-tile { width: 46%; }
+.collage-2 .tile-1 { left: 5%; top: 4%; transform: rotate(-5deg); }
+.collage-2 .tile-2 { left: 49%; top: 10%; transform: rotate(5deg); }
 /* Four cards use the same one-third overlap, with a staggered top edge. */
 .collage-4 { aspect-ratio: 1 / 1.05; }
 .collage-4 .screen-tile { width: 33%; }
@@ -120,6 +125,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .footer-info { max-width: 450px; min-width: 0; }
 .footer-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .footer-socials { justify-content: flex-start; margin-top: 24px; }
+.footer-navigation { flex: 1 1 600px; min-width: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 24px; }
+.footer-link-group { min-width: 0; }
+.footer-link-group h2 { font-size: 18px; line-height: 1.4; color: var(--color-neutral-00); letter-spacing: 0; text-wrap: wrap; }
+.footer-link-group .guide-links { padding-top: 16px; font-size: 15px; gap: 12px; overflow-wrap: anywhere; }
 .footer-bottom { border-top: 1px solid var(--color-neutral-60); padding-block: 32px; font-size: 12px; }
 
 /* Reading pages reuse the site's typography and warm controls. */
@@ -134,6 +143,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .guide-intro .guide-source { font-size: 16px; }
 .guide-intro .compact-button { margin-top: 24px; }
 .guide-screens { width: min(560px, 100%); margin: 32px auto 48px; }
+.guide-game-art { display: block; border-radius: 24px; overflow: hidden; }
+.guide-game-art img { width: 100%; height: auto; }
 .guide-section { margin-top: 48px; }
 .guide-section h2 { font-size: 30px; line-height: 1.2; text-wrap: pretty; }
 .guide-section p, .guide-section ul { margin-block: 16px 0; }
@@ -210,6 +221,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
   .download-standalone { padding: 190px 20px 56px; gap: 44px; min-height: max(820px, 100svh); }
   .download-standalone .support-copy::before { inset-inline: -20px; }
   .footer-top { padding-block: 40px 32px; }
+  .footer-navigation { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer-mission { font-size: 16px; }
   .footer-bottom { padding-block: 24px; }
   .guide-article { padding-block: 24px 64px; font-size: 17px; }
@@ -223,6 +235,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
   .wrap { width: calc(100% - 32px); }
   .hero-actions .button { font-size: 17px; }
   .desktop-nav a { padding-inline: 8px; }
+  .footer-navigation { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (prefers-reduced-motion: reduce) {

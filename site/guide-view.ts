@@ -1,10 +1,23 @@
 import type { Locale } from './content';
-import { guides, guideSlugs, guidePath, type GuideSlug } from './guides';
+import { guides, guidePath, type GuideSlug } from './guides';
+import { guideGroups, relatedGuideSlugs } from './guide-navigation';
 import { annualPlan } from './reading-plan';
 import { escapeHtml as escape } from './seo';
 
 export function guideLinks(locale: Locale, current?: GuideSlug): string {
-  return `<nav class="guide-links" aria-label="${locale === 'ru' ? 'Материалы Chrust' : 'Chrust resources'}">${guideSlugs.filter(slug => slug !== current).map(slug => `<a href="${guidePath(locale, slug)}">${escape(guides[slug][locale].title)}</a>`).join('')}</nav>`;
+  return `<nav class="guide-links" aria-label="${locale === 'ru' ? 'Материалы Chrust' : 'Chrust resources'}">${relatedGuideSlugs(current).map(slug => `<a href="${guidePath(locale, slug)}">${escape(guides[slug][locale].title)}</a>`).join('')}</nav>`;
+}
+
+export function footerGuideLinks(locale: Locale, current?: GuideSlug): string {
+  return `<nav class="footer-navigation" aria-label="${locale === 'ru' ? 'Все разделы Chrust' : 'All Chrust resources'}">${guideGroups.map(group => `<section class="footer-link-group"><h2>${escape(group.title[locale])}</h2><div class="guide-links">${group.links.map(link => `<a href="${guidePath(locale, link.slug)}"${link.slug === current ? ' aria-current="page"' : ''}>${escape(link.label[locale])}</a>`).join('')}</div></section>`).join('')}</nav>`;
+}
+
+function shortExample(locale: Locale, slug: GuideSlug): string {
+  const example = guides[slug][locale].example;
+
+  if (!example) return '';
+
+  return `<section class="guide-section" id="example"><h2>${escape(example.title)}</h2><p>${escape(example.prompt)}</p><details class="guide-answer"><summary>${locale === 'ru' ? 'Показать ответ' : 'Show the answer'}</summary><p>${escape(example.answer)}</p></details></section>`;
 }
 
 function quiz(locale: Locale): string {
@@ -58,7 +71,7 @@ export function guideView(locale: Locale, slug: GuideSlug, year: number, preview
   const copy = guides[slug][locale];
   const example = slug === 'bible-games' ? quiz(locale)
     : slug === 'bible-word-search' ? wordExample(locale)
-    : slug === 'bible-reading-plan' ? readingCalendar(locale, year) : '';
+    : slug === 'bible-reading-plan' ? readingCalendar(locale, year) : shortExample(locale, slug);
   const source = slug === 'bible-study-for-beginners'
     ? `<p class="guide-source"><a href="https://ebible.org/${locale === 'ru' ? 'russyn' : 'engwebp'}/LUK10.htm" target="_blank" rel="noopener noreferrer">${locale === 'ru' ? 'Прочитать Луки 10 на eBible.org, Синодальный перевод' : 'Read Luke 10 at eBible.org, World English Bible'}</a></p>` : '';
 

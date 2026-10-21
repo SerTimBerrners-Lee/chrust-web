@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test';
 import { stat } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { guidePath, guideSlugs, guides } from '../site/guides';
+import { guidePath, guideSlugs, guides, guidePreviewScreens } from '../site/guides';
 import { wordExamples } from '../site/guide-view';
 import { annualPlan, books } from '../site/reading-plan';
 import { escapeHtml, indexablePaths, metadata } from '../site/seo';
@@ -67,6 +67,23 @@ for (const locale of locales) {
       expect(html.indexOf('id="download"')).toBeLessThan(html.indexOf('</main>'));
       expect(banner(html)).toContain('href="https://app.chrust.org"');
       expect(banner(html)?.match(/class="compact-button icon-button store-button store-/g)).toHaveLength(3);
+    });
+
+    test(`guide shows relevant existing app screenshots: ${locale}/${slug}`, async (): Promise<void> => {
+      const html = await Bun.file(`dist${guidePath(locale, slug)}index.html`).text();
+      const homepage = await Bun.file(`dist/${locale}/index.html`).text();
+      const files = guidePreviewScreens[slug];
+      const actual = Array.from(html.matchAll(/src="\/assets\/screens\/([^"]+)\.webp"/g), match => match[1]);
+
+      expect(actual).toEqual(files);
+      expect(new Set(files).size).toBe(files.length);
+      expect([3, 4]).toContain(files.length);
+      expect(html).toContain(`class="guide-screens"><div class="collage collage-${files.length}"`);
+
+      for (const file of files) {
+        expect(homepage).toContain(`src="/assets/screens/${file}.webp"`);
+        expect(await Bun.file(`dist/assets/screens/${file}.webp`).exists()).toBe(true);
+      }
     });
   }
 
@@ -169,6 +186,12 @@ for (const locale of locales) {
     });
   }
 }
+
+test('guide previews cover Growth, Courses, Games and Bible without mixing unrelated examples', (): void => {
+  expect(guidePreviewScreens['bible-word-search']).toEqual(['games-levels', 'games-wordsearch', 'games-catalog']);
+  expect(guidePreviewScreens['bible-reading-plan']).toEqual(['growth-tree', 'growth-calendar', 'bible-reader', 'bible-note']);
+  expect(guidePreviewScreens['bible-study-for-beginners']).toEqual(['course-map-live', 'course-intro-live', 'course-learn-live']);
+});
 
 test('invalid plan years cannot silently produce an empty calendar', (): void => {
   for (const year of [NaN, Infinity, 1999, 2101, 2026.5]) {

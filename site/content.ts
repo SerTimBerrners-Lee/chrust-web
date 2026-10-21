@@ -2,9 +2,11 @@ export type Locale = 'ru' | 'en';
 
 export const gamePreviewScreens = ['games-levels', 'games-wordsearch', 'games-verse'];
 
+export const coursePreviewScreens = ['course-map-live', 'course-intro-live', 'course-learn-live'];
+
 export const screens = [
   { id: 'growth', files: ['growth-tree', 'growth-calendar', 'growth-activity'] },
-  { id: 'courses', files: ['course-map-live', 'course-intro-live', 'course-learn-live'] },
+  { id: 'courses', files: coursePreviewScreens },
   { id: 'games', files: [...gamePreviewScreens, 'games-catalog'] },
   { id: 'bible', files: ['bible-reader', 'bible-highlight', 'bible-note'] },
 ];

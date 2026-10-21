@@ -1,9 +1,40 @@
 import { expect, test } from 'bun:test';
 import { stat } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { content } from '../site/content';
+import { guidePath, guideSlugs } from '../site/guides';
 
 const routes = ['/', '/ru/', '/en/', '/download/', '/ru/download/', '/en/download/'];
 const dist = resolve('dist');
+
+const footerRoutes = [...routes, ...guideSlugs.flatMap(slug => [guidePath('ru', slug), guidePath('en', slug)])];
+const socialDestinations = {
+  telegram: 'https://t.me/chrustapp',
+  instagram: 'https://www.instagram.com/chrust.app/',
+  threads: 'https://www.threads.com/@chrust.app',
+  youtube: 'https://www.youtube.com/@ChrustApp',
+};
+
+for (const route of footerRoutes) {
+  test(`footer social links: ${route}`, async (): Promise<void> => {
+    const html = await Bun.file(`${dist}${route}index.html`).text();
+    const footer = html.match(/<footer\b[\s\S]*?<\/footer>/)?.[0] ?? '';
+    const locale = route.startsWith('/ru/') ? 'ru' : 'en';
+
+    expect(footer).toContain('class="social-buttons footer-socials"');
+    expect(footer.match(/class="compact-button icon-button social-button social-/g)).toHaveLength(4);
+
+    for (const key of ['telegram', 'instagram', 'threads', 'youtube'] as const) {
+      const link = footer.match(new RegExp(`<a class="[^"]*social-${key}"[^>]*>[\\s\\S]*?<\\/a>`))?.[0] ?? '';
+
+      expect(link).toContain(`href="${socialDestinations[key]}"`);
+      expect(link).toContain(`aria-label="${content[locale].socialLabels[key]}"`);
+      expect(link).toContain('target="_blank" rel="noopener noreferrer"');
+      expect(link).toContain('<span class="social-icon"><svg');
+      expect(link).not.toContain('disabled');
+    }
+  });
+}
 
 for (const route of routes) {
   test(`built page and local resources: ${route}`, async (): Promise<void> => {

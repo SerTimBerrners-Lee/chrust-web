@@ -1,8 +1,15 @@
-import type { Locale } from './content';
+import { coursePreviewScreens, gamePreviewScreens, type Locale } from './content';
 
 export const guideSlugs = ['bible-games', 'bible-word-search', 'bible-reading-plan', 'bible-study-for-beginners'] as const;
 
 export type GuideSlug = typeof guideSlugs[number];
+
+export const guidePreviewScreens: Record<GuideSlug, string[]> = {
+  'bible-games': gamePreviewScreens,
+  'bible-word-search': ['games-levels', 'games-wordsearch', 'games-catalog'],
+  'bible-reading-plan': ['growth-tree', 'growth-calendar', 'bible-reader', 'bible-note'],
+  'bible-study-for-beginners': coursePreviewScreens,
+};
 
 export type GuideSection = { title: string; paragraphs?: string[]; items?: string[] };
 

@@ -119,6 +119,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .footer-mission { max-width: 450px; font-size: 18px; line-height: 1.5; margin-top: 24px; }
 .footer-info { max-width: 450px; min-width: 0; }
 .footer-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.footer-socials { justify-content: flex-start; margin-top: 24px; }
 .footer-bottom { border-top: 1px solid var(--color-neutral-60); padding-block: 32px; font-size: 12px; }
 
 /* Reading pages reuse the site's typography and warm controls. */

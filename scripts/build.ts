@@ -1,8 +1,8 @@
 import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
-import { content, screens, gamePreviewScreens, screensWithNav, capturedScreenSizes, type Locale } from '../site/content';
-import { guideSlugs, guidePath, guides, type GuideSlug } from '../site/guides';
+import { content, screens, screensWithNav, capturedScreenSizes, type Locale } from '../site/content';
+import { guideSlugs, guidePath, guides, guidePreviewScreens, type GuideSlug } from '../site/guides';
 import { guideView, guideLinks } from '../site/guide-view';
 import { metadata, sitemap } from '../site/seo';
 
@@ -59,6 +59,12 @@ function externalControl(url: string | null | undefined, body: string, cls: stri
   return url
     ? `<a class="${cls}" href="${escape(url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(label)}" title="${escape(label)}">${body}</a>`
     : `<button class="${cls} is-coming-soon" type="button" disabled aria-label="${escape(label)}" title="${escape(label)}">${body}</button>`;
+}
+
+function socialLinks(lang: Locale): string {
+  const t = content[lang];
+
+  return (['telegram', 'instagram', 'threads', 'youtube'] as const).map(key => externalControl(links[key], `<span class="social-icon">${icons[key]}</span>`, `compact-button icon-button social-button social-${key}`, t.socialLabels[key])).join('');
 }
 
 function storeButtons(lang: Locale): string {
@@ -127,7 +133,7 @@ function about(lang: Locale): string {
   return `<section id="about" class="about wrap" aria-labelledby="about-title"><h2 id="about-title">${t.aboutTitle}</h2>
     <div class="about-image about-mosaic" role="img" aria-label="${escape(t.aboutImageAlt)}">${aboutArtwork.map((image, index) => `<span class="about-mosaic-tile about-mosaic-tile-${index + 1}" aria-hidden="true"><img src="/assets/lesson-mosaic/${image.file}" alt="" width="${image.width}" height="${image.height}" style="object-position:${image.position}" loading="lazy" decoding="async"></span>`).join('')}</div>
     <div class="about-text">${t.about.map(p => `<p>${p}</p>`).join('')}</div>
-    <div class="community"><h3>${t.communityDescription}</h3><div class="social-buttons">${(['telegram', 'instagram', 'threads', 'youtube'] as const).map(key => externalControl(links[key], `<span class="social-icon">${icons[key]}</span>`, `compact-button icon-button social-button social-${key}`, t.socialLabels[key])).join('')}</div></div>
+    <div class="community"><h3>${t.communityDescription}</h3><div class="social-buttons">${socialLinks(lang)}</div></div>
   </section>`;
 }
 
@@ -137,6 +143,7 @@ function footer(lang: Locale, guide?: GuideSlug): string {
 
   return `<footer class="site-footer"><div class="wrap footer-top"><div class="footer-info">${brand(lang, true)}<p class="footer-mission">${t.footer}</p>
     <div class="footer-actions"><a class="compact-button footer-download" href="${download(lang)}">${t.download}</a>${appLink}</div>
+    <div class="social-buttons footer-socials">${socialLinks(lang)}</div>
     </div>${guideLinks(lang, guide)}</div><div class="wrap footer-bottom">© ${new Date().getFullYear()} Chrust</div></footer>`;
 }
 
@@ -148,7 +155,7 @@ function page(lang: Locale, isDownload: boolean, guide?: GuideSlug): string {
   const title = guide ? `${guides[guide][lang].title} | Chrust` : isDownload ? `${t.downloadPageTitle} | Chrust`
     : lang === 'ru' ? 'Chrust: Библия, библейские игры и план чтения' : 'Chrust: Bible study, games and a daily reading plan';
   const description = guide ? guides[guide][lang].description : isDownload ? t.downloadDescription : t.heroDescription;
-  const guidePreview = guide === 'bible-games' ? collage(lang, gamePreviewScreens) : '';
+  const guidePreview = guide ? collage(lang, guidePreviewScreens[guide]) : '';
 
   return `<!doctype html><html lang="${lang}"><head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#263632"><meta name="color-scheme" content="only light">

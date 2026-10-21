@@ -6,8 +6,9 @@ import { guidePath, guideSlugs, guides, guidePreviewScreens, guideArtwork } from
 import { guideGroups, relatedGuideSlugs } from '../site/guide-navigation';
 import { wordExamples } from '../site/guide-view';
 import { annualPlan, books } from '../site/reading-plan';
-import { escapeHtml, indexablePaths, metadata } from '../site/seo';
+import { escapeHtml, indexablePaths, metadata, ownershipMetadata } from '../site/seo';
 import seo from '../site/seo.json';
+import searchVerification from '../site/search-verification.json';
 import { content, gamePreviewScreens } from '../site/content';
 import screenshotSources from '../screenshot-sources.json';
 
@@ -15,6 +16,26 @@ const origin = 'https://chrust.org';
 const dist = resolve('dist');
 const locales = ['ru', 'en'] as const;
 const publicRobots = seo.indexingEnabled ? 'index, follow' : 'noindex, follow';
+
+for (const path of ['/', '/ru/', '/en/']) {
+  test(`owner verification is present before any language redirect: ${path}`, async (): Promise<void> => {
+    const html = await Bun.file(`dist${path}index.html`).text();
+    const head = html.split('</head>')[0];
+
+    expect(searchVerification.google).not.toBe('');
+    expect(searchVerification.yandex).not.toBe('');
+    expect(head).toContain(`name="google-site-verification" content="${searchVerification.google}"`);
+    expect(head).toContain(`name="yandex-verification" content="${searchVerification.yandex}"`);
+    expect(head.indexOf('name="google-site-verification"')).toBeLessThan(head.indexOf('<script src="/language.js"'));
+    expect(head.match(/name="google-site-verification"/g)).toHaveLength(1);
+    expect(head.match(/name="yandex-verification"/g)).toHaveLength(1);
+  });
+}
+
+test('owner verification escapes public tokens and omits empty values', (): void => {
+  expect(ownershipMetadata({ google: '', yandex: '' })).toBe('');
+  expect(ownershipMetadata({ google: '<"&', yandex: '' })).toBe('<meta name="google-site-verification" content="&lt;&quot;&amp;">');
+});
 
 for (const locale of locales) {
   for (const slug of guideSlugs) {

@@ -4,9 +4,10 @@ import { resolve } from 'node:path';
 import { content, screens, screensWithNav, capturedScreenSizes, type Locale } from '../site/content';
 import { guideSlugs, guidePath, guides, guidePreviewScreens, guideArtwork, type GuideSlug } from '../site/guides';
 import { guideView, footerGuideLinks } from '../site/guide-view';
-import { metadata, sitemap } from '../site/seo';
+import { metadata, ownershipMetadata, sitemap } from '../site/seo';
 
 const seo: { indexingEnabled: boolean; readingPlanYear: number } = JSON.parse(await readFile('site/seo.json', 'utf8'));
+const searchVerification: { google: string; yandex: string } = JSON.parse(await readFile('site/search-verification.json', 'utf8'));
 
 if (typeof seo.indexingEnabled !== 'boolean' || !Number.isInteger(seo.readingPlanYear)) {
   throw new Error('Invalid SEO release configuration');
@@ -173,6 +174,7 @@ function page(lang: Locale, isDownload: boolean, guide?: GuideSlug): string {
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#263632"><meta name="color-scheme" content="only light">
   ${metadata({ locale: lang, title, description, path, counterpart, fallback: guide ? guidePath('en', guide) : isDownload ? '/download/' : '/', siteUrl: publicUrl('/'), indexable: seo.indexingEnabled && !isDownload })}
   <link rel="icon" type="image/png" href="/assets/chrust-logo.png">
+  ${ownershipMetadata(searchVerification)}
   <script src="/language.js"></script>
   <link rel="stylesheet" href="/assets/3a1e1e33-bp.css"><link rel="stylesheet" href="/assets/a44d755a-bp-compat.css"><link rel="stylesheet" href="/assets/e22dadcd-global-D38g-Y4N.css"><link rel="stylesheet" href="/assets/ab7d641d-button-D8QqDKPm.css"><link rel="stylesheet" href="/project.css">
   <script src="/interactions.js" defer></script></head><body id="top"${guide ? ' class="guide-page"' : isDownload ? ' class="download-page"' : ''}>

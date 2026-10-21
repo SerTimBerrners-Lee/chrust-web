@@ -9,6 +9,13 @@ export function indexablePaths(): string[] {
   return (['ru', 'en'] as const).flatMap(locale => [`/${locale}/`, ...guideSlugs.map(slug => guidePath(locale, slug))]);
 }
 
+export function ownershipMetadata(tokens: { google: string; yandex: string }): string {
+  return [
+    tokens.google ? `<meta name="google-site-verification" content="${escapeHtml(tokens.google)}">` : '',
+    tokens.yandex ? `<meta name="yandex-verification" content="${escapeHtml(tokens.yandex)}">` : '',
+  ].filter(Boolean).join('\n');
+}
+
 export function metadata(options: {
   locale: Locale; title: string; description: string; path: string;
   counterpart: string; fallback: string; siteUrl: string; indexable: boolean;

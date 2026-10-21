@@ -54,7 +54,7 @@ function readingCalendar(locale: Locale, year: number): string {
   }).join('')}</div></section>`;
 }
 
-export function guideView(locale: Locale, slug: GuideSlug, year: number): string {
+export function guideView(locale: Locale, slug: GuideSlug, year: number, previewHtml: string = ''): string {
   const copy = guides[slug][locale];
   const example = slug === 'bible-games' ? quiz(locale)
     : slug === 'bible-word-search' ? wordExample(locale)
@@ -64,6 +64,7 @@ export function guideView(locale: Locale, slug: GuideSlug, year: number): string
 
   return `<article class="guide-article wrap"><nav class="guide-breadcrumb" aria-label="${locale === 'ru' ? 'Путь к странице' : 'Breadcrumb'}"><a href="/${locale}/">Chrust</a><span aria-current="page">${escape(copy.title)}</span></nav>
     <div class="guide-intro"><h1>${escape(copy.title)}</h1><p>${escape(copy.intro)}</p>${source}${example ? `<a class="compact-button" href="#example">${locale === 'ru' ? (slug === 'bible-reading-plan' ? 'Открыть план' : 'К примеру') : (slug === 'bible-reading-plan' ? 'See the plan' : 'Try the example')}</a>` : ''}</div>
+    ${previewHtml ? `<div class="guide-screens">${previewHtml}</div>` : ''}
     ${copy.sections.map((section, index) => `<section class="guide-section"><h2>${escape(section.title)}</h2>${section.paragraphs?.map(text => `<p>${escape(text)}</p>`).join('') ?? ''}${section.items ? `<ul>${section.items.map(text => `<li>${escape(text)}</li>`).join('')}</ul>` : ''}</section>${index === 0 ? example : ''}`).join('')}
     <section class="guide-section"><h2>${locale === 'ru' ? 'Продолжить знакомство' : 'Keep exploring'}</h2>${guideLinks(locale, slug)}<p><a href="/${locale}/#about">${locale === 'ru' ? 'О проекте Chrust и его возможностях' : 'About Chrust and its features'}</a></p></section>
   </article>`;

@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
-import { content, screens, screensWithNav, capturedScreenSizes, type Locale } from '../site/content';
+import { content, screens, gamePreviewScreens, screensWithNav, capturedScreenSizes, type Locale } from '../site/content';
 import { guideSlugs, guidePath, guides, type GuideSlug } from '../site/guides';
 import { guideView, guideLinks } from '../site/guide-view';
 import { metadata, sitemap } from '../site/seo';
@@ -77,6 +77,7 @@ function storeButtons(lang: Locale): string {
 
 function downloadSection(lang: Locale, standalone: boolean): string {
   const t = content[lang];
+
   return `<section id="download" class="support download-section ${standalone ? 'download-standalone' : 'wrap'}" aria-labelledby="download-title">
     <div class="support-copy"><${standalone ? 'h1' : 'h2'} id="download-title">${t.downloadTitle}</${standalone ? 'h1' : 'h2'}><p>${t.downloadDescription}</p></div>
     ${storeButtons(lang)}
@@ -130,6 +131,15 @@ function about(lang: Locale): string {
   </section>`;
 }
 
+function footer(lang: Locale, guide?: GuideSlug): string {
+  const t = content[lang];
+  const appLink = externalControl(links.webApp, `<span>${escape(t.platforms.webApp)}</span>`, 'compact-button footer-app', t.platforms.webApp);
+
+  return `<footer class="site-footer"><div class="wrap footer-top"><div class="footer-info">${brand(lang, true)}<p class="footer-mission">${t.footer}</p>
+    <div class="footer-actions"><a class="compact-button footer-download" href="${download(lang)}">${t.download}</a>${appLink}</div>
+    </div>${guideLinks(lang, guide)}</div><div class="wrap footer-bottom">© ${new Date().getFullYear()} Chrust</div></footer>`;
+}
+
 function page(lang: Locale, isDownload: boolean, guide?: GuideSlug): string {
   const t = content[lang];
   const other = lang === 'ru' ? 'en' : 'ru';
@@ -138,6 +148,7 @@ function page(lang: Locale, isDownload: boolean, guide?: GuideSlug): string {
   const title = guide ? `${guides[guide][lang].title} | Chrust` : isDownload ? `${t.downloadPageTitle} | Chrust`
     : lang === 'ru' ? 'Chrust: Библия, библейские игры и план чтения' : 'Chrust: Bible study, games and a daily reading plan';
   const description = guide ? guides[guide][lang].description : isDownload ? t.downloadDescription : t.heroDescription;
+  const guidePreview = guide === 'bible-games' ? collage(lang, gamePreviewScreens) : '';
 
   return `<!doctype html><html lang="${lang}"><head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#263632"><meta name="color-scheme" content="only light">
@@ -147,8 +158,8 @@ function page(lang: Locale, isDownload: boolean, guide?: GuideSlug): string {
   <link rel="stylesheet" href="/assets/3a1e1e33-bp.css"><link rel="stylesheet" href="/assets/a44d755a-bp-compat.css"><link rel="stylesheet" href="/assets/e22dadcd-global-D38g-Y4N.css"><link rel="stylesheet" href="/assets/ab7d641d-button-D8QqDKPm.css"><link rel="stylesheet" href="/project.css">
   <script src="/interactions.js" defer></script></head><body id="top"${guide ? ' class="guide-page"' : isDownload ? ' class="download-page"' : ''}>
   <a class="skip-link" href="#content">${t.skip}</a>${header(lang, isDownload, guide)}<main id="content">
-  ${guide ? guideView(lang, guide, seo.readingPlanYear) : isDownload ? downloadSection(lang, true) : `${hero(lang)}<div class="features wrap">${screens.map((f, i) => `<section id="${f.id}" class="feature ${i % 2 === 0 ? 'image-first' : ''}" aria-labelledby="${f.id}-title"><div class="feature-copy"><h2 id="${f.id}-title">${t.features[i].title}</h2><p class="text home-hub-section-description">${t.features[i].description}</p></div>${collage(lang, f.files)}</section>`).join('')}</div>${about(lang)}${downloadSection(lang, false)}`}
-  </main><footer class="site-footer"><div class="wrap footer-top"><div>${brand(lang, true)}<p class="footer-mission">${t.footer}</p></div>${guideLinks(lang, guide)}</div><div class="wrap footer-bottom">© ${new Date().getFullYear()} Chrust</div></footer>
+  ${guide ? `${guideView(lang, guide, seo.readingPlanYear, guidePreview)}${downloadSection(lang, false)}` : isDownload ? downloadSection(lang, true) : `${hero(lang)}<div class="features wrap">${screens.map((f, i) => `<section id="${f.id}" class="feature ${i % 2 === 0 ? 'image-first' : ''}" aria-labelledby="${f.id}-title"><div class="feature-copy"><h2 id="${f.id}-title">${t.features[i].title}</h2><p class="text home-hub-section-description">${t.features[i].description}</p></div>${collage(lang, f.files)}</section>`).join('')}</div>${about(lang)}${downloadSection(lang, false)}`}
+  </main>${footer(lang, guide)}
   </body></html>`;
 }
 

@@ -16,7 +16,7 @@ export type GuideCopy = {
 export const guides: Record<GuideSlug, Record<Locale, GuideCopy>> = {
   'bible-games': {
     ru: {
-      title: 'Библейские игры и викторина с ответами',
+      title: 'Библейские игры',
       description: 'Повторите библейские истории: вопросы с ответами и ссылками на Писание, филворд и знакомство с шестью играми Chrust.',
       intro: 'Начните с трёх вопросов ниже, проверьте ответы по Писанию и выберите, что хотите повторить дальше.',
       sections: [
@@ -26,7 +26,7 @@ export const guides: Record<GuideSlug, Record<Locale, GuideCopy>> = {
       ],
     },
     en: {
-      title: 'Bible games and trivia with answers',
+      title: 'Bible games',
       description: 'Try Bible trivia questions with answers and Scripture references, explore a word-search example, and discover the six games in Chrust.',
       intro: 'Start with the three questions below, check each answer in Scripture, and choose what you would like to explore next.',
       sections: [

@@ -117,6 +117,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .site-footer .brand { color: var(--color-neutral-00); }
 .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px 64px; padding-block: 64px 40px; }
 .footer-mission { max-width: 450px; font-size: 18px; line-height: 1.5; margin-top: 24px; }
+.footer-info { max-width: 450px; min-width: 0; }
+.footer-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .footer-bottom { border-top: 1px solid var(--color-neutral-60); padding-block: 32px; font-size: 12px; }
 
 /* Reading pages reuse the site's typography and warm controls. */
@@ -130,6 +132,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .guide-intro > p { margin-top: 24px; font-size: 21px; line-height: 1.55; }
 .guide-intro .guide-source { font-size: 16px; }
 .guide-intro .compact-button { margin-top: 24px; }
+.guide-screens { width: min(560px, 100%); margin: 32px auto 48px; }
 .guide-section { margin-top: 48px; }
 .guide-section h2 { font-size: 30px; line-height: 1.2; text-wrap: pretty; }
 .guide-section p, .guide-section ul { margin-block: 16px 0; }

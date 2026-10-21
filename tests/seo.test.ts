@@ -6,6 +6,7 @@ import { wordExamples } from '../site/guide-view';
 import { annualPlan, books } from '../site/reading-plan';
 import { escapeHtml, indexablePaths, metadata } from '../site/seo';
 import seo from '../site/seo.json';
+import { gamePreviewScreens } from '../site/content';
 
 const origin = 'https://chrust.org';
 const dist = resolve('dist');
@@ -17,19 +18,20 @@ for (const locale of locales) {
     test(`useful static content and reciprocal language links: ${locale}/${slug}`, async (): Promise<void> => {
       const path = guidePath(locale, slug);
       const html = await Bun.file(`dist${path}index.html`).text();
+      const head = html.split('</head>')[0];
       const links = Array.from(html.matchAll(/<a data-language="(?:ru|en)"[^>]*href="([^"]+)"/g), match => match[1]);
 
       expect(html).toContain(`<html lang="${locale}">`);
       expect(html.match(/<h1[ >]/g)).toHaveLength(1);
-      expect(html.match(/<title>/g)).toHaveLength(1);
-      expect(html.match(/<meta name="description"/g)).toHaveLength(1);
+      expect(head.match(/<title>/g)).toHaveLength(1);
+      expect(head.match(/<meta name="description"/g)).toHaveLength(1);
       expect(html).toContain(`<h1>${escapeHtml(guides[slug][locale].title)}</h1>`);
       expect(html).toContain(`rel="canonical" href="${origin}${path}"`);
       expect(html).toContain(`content="${publicRobots}"`);
       expect(html).toContain(`property="og:url" content="${origin}${path}"`);
       expect(html).toContain(`hreflang="x-default" href="${origin}${guidePath('en', slug)}"`);
       expect(links).toEqual(locales.map(code => guidePath(code, slug)));
-      expect(html).not.toContain('app.chrust.org');
+      expect(head).not.toContain('app.chrust.org');
 
       for (const code of locales) {
         expect(html).toContain(`hreflang="${code}" href="${origin}${guidePath(code, slug)}"`);
@@ -52,7 +54,53 @@ for (const locale of locales) {
         if (url.hash) expect(targetHtml).toContain(`id="${url.hash.slice(1)}"`);
       }
     });
+
+    test(`guide reuses the homepage download banner exactly once: ${locale}/${slug}`, async (): Promise<void> => {
+      const html = await Bun.file(`dist${guidePath(locale, slug)}index.html`).text();
+      const homepage = await Bun.file(`dist/${locale}/index.html`).text();
+      const banner = (page: string): string | undefined => page.match(/<section id="download"[\s\S]*?<\/section>/)?.[0];
+
+      expect(banner(html)).toBe(banner(homepage));
+      expect(html.match(/id="download"/g)).toHaveLength(1);
+      expect(html.match(/id="download-title"/g)).toHaveLength(1);
+      expect(html.indexOf('id="download"')).toBeGreaterThan(html.indexOf('</article>'));
+      expect(html.indexOf('id="download"')).toBeLessThan(html.indexOf('</main>'));
+      expect(banner(html)).toContain('href="https://app.chrust.org"');
+      expect(banner(html)?.match(/class="compact-button icon-button store-button store-/g)).toHaveLength(3);
+    });
   }
+
+  test(`games page has the short title and three original homepage screenshots: ${locale}`, async (): Promise<void> => {
+    const html = await Bun.file(`dist/${locale}/bible-games/index.html`).text();
+    const homepage = await Bun.file(`dist/${locale}/index.html`).text();
+    const title = locale === 'ru' ? 'Библейские игры' : 'Bible games';
+
+    expect(html).toContain(`<h1>${title}</h1>`);
+    expect(html).toContain(`<title>${title} | Chrust</title>`);
+    expect(html.match(/src="\/assets\/screens\//g)).toHaveLength(3);
+    expect(html).toContain('class="guide-screens"><div class="collage collage-3"');
+
+    for (const file of gamePreviewScreens) {
+      expect(html).toContain(`src="/assets/screens/${file}.webp"`);
+      expect(homepage).toContain(`src="/assets/screens/${file}.webp"`);
+    }
+  });
+
+  test(`footer has download and app actions on every page: ${locale}`, async (): Promise<void> => {
+    const paths = [`/${locale}/`, `/${locale}/download/`, ...guideSlugs.map(slug => guidePath(locale, slug))];
+
+    if (locale === 'en') paths.push('/', '/download/');
+
+    for (const path of paths) {
+      const html = await Bun.file(`dist${path}index.html`).text();
+      const footer = html.split('<footer class="site-footer">')[1];
+
+      expect(footer).toContain(`class="compact-button footer-download" href="/${locale}/download/"`);
+      expect(footer).toContain('class="compact-button footer-app" href="https://app.chrust.org" target="_blank" rel="noopener noreferrer"');
+      expect(footer).toContain(locale === 'ru' ? '>Скачать</a>' : '>Download</a>');
+      expect(footer).toContain(locale === 'ru' ? '<span>В приложение</span>' : '<span>Open the app</span>');
+    }
+  });
 
   test(`homepage retains the original hero and exposes all four guides: ${locale}`, async (): Promise<void> => {
     const html = await Bun.file(`dist/${locale}/index.html`).text();

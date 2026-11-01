@@ -51,7 +51,7 @@ export const content = {
   },
   en: {
     skip: 'Skip to content', home: 'Chrust, back to top', nav: 'App features', language: 'Website language',
-    heroTitle: 'The Bible and spiritual practice in one app.',
+    heroTitle: 'The Bible for every day',
     heroDescription: 'Read Scripture, discover biblical stories, and nurture your spiritual life every day.',
     download: 'Download', start: 'Get started', downloadAction: 'Download Chrust',
     features: [

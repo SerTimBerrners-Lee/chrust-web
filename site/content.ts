@@ -19,7 +19,7 @@ export const capturedScreenSizes: Record<string, { width: number; height: number
 export const content = {
   ru: {
     skip: 'К содержимому', home: 'Chrust, в начало', nav: 'Возможности приложения', language: 'Язык сайта',
-    heroTitle: 'Библия и духовная практика в одном приложении.',
+    heroTitle: 'Библия на каждый день.',
     heroDescription: 'Читайте Писание, открывайте библейские истории и укрепляйте духовную практику каждый день.',
     download: 'Скачать', start: 'Начать', downloadAction: 'Перейти к скачиванию Chrust',
     features: [

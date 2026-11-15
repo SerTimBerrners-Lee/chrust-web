@@ -1,0 +1,22 @@
+@font-face { font-family: ChrustSite; src: url('/assets/7a1ff8d0-Graphik-Upright-VF-Web.woff2') format('woff2'); font-style: normal; font-weight: 100 900; font-display: swap; }
+:root { color-scheme: light dark; --background: #fafafa; --foreground: #202024; --secondary: #67666b; --line: #e5e3df; --accent: #352a23; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: ChrustSite, Arial, sans-serif; font-size: 17px; line-height: 1.65; overflow-wrap: anywhere; }
+header, main, footer { width: min(840px, calc(100% - 40px)); margin-inline: auto; }
+header { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--line); }
+a { color: inherit; text-underline-offset: 4px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-size: 23px; font-weight: 700; text-decoration: none; }
+.brand img { object-fit: contain; border-radius: 8px; }
+nav { display: flex; gap: 4px; }
+nav a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; border-radius: 24px; text-decoration: none; }
+nav a[aria-current] { background: var(--accent); color: var(--background); }
+main { padding-block: 40px 56px; }
+h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.2; font-weight: 700; margin: 0 0 16px; }
+h2 { font-size: 22px; line-height: 1.35; font-weight: 600; margin: 36px 0 14px; }
+p { margin: 0 0 16px; }
+.revision { font-size: 15px; color: var(--secondary); }
+footer { display: flex; flex-wrap: wrap; gap: 16px 32px; border-top: 1px solid var(--line); padding-block: 24px 40px; font-size: 15px; }
+.skip { position: absolute; top: -120px; left: 20px; }
+.skip:focus { top: 12px; padding: 8px 16px; background: var(--background); outline: 2px solid var(--accent); }
+@media (prefers-color-scheme: dark) { :root { --background: #141416; --foreground: #f4f1ed; --secondary: #b5b0ab; --line: #353237; --accent: #e4d5c4; } }
+@media (max-width: 420px) { body { font-size: 16px; } main { padding-top: 28px; } h2 { font-size: 21px; } }

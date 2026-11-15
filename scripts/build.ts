@@ -5,6 +5,9 @@ import { content, screens, screensWithNav, capturedScreenSizes, type Locale } fr
 import { guideSlugs, guidePath, guides, guidePreviewScreens, guideArtwork, type GuideSlug } from '../site/guides';
 import { guideView, footerGuideLinks } from '../site/guide-view';
 import { metadata, ownershipMetadata, sitemap } from '../site/seo';
+import { buildPrivacyPages } from './build-privacy';
+
+const screenshotRevision: string = JSON.parse(await readFile('screenshot-sources.json', 'utf8')).capturedAt;
 
 const seo: { indexingEnabled: boolean; readingPlanYear: number } = JSON.parse(await readFile('site/seo.json', 'utf8'));
 const searchVerification: { google: string; yandex: string } = JSON.parse(await readFile('site/search-verification.json', 'utf8'));
@@ -112,7 +115,7 @@ function collage(lang: Locale, files: string[]): string {
     const label = t.screenLabels[file as keyof typeof t.screenLabels];
     const size = capturedScreenSizes[file] ?? { width: 780, height: 1688 };
     return `<a class="screen-tile tile-${i + 1}${screensWithNav.has(file) ? ' screen-without-nav' : ''}" style="--screen-aspect:${size.width} / ${size.height}" href="${download(lang)}" aria-label="${escape(`${label}. ${t.downloadAction}`)}">
-      <img src="/assets/screens/${file}.webp" alt="${escape(label)}" width="${size.width}" height="${size.height}" loading="lazy" decoding="async">
+      <img src="/assets/screens/${file}.webp?v=${escape(screenshotRevision)}" alt="${escape(label)}" width="${size.width}" height="${size.height}" loading="lazy" decoding="async">
     </a>`;
   }).join('')}</div>`;
 }
@@ -157,7 +160,7 @@ function footer(lang: Locale, guide?: GuideSlug): string {
   return `<footer class="site-footer"><div class="wrap footer-top"><div class="footer-info">${brand(lang, true)}<p class="footer-mission">${t.footer}</p>
     <div class="footer-actions"><a class="compact-button footer-download" href="${download(lang)}">${t.download}</a>${appLink}</div>
     <div class="social-buttons footer-socials">${socialLinks(lang)}</div>
-    </div>${footerGuideLinks(lang, guide)}</div><div class="wrap footer-bottom">© ${new Date().getFullYear()} Chrust</div></footer>`;
+    </div>${footerGuideLinks(lang, guide)}</div><div class="wrap footer-bottom">© ${new Date().getFullYear()} Chrust <a href="/${lang}/privacy/" style="margin-inline-start:16px;text-decoration:underline">${lang === 'ru' ? 'Политика конфиденциальности' : 'Privacy Policy'}</a></div></footer>`;
 }
 
 function page(lang: Locale, isDownload: boolean, guide?: GuideSlug): string {
@@ -213,4 +216,5 @@ await mkdir('dist/download', { recursive: true });
 await Promise.all([copyFile('dist/en/index.html', 'dist/index.html'), copyFile('dist/en/download/index.html', 'dist/download/index.html'), copyFile('site/styles.css', 'dist/project.css'), copyFile('site/interactions.js', 'dist/interactions.js')]);
 await writeFile('dist/sitemap.xml', sitemap(publicUrl('/')));
 await writeFile('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${publicUrl('/sitemap.xml')}\n`);
+await buildPrivacyPages();
 console.log(`Built ${6 + guideSlugs.length * 2} pages, sitemap and robots for Russian and English.`);

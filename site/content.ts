@@ -21,7 +21,7 @@ export const content = {
     skip: 'К содержимому', home: 'Chrust, в начало', nav: 'Возможности приложения', language: 'Язык сайта',
     heroTitle: 'Библия на каждый день.',
     heroDescription: 'Читайте Писание, открывайте библейские истории и укрепляйте духовную практику каждый день.',
-    download: 'Скачать', start: 'Начать', downloadAction: 'Перейти к скачиванию Chrust',
+    download: 'Скачать', start: 'В приложение', downloadAction: 'Перейти к скачиванию Chrust',
     features: [
       { name: 'Рост', title: 'Рост', description: 'Отмечайте духовные практики в календаре и наблюдайте за ростом своего дерева.' },
       { name: 'Курсы', title: 'Курсы Ветхого и Нового Завета', description: 'Курсы с картой уроков и заданиями для проверки знаний готовятся к запуску.' },
@@ -53,7 +53,7 @@ export const content = {
     skip: 'Skip to content', home: 'Chrust, back to top', nav: 'App features', language: 'Website language',
     heroTitle: 'The Bible for every day',
     heroDescription: 'Read Scripture, discover biblical stories, and nurture your spiritual life every day.',
-    download: 'Download', start: 'Get started', downloadAction: 'Download Chrust',
+    download: 'Download', start: 'Open the app', downloadAction: 'Download Chrust',
     features: [
       { name: 'Growth', title: 'Growth', description: 'Track your spiritual practices in a calendar and watch your tree grow.' },
       { name: 'Courses', title: 'Old and New Testament courses', description: 'Courses with lesson maps and questions to deepen your understanding are being prepared for launch.' },

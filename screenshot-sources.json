@@ -1,24 +1,156 @@
 {
   "applicationRepository": "git@github.com:SerTimBerrners-Lee/chrust.git",
-  "applicationCommit": "17a43d7",
-  "capturedAt": "2026-10-19",
-  "format": "WebP, 780 by 1688 pixels",
-  "method": "Rendered original Flutter components with Inter, Literata and Phosphor fonts. Light theme, Russian locale, 390 by 844 logical pixels at 2x. No image generation or personal account data.",
+  "applicationCommit": "cef572274eb2a9d7f6b73d3db2dbb7186ea95a1e",
+  "capturedAt": "2026-11-15",
+  "format": "WebP quality 88. Original dimensions preserved: 780×1688; existing live tiles 390×780 or 390×844.",
+  "method": "Current production Flutter routes, real Inter/Literata fonts, light theme, Russian locale, 390×844 logical pixels at 2x. Isolated in-memory database and demonstration progress; no personal data or generated interface.",
+  "captureSource": "apps/chrust_app/test/marketing_screenshots_test.dart",
   "screens": {
-    "growth-tree": "widgetbook/stories/growth.dart: GrowthTreeView, stage 5",
-    "growth-calendar": "widgetbook/stories/growth.dart: GrowthMonthCalendar, demo calendar and records",
-    "growth-activity": "widgetbook/stories/growth.dart: GrowthTreeView with its activity sheet opened",
-    "course-map": "widgetbook/stories/map_explore.dart: TestamentLessonMap, Old Testament, scrolled to lessons",
-    "course-new": "widgetbook/stories/map_explore.dart: TestamentLessonMap, New Testament cover",
-    "course-lesson": "Original LessonContent with the creation narrative fixture, timeline disabled",
-    "course-question": "widgetbook/stories/lesson.dart: LessonChoiceQuestion, correct answer",
-    "games-catalog": "widgetbook/stories/puzzles.dart: PuzzleCatalog",
-    "games-levels": "widgetbook/stories/puzzles.dart: PuzzleLevelCarousel, in progress",
-    "games-wordsearch": "widgetbook/stories/puzzles.dart: WordSearchBoard, in progress",
-    "games-verse": "widgetbook/stories/puzzles.dart: VerseBoard, in progress",
-    "bible-reader": "Original BiblePage with bundled Synodal translation and disposable in-memory database",
-    "bible-highlight": "Original BiblePage, Genesis 1:3 highlighted",
-    "bible-note": "Original BiblePage, note editor with demonstration text"
+    "bible-highlight": {
+      "source": "raw/bible-highlight.png",
+      "sourceSha256": "58b34ba07cf7e284ca136fecacfee10a6cced7da373e1eba627ab037c3c430df",
+      "sha256": "3ee967e3143178a9f578b9a16756403f0bb1dcf0509debb2e0c5d5692e1bc442",
+      "width": 780,
+      "height": 1688,
+      "bytes": 107804
+    },
+    "bible-note": {
+      "source": "raw/bible-note.png",
+      "sourceSha256": "0e9dd4991d2e809ad17b9124906417c762c56252ac830196469cf0abaafcee5f",
+      "sha256": "63ddf0a2e99a1f46799aabfdeb07a10d58c574f776685768f814c31723c59280",
+      "width": 780,
+      "height": 1688,
+      "bytes": 85380
+    },
+    "bible-reader": {
+      "source": "raw/bible-reader.png",
+      "sourceSha256": "bba9fe1d90389836c597e15be47103e61323986fe8cf79a955bec6e25241ba15",
+      "sha256": "18a7d38fafe73fb9fd4369417c398137ebddedb63d043ece0bbe686768a72f41",
+      "width": 780,
+      "height": 1688,
+      "bytes": 129108
+    },
+    "course-intro-live": {
+      "source": "raw/course-intro-live.png",
+      "sourceSha256": "0f2d014bdd24f2cbbcc8f51fbebb4ffc1dcc95962b44d899a1f34dc8fa3e104a",
+      "sha256": "0e31d13890809c2dc3b1466c4876de7e2f9b796ca1502c0a7e99365bf49cee24",
+      "width": 390,
+      "height": 844,
+      "bytes": 69178
+    },
+    "course-learn-live": {
+      "source": "raw/course-learn-live.png",
+      "sourceSha256": "e9196fcf8b79e28b68300044cb9666e2e00139b53e1e3228dd447fc6e541f38b",
+      "sha256": "882ef994e9b212a2aea77240f446d420868d88e892b3462157d54707a3529ee1",
+      "width": 390,
+      "height": 780,
+      "bytes": 74274
+    },
+    "course-lesson": {
+      "source": "raw/course-lesson.png",
+      "sourceSha256": "b79bd76173b7dbc1a93ff308d43c3bcf0d50b13e0772236c2494d6e1716bea13",
+      "sha256": "27e3777b820d6ac488c25c4cb33e60107ee555e18d865438be07739584df3c81",
+      "width": 780,
+      "height": 1688,
+      "bytes": 82008
+    },
+    "course-map-live": {
+      "source": "raw/course-map-live.png",
+      "sourceSha256": "f64fabd9a64dc53ccb31328f855fdbdc0ea4e0e0e308dbef20bfc57ef7fa43b1",
+      "sha256": "575ae92d779237cc98efbd597beca95393658a9d8862357466555c3455607031",
+      "width": 390,
+      "height": 780,
+      "bytes": 23122
+    },
+    "course-map": {
+      "source": "raw/course-map.png",
+      "sourceSha256": "f64fabd9a64dc53ccb31328f855fdbdc0ea4e0e0e308dbef20bfc57ef7fa43b1",
+      "sha256": "2f5aa77eabe7321121303ebce4dacce71d98118f5d780fcf89f72d7ccea32e5e",
+      "width": 780,
+      "height": 1688,
+      "bytes": 64804
+    },
+    "course-new": {
+      "source": "raw/course-new.png",
+      "sourceSha256": "4573c3eb858a1d2b71654ac3cbb1794462cd53be51cfffa62bb736b09579b499",
+      "sha256": "29e23b4bca6e51ee9b890628fd7a22a0da1b657443348755b0c2750c358a471d",
+      "width": 780,
+      "height": 1688,
+      "bytes": 123422
+    },
+    "course-question": {
+      "source": "raw/course-question.png",
+      "sourceSha256": "c395ad75ccea0b8c9f517920c94235838ee3e228e8c22da193c35aee1a28e280",
+      "sha256": "1cee3e5a6c266f470317d6c97be0dd252466d9191c7bfc53cff18625f0e0700e",
+      "width": 780,
+      "height": 1688,
+      "bytes": 27848
+    },
+    "games-catalog": {
+      "source": "raw/games-catalog.png",
+      "sourceSha256": "c78db3a1681c456853061361d7f7930ac78b8619c838dfe9661061ee869f98ac",
+      "sha256": "65fa3396bb13eaec34f0371e076456a9f24d07449ed20e14d9d9253994847a56",
+      "width": 780,
+      "height": 1688,
+      "bytes": 127586
+    },
+    "games-levels": {
+      "source": "raw/games-levels.png",
+      "sourceSha256": "2f4ace49700b69fd7a7a2c5d8b8c746e2a7bc946566f03a38403d9818adf1402",
+      "sha256": "95c3bc650801227b2d50fafd2c4ec116fadc302763e957e39f09a32830a2a5c0",
+      "width": 780,
+      "height": 1688,
+      "bytes": 81542
+    },
+    "games-verse": {
+      "source": "raw/games-verse.png",
+      "sourceSha256": "bcf3688c4d39104fc3cfdad78c711475fec07fdbf3d8105357019a902a029af6",
+      "sha256": "f67a07314c86c2e7914c08c7b2952f0998db33ef0fd47552d872684b7f4ac01b",
+      "width": 780,
+      "height": 1688,
+      "bytes": 22898
+    },
+    "games-wordsearch": {
+      "source": "raw/games-wordsearch.png",
+      "sourceSha256": "ace8116fc58fcacf7d7cf2843ab62fc368ce7ab7e91e41edc1f11943880a99c1",
+      "sha256": "d44c2f285ea8dbcf2afde5f42cfdcf354e734a061bb2478225d4ce76ff03f3c0",
+      "width": 780,
+      "height": 1688,
+      "bytes": 20322
+    },
+    "growth-activity": {
+      "source": "output/marketing-2026-11-15/raw/growth-activity.png",
+      "capturedAt": "2026-11-15",
+      "applicationCommit": "cef572274eb2a9d7f6b73d3db2dbb7186ea95a1e",
+      "applicationWorktree": true,
+      "sourceSha256": "115cf527f8ff70700dc43a0d65999e019e2d18a006107a2cfc355d09d0fc30e0",
+      "sha256": "d14ec9b13eb5f2452ea7e4f8be10cef06665ec97f64aa96270c4f4b851e2a2db",
+      "width": 780,
+      "height": 1688,
+      "bytes": 42952
+    },
+    "growth-calendar": {
+      "source": "output/marketing-2026-11-15/raw/growth-calendar.png",
+      "capturedAt": "2026-11-15",
+      "applicationCommit": "cef572274eb2a9d7f6b73d3db2dbb7186ea95a1e",
+      "applicationWorktree": true,
+      "sourceSha256": "b600c09c38ee1361da1257aad62661ca6aa942cae002326f8dc077bdb3a98906",
+      "sha256": "28cc2e1f92d23f402a4c5adc775c430828f5f05158f158e5a1590b1241827751",
+      "width": 780,
+      "height": 1688,
+      "bytes": 59526
+    },
+    "growth-tree": {
+      "source": "output/marketing-2026-11-15/raw/growth-tree.png",
+      "capturedAt": "2026-11-15",
+      "applicationCommit": "cef572274eb2a9d7f6b73d3db2dbb7186ea95a1e",
+      "applicationWorktree": true,
+      "sourceSha256": "5874ac52ed4116d3925a2cf878cec07961154c1b9779486ada774d6fa9cd0a0c",
+      "sha256": "3435cb3af93b43cec2909b43839405f73e41595063ee283e7d0bb7bf2c0f5513",
+      "width": 780,
+      "height": 1688,
+      "bytes": 127086
+    }
   },
   "gameArtwork": {
     "copiedAt": "2026-10-21",
@@ -34,34 +166,10 @@
       "scripture-v1.webp": "0b081e5ac42c9bcbfe142e20281e2430b9fd6114da70274ca117489dcd79f13c"
     }
   },
-  "liveCapture": {
-    "capturedAt": "2026-10-19",
-    "source": "Already-running Chrust at http://127.0.0.1:8080/",
-    "mode": "Guest session without personal account data",
-    "viewport": {
-      "width": 390,
-      "height": 844
-    },
-    "method": "Native browser screenshots through Codex computer use. Navigation was excluded at capture time. No image generation.",
-    "screens": {
-      "course-map-live": {
-        "view": "Old Testament map, first two lessons",
-        "width": 390,
-        "height": 780,
-        "bottomNavigation": "excluded by screenshot clip"
-      },
-      "course-intro-live": {
-        "view": "Creation lesson introduction with artwork",
-        "width": 390,
-        "height": 844,
-        "bottomNavigation": "not present on this full-screen view"
-      },
-      "course-learn-live": {
-        "view": "Learn section, Old and New Testament",
-        "width": 390,
-        "height": 780,
-        "bottomNavigation": "excluded by screenshot clip"
-      }
-    }
-  }
+  "applicationWorktree": true,
+  "lastRefreshedScreens": [
+    "growth-activity",
+    "growth-calendar",
+    "growth-tree"
+  ]
 }

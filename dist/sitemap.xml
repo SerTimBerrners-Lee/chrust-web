@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://chrust.org/ru/</loc></url>
+  <url><loc>https://chrust.org/ru/privacy/</loc></url>
   <url><loc>https://chrust.org/ru/bible-games/</loc></url>
   <url><loc>https://chrust.org/ru/bible-word-search/</loc></url>
   <url><loc>https://chrust.org/ru/bible-reading-plan/</loc></url>
@@ -15,6 +16,7 @@
   <url><loc>https://chrust.org/ru/build-a-bible-verse/</loc></url>
   <url><loc>https://chrust.org/ru/guess-bible-verse/</loc></url>
   <url><loc>https://chrust.org/en/</loc></url>
+  <url><loc>https://chrust.org/en/privacy/</loc></url>
   <url><loc>https://chrust.org/en/bible-games/</loc></url>
   <url><loc>https://chrust.org/en/bible-word-search/</loc></url>
   <url><loc>https://chrust.org/en/bible-reading-plan/</loc></url>

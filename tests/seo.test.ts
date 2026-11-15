@@ -96,7 +96,7 @@ for (const locale of locales) {
     test(`guide shows relevant original app media: ${locale}/${slug}`, async (): Promise<void> => {
       const html = await Bun.file(`dist${guidePath(locale, slug)}index.html`).text();
       const files = guidePreviewScreens[slug];
-      const actual = Array.from(html.matchAll(/src="\/assets\/screens\/([^"]+)\.webp"/g), match => match[1]);
+      const actual = Array.from(html.matchAll(/src="\/assets\/screens\/([^"?]+)\.webp\?v=([^"]+)"/g), match => match[1]);
       const artwork = guideArtwork[slug];
 
       expect(actual).toEqual(files);
@@ -113,7 +113,7 @@ for (const locale of locales) {
       }
 
       for (const file of files) {
-        expect(file in screenshotSources.screens || file in screenshotSources.liveCapture.screens).toBe(true);
+        expect(file in screenshotSources.screens).toBe(true);
         expect(file in content[locale].screenLabels).toBe(true);
         expect(await Bun.file(`dist/assets/screens/${file}.webp`).exists()).toBe(true);
       }
@@ -153,8 +153,8 @@ for (const locale of locales) {
     expect(html).toContain('class="guide-screens"><div class="collage collage-3"');
 
     for (const file of gamePreviewScreens) {
-      expect(html).toContain(`src="/assets/screens/${file}.webp"`);
-      expect(homepage).toContain(`src="/assets/screens/${file}.webp"`);
+      expect(html).toContain(`src="/assets/screens/${file}.webp?v=${screenshotSources.capturedAt}"`);
+      expect(homepage).toContain(`src="/assets/screens/${file}.webp?v=${screenshotSources.capturedAt}"`);
     }
   });
 
@@ -254,13 +254,13 @@ test('invalid plan years cannot silently produce an empty calendar', (): void =>
   }
 });
 
-test('sitemap advertises all twenty-eight indexable canonical site pages', async (): Promise<void> => {
+test('sitemap advertises all indexable canonical site pages', async (): Promise<void> => {
   const xml = await Bun.file('dist/sitemap.xml').text();
   const urls = Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/g), match => match[1]);
   const robots = await Bun.file('dist/robots.txt').text();
 
   expect(urls).toEqual(indexablePaths().map(path => `${origin}${path}`));
-  expect(new Set(urls).size).toBe(28);
+  expect(new Set(urls).size).toBe(indexablePaths().length);
   expect(xml).not.toContain('download');
   expect(xml).not.toContain('app.chrust.org');
   expect(robots).toBe(`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
@@ -290,8 +290,8 @@ test('each canonical page has a distinct title and description', async (): Promi
   const titles = pages.map(html => html.match(/<title>([^<]+)<\/title>/)?.[1]);
   const descriptions = pages.map(html => html.match(/<meta name="description" content="([^"]+)"/)?.[1]);
 
-  expect(new Set(titles).size).toBe(28);
-  expect(new Set(descriptions).size).toBe(28);
+  expect(new Set(titles).size).toBe(indexablePaths().length);
+  expect(new Set(descriptions).size).toBe(indexablePaths().length);
 });
 
 test('new authored materials follow the project punctuation rule', async (): Promise<void> => {
@@ -340,4 +340,18 @@ test('all approved guides are indexable, listed in the sitemap and have unique m
 
   expect(titles.size).toBe(guideSlugs.length * locales.length);
   expect(descriptions.size).toBe(guideSlugs.length * locales.length);
+});
+
+// Both languages must display the freshly captured files, including cached visits.
+test('current screenshot revision matches the checked source files', async () => {
+  for (const [id, screen] of Object.entries(screenshotSources.screens)) {
+    const bytes = await Bun.file(`dist/assets/screens/${id}.webp`).arrayBuffer();
+    expect(createHash('sha256').update(new Uint8Array(bytes)).digest('hex')).toBe(screen.sha256);
+  }
+  for (const locale of ['ru','en']) {
+    const html = await Bun.file(`dist/${locale}/index.html`).text();
+    const images = Array.from(html.matchAll(/src="(\/assets\/screens\/[^"]+)"/g), match => match[1]);
+    expect(images.length).toBe(13);
+    expect(images.every(src => src.endsWith(`?v=${screenshotSources.capturedAt}`))).toBe(true);
+  }
 });

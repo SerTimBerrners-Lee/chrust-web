@@ -6,7 +6,7 @@ export function escapeHtml(value: string): string {
 }
 
 export function indexablePaths(): string[] {
-  return (['ru', 'en'] as const).flatMap(locale => [`/${locale}/`, ...guideSlugs.map(slug => guidePath(locale, slug))]);
+  return (['ru', 'en'] as const).flatMap(locale => [`/${locale}/`, `/${locale}/privacy/`, ...guideSlugs.map(slug => guidePath(locale, slug))]);
 }
 
 export function ownershipMetadata(tokens: { google: string; yandex: string }): string {

@@ -187,6 +187,24 @@ function page(lang: Locale, isDownload: boolean, guide?: GuideSlug): string {
   </body></html>`;
 }
 
+function homeEntry(): string {
+  return `<!doctype html><html lang="en"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  ${metadata({
+    locale: 'en', title: 'Chrust', description: content.en.heroDescription,
+    path: home('en'), counterpart: home('ru'), fallback: '/', siteUrl: publicUrl('/'),
+    indexable: seo.indexingEnabled,
+  })}
+  ${ownershipMetadata(searchVerification)}
+  <script src="/language.js"></script>
+  <noscript><meta http-equiv="refresh" content="0;url=/en/"></noscript>
+</head><body>
+  <main><a href="/en/" lang="en" hreflang="en">Chrust in English</a>
+  <a href="/ru/" lang="ru" hreflang="ru">Chrust на русском</a></main>
+</body></html>
+`;
+}
+
 const languageBuild = await Bun.build({
   entrypoints: ['site/language.ts'],
   outdir: 'dist',
@@ -213,8 +231,8 @@ for (const lang of ['ru', 'en'] as const) {
   }
 }
 await mkdir('dist/download', { recursive: true });
-await Promise.all([copyFile('dist/en/index.html', 'dist/index.html'), copyFile('dist/en/download/index.html', 'dist/download/index.html'), copyFile('site/styles.css', 'dist/project.css'), copyFile('site/interactions.js', 'dist/interactions.js')]);
+await Promise.all([writeFile('dist/index.html', homeEntry()), copyFile('dist/en/download/index.html', 'dist/download/index.html'), copyFile('site/styles.css', 'dist/project.css'), copyFile('site/interactions.js', 'dist/interactions.js')]);
 await writeFile('dist/sitemap.xml', sitemap(publicUrl('/')));
-await writeFile('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${publicUrl('/sitemap.xml')}\n`);
+await writeFile('dist/robots.txt', `User-agent: *\nAllow: /\n\nClean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&gclid&fbclid\nSitemap: ${publicUrl('/sitemap.xml')}\n`);
 await buildPrivacyPages();
-console.log(`Built ${6 + guideSlugs.length * 2} pages, sitemap and robots for Russian and English.`);
+console.log(`Built ${9 + guideSlugs.length * 2} pages, sitemap and robots for Russian and English.`);

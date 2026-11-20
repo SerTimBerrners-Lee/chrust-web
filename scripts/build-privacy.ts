@@ -9,7 +9,13 @@ export async function buildPrivacyPages(directory = 'dist'): Promise<void> {
     await writeFile(join(target, 'index.html'), privacyHtml(locale));
   }
   await mkdir(join(directory, 'privacy'), { recursive: true });
-  await writeFile(join(directory, 'privacy/index.html'), privacyHtml('ru'));
+  await writeFile(join(directory, 'privacy/index.html'), `<!doctype html>
+<html lang="ru"><head>
+<meta charset="utf-8"><title>Политика конфиденциальности Chrust</title>
+<link rel="canonical" href="https://chrust.org/ru/privacy/">
+<meta http-equiv="refresh" content="0; url=/ru/privacy/">
+</head><body><a href="/ru/privacy/">Политика конфиденциальности Chrust</a></body></html>
+`);
   await copyFile('site/privacy.css', join(directory, 'privacy.css'));
 }
 

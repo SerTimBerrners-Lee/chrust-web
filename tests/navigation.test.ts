@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test';
 import { runInNewContext } from 'node:vm';
 
-const routes = ['/', '/ru/', '/en/', '/download/', '/ru/download/', '/en/download/'];
+const routes = ['/ru/', '/en/', '/download/', '/ru/download/', '/en/download/'];
 
 for (const route of routes) {
   test(`language switching does not inherit a section anchor: ${route}`, async (): Promise<void> => {

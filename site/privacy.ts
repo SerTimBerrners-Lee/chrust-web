@@ -111,7 +111,7 @@ export function privacyHtml(locale: 'ru' | 'en'): string {
 <link rel="canonical" href="${url}">
 <link rel="alternate" hreflang="ru" href="https://chrust.org/ru/privacy/">
 <link rel="alternate" hreflang="en" href="https://chrust.org/en/privacy/">
-<link rel="alternate" hreflang="x-default" href="https://chrust.org/privacy/">
+<link rel="alternate" hreflang="x-default" href="https://chrust.org/en/privacy/">
 <link rel="icon" type="image/png" href="/assets/chrust-logo.png">
 <link rel="stylesheet" href="/privacy.css"></head><body>
 <a class="skip" href="#privacy-content">${locale === 'ru' ? 'К тексту политики' : 'Skip to policy'}</a>

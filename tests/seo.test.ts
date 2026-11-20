@@ -161,7 +161,7 @@ for (const locale of locales) {
   test(`footer has download and app actions on every page: ${locale}`, async (): Promise<void> => {
     const paths = [`/${locale}/`, `/${locale}/download/`, ...guideSlugs.map(slug => guidePath(locale, slug))];
 
-    if (locale === 'en') paths.push('/', '/download/');
+    if (locale === 'en') paths.push('/download/');
 
     for (const path of paths) {
       const html = await Bun.file(`dist${path}index.html`).text();
@@ -263,7 +263,9 @@ test('sitemap advertises all indexable canonical site pages', async (): Promise<
   expect(new Set(urls).size).toBe(indexablePaths().length);
   expect(xml).not.toContain('download');
   expect(xml).not.toContain('app.chrust.org');
-  expect(robots).toBe(`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
+  expect(robots).toContain('User-agent: *\nAllow: /\n');
+  expect(robots).toContain('Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&gclid&fbclid');
+  expect(robots).toContain(`Sitemap: ${origin}/sitemap.xml`);
 
   for (const url of urls) {
     const html = await Bun.file(`dist${new URL(url).pathname}index.html`).text();
@@ -271,6 +273,19 @@ test('sitemap advertises all indexable canonical site pages', async (): Promise<
     expect(html).toContain(`rel="canonical" href="${url}"`);
     expect(html).toContain(`content="${publicRobots}"`);
   }
+});
+
+test('the root forwards visitors to a locale without serving a duplicate English landing page', async (): Promise<void> => {
+  const entry = await Bun.file('dist/index.html').text();
+  const english = await Bun.file('dist/en/index.html').text();
+
+  expect(entry).toContain('<script src="/language.js"></script>');
+  expect(entry).toContain('<noscript><meta http-equiv="refresh" content="0;url=/en/"></noscript>');
+  expect(entry).toContain('href="/ru/"');
+  expect(entry).not.toContain('id="hero-title"');
+  expect(english).toContain('id="hero-title"');
+  expect(english).toContain(`rel="canonical" href="${origin}/en/"`);
+  expect(english).not.toContain('http-equiv="refresh"');
 });
 
 test('metadata escapes text and supports a deliberate indexing stop', (): void => {

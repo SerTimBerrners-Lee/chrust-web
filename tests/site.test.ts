@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import { content } from '../site/content';
 import { guidePath, guideSlugs } from '../site/guides';
 
-const routes = ['/', '/ru/', '/en/', '/download/', '/ru/download/', '/en/download/'];
+const routes = ['/ru/', '/en/', '/download/', '/ru/download/', '/en/download/'];
 const dist = resolve('dist');
 
 const footerRoutes = [...routes, ...guideSlugs.flatMap(slug => [guidePath('ru', slug), guidePath('en', slug)])];
@@ -69,7 +69,7 @@ for (const route of routes) {
   });
 }
 
-for (const route of ['/', '/ru/', '/en/']) {
+for (const route of ['/ru/', '/en/']) {
   test(`community links and placeholder mosaic: ${route}`, async (): Promise<void> => {
     const html = await Bun.file(`${dist}${route}index.html`).text();
 
@@ -99,7 +99,7 @@ test('download controls and text contrast use the shared styles', async (): Prom
 });
 
 test('wind play and pause glyphs share the same horizontal center', async (): Promise<void> => {
-  const html = await Bun.file(`${dist}/index.html`).text();
+  const html = await Bun.file(`${dist}/en/index.html`).text();
   const js = await Bun.file(`${dist}/interactions.js`).text();
 
   expect(html).toContain('<rect x="7" y="5" width="3" height="14" rx="1"/><rect x="14" y="5" width="3" height="14" rx="1"/>');

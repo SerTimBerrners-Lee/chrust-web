@@ -25,6 +25,10 @@ Bun.serve({
     const file = Bun.file(path);
 
     if (!await file.exists()) {
+      if (!pathname.endsWith('/') && await Bun.file(resolve(path, 'index.html')).exists()) {
+        url.pathname += '/';
+        return Response.redirect(url, 308);
+      }
       if (process.env.CHRUST_SPA === '1' && !extname(path)) {
         return new Response(Bun.file(resolve(root, 'index.html')), { headers: { 'Content-Type': mime['.html'] } });
       }

@@ -22,6 +22,7 @@ bun run dev
 - `/en/`: английский лендинг.
 - `/download/`: автоматический выбор языка страницы скачивания.
 - `/privacy/` и `/ru/privacy/` содержат политику конфиденциальности на русском, `/en/privacy/` на английском. Исходник `site/privacy.ts`, отдельная сборка `bun scripts/build-privacy.ts`. Ссылка доступна в футере всех страниц.
+- `/support/terms/` и `/ru/support/terms/`: условия поддержки на русском, `/en/support/terms/` на английском. Исходник `site/support-terms.ts`, ссылки в футере.
 - `/ru/download/`, `/en/download/`: выбор платформы на указанном языке.
 - `/ru/bible-games/`, `/en/bible-games/`: библейские игры и викторина с ответами.
 - `/ru/bible-word-search/`, `/en/bible-word-search/`: пример филворда и правила.

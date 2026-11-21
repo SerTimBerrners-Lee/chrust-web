@@ -6,6 +6,8 @@ import { guideSlugs, guidePath, guides, guidePreviewScreens, guideArtwork, type 
 import { guideView, footerGuideLinks } from '../site/guide-view';
 import { metadata, ownershipMetadata, sitemap } from '../site/seo';
 import { buildPrivacyPages } from './build-privacy';
+import { buildSupportTerms } from './build-support-terms';
+import { supportTermsPath } from '../site/support-terms';
 
 const screenshotRevision: string = JSON.parse(await readFile('screenshot-sources.json', 'utf8')).capturedAt;
 
@@ -160,7 +162,7 @@ function footer(lang: Locale, guide?: GuideSlug): string {
   return `<footer class="site-footer"><div class="wrap footer-top"><div class="footer-info">${brand(lang, true)}<p class="footer-mission">${t.footer}</p>
     <div class="footer-actions"><a class="compact-button footer-download" href="${download(lang)}">${t.download}</a>${appLink}</div>
     <div class="social-buttons footer-socials">${socialLinks(lang)}</div>
-    </div>${footerGuideLinks(lang, guide)}</div><div class="wrap footer-bottom">© ${new Date().getFullYear()} Chrust <a href="/${lang}/privacy/" style="margin-inline-start:16px;text-decoration:underline">${lang === 'ru' ? 'Политика конфиденциальности' : 'Privacy Policy'}</a></div></footer>`;
+    </div>${footerGuideLinks(lang, guide)}</div><div class="wrap footer-bottom">© ${new Date().getFullYear()} Chrust <a href="/${lang}/privacy/" style="margin-inline-start:16px;text-decoration:underline">${lang === 'ru' ? 'Политика конфиденциальности' : 'Privacy Policy'}</a> <a href="${supportTermsPath(lang)}" style="margin-inline-start:16px;text-decoration:underline">${lang === 'ru' ? 'Условия поддержки' : 'Support terms'}</a></div></footer>`;
 }
 
 function page(lang: Locale, isDownload: boolean, guide?: GuideSlug): string {
@@ -234,5 +236,5 @@ await mkdir('dist/download', { recursive: true });
 await Promise.all([writeFile('dist/index.html', homeEntry()), copyFile('dist/en/download/index.html', 'dist/download/index.html'), copyFile('site/styles.css', 'dist/project.css'), copyFile('site/interactions.js', 'dist/interactions.js')]);
 await writeFile('dist/sitemap.xml', sitemap(publicUrl('/')));
 await writeFile('dist/robots.txt', `User-agent: *\nAllow: /\n\nClean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&gclid&fbclid\nSitemap: ${publicUrl('/sitemap.xml')}\n`);
-await buildPrivacyPages();
-console.log(`Built ${9 + guideSlugs.length * 2} pages, sitemap and robots for Russian and English.`);
+await Promise.all([buildPrivacyPages(), buildSupportTerms()]);
+console.log(`Built ${12 + guideSlugs.length * 2} pages, sitemap and robots for Russian and English.`);

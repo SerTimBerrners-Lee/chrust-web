@@ -2,7 +2,7 @@
   "siteUrl": "https://chrust.org",
   "appStore": null,
   "googlePlay": null,
-  "ruStore": null,
+  "ruStore": "https://www.rustore.ru/catalog/app/com.chrust.app",
   "webApp": "https://app.chrust.org",
   "telegram": "https://t.me/chrustapp",
   "instagram": "https://www.instagram.com/chrust.app/",

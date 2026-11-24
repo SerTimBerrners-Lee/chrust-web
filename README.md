@@ -63,7 +63,7 @@ bun run dev
 Instagram ведёт на `https://www.instagram.com/chrust.app/`,
 Threads на `https://www.threads.com/@chrust.app`,
 YouTube на `https://www.youtube.com/@ChrustApp`.
-Адреса магазинов пока остаются заглушками.
+Кнопка RuStore открывает карточку Chrust для Android.
 Кнопки соцсетей и магазинов отображают только иконки,
 без подписей и слова «Скоро». Доступные имена и подсказки сохранены. Значение
 `null` в конфигурации означает заглушку. После добавления HTTPS-адреса и сборки
